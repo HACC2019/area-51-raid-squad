@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "csvtojson": "^2.0.10",
+    "fs": "0.0.1-security",
+    "json2csv": "^4.5.4",
+    "papaparse": "^5.1.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-scripts": "3.2.0"
