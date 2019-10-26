@@ -18,5 +18,4 @@
 In terminal 
     ``` node parse.js```
 
-Will parse HACC_Data.csv into Data_Parse.csv
-Will parse SiteA_Power.csv into SiteA_Parsed.csv 
+parsed both files into new files
