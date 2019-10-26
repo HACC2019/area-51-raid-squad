@@ -31,5 +31,5 @@ const fs = require("fs");
 csv2json().fromFile("./SiteA_Power.csv").then(SiteA_Power => {
     console.log(SiteA_Power);
     const csv2 = json2csv(SiteA_Power, {Fields: ["Start Date and Time", "Power (kW)", "", "1-minute kWh", "total kWh"]});
-    fs.writeFileSync("./SiteA_Parsed", csv2);
+    fs.writeFileSync("./SiteA_Parsed.csv", csv2);
 });
