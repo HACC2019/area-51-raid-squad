@@ -1,9 +1,4 @@
-// testparse using es6
-//import CSVToJSON from "csvtojson";
-//import { parse as JSONToCSV } from "json2csv";
-
-//reference file system to load 
-//import fSystem from 'fs';
+// Parsed HACC Data
 
 const CSVToJSON = require("csvtojson");
 const JSONToCSV = require("json2csv").parse;
@@ -24,5 +19,17 @@ CSVToJSON().fromFile("./Data_HACC.csv").then(Data_HACC => {
     "Payment Mode": "RFID",
   });
   const csv = JSONToCSV(Data_HACC, {fields: ["Charge Station Name", "Session Initiated By", "Start Time", "End Time", "Duration", "Energy(kWh)", "Sessoion Amount", "Session Id", "Port Type", "Payment Mode"]});
-  fSystem.writeFileSync("./TestParse.csv", csv);
+  fSystem.writeFileSync("./Data_Parse.csv", csv);
+}); 
+
+// parsed siteA
+
+const csv2json = require("csvtojson");
+const json2csv = require("json2csv").parse;
+const fs = require("fs");
+
+csv2json().fromFile("./SiteA_Power.csv").then(SiteA_Power => {
+    console.log(SiteA_Power);
+    const csv2 = json2csv(SiteA_Power, {Fields: ["Start Date and Time", "Power (kW)", "", "1-minute kWh", "total kWh"]});
+    fs.writeFileSync("./SiteA_Parsed", csv2);
 });

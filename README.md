@@ -12,3 +12,11 @@
 
 1) ```docker-compose up -d --build```
 2) Open your browser to http://localhost:3001
+
+### Parse.js 
+
+In terminal 
+    ``` node parse.js```
+
+Will parse HACC_Data.csv into Data_Parse.csv
+Will parse SiteA_Power.csv into SiteA_Parsed.csv 
