@@ -1,0 +1,79 @@
+/* ==============
+  Form-elements
+===================*/
+
+label {
+  font-weight: 500;
+}
+
+.form-control {
+  font-size: $base-font;
+  color: $gray-400 !important;
+  background: lighten($dark, 2%);
+  border-color: lighten($dark, 4%);
+  &:focus {
+    box-shadow: none;
+    background: lighten($dark, 3%);
+    border-color: lighten($dark, 4%);
+  }
+  &::placeholder{
+    color: $gray-300;
+  }
+  &[readonly], &:disabled{
+    background: lighten($dark, 4%);
+  }
+}
+
+.custom-select{
+  color: $gray-400 !important;
+  background: lighten($dark, 2%);
+  border-color: lighten($dark, 4%);
+  &:focus {
+    box-shadow: none;
+    background: lighten($dark, 3%);
+    border-color: lighten($dark, 4%);
+  }
+}
+
+.form-control-sm {
+  font-size: .875rem;
+}
+
+.custom-select{
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.custom-select-sm {
+  font-size: 75%;
+}
+
+.custom-control-input:checked~.custom-control-indicator {
+  background-color: $primary;
+}
+
+.custom-control-input:focus~.custom-control-indicator {
+  -webkit-box-shadow: 0 0 0 1px $white, 0 0 0 3px $primary;
+  box-shadow: 0 0 0 1px $white, 0 0 0 3px $primary;
+}
+
+.input-group-text{
+  color: rgba($white, 0.7);
+  background: lighten($dark, 8%);
+  border-color: lighten($dark, 4%);
+  font-size: $base-font;
+}
+
+.custom-file{
+
+  .custom-file-label{
+    background-color: lighten($dark, 3%);
+    border-color: lighten($dark, 4%);
+    color: $gray-500;
+    &:after{
+      background-color: lighten($dark, 8%);
+      color: $gray-400;
+    }
+  }
+}

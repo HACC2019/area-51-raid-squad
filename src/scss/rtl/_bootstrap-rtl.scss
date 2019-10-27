@@ -1,0 +1,210 @@
+
+/* ==============
+  bootstrap-rtl
+===================*/
+
+html {
+    direction: rtl;
+}
+
+.list-inline,.list-group,ul {
+    padding-right: 0;
+}
+
+.float-left, .topbar .topbar-left, .breadcrumb-item, .email-leftbar {
+    float: right !important;
+}
+
+.float-right,.close  {
+    float: left !important;
+}
+
+.text-left, .side-menu, .navbar-custom, th,.table,.header-title,.header-title + p ,.dropdown-item,.card, .card-header .list-group-flush, .email-leftbar, .email-rightbar,
+.select2-container--default .select2-results>.select2-results__options,
+.page-title-box .page-title, .card-body ,.dropzone {
+    text-align: right !important;
+}
+
+.text-right, .dataTables_filter, .custom-file-label {
+    text-align: left !important;
+}
+
+// dropdown
+
+@media (min-width: 425px){
+    .dropdown-menu{
+        &.show{
+            transform: none !important;
+            top: 100% !important;
+        }
+    }
+}
+
+.dropdown-menu {
+    &.show {
+        text-align: right;
+        left: auto;
+        right: 0;
+        bottom: auto;
+    }
+}
+
+.dropdown-menu-right {
+    right: auto !important;
+    left: 0 !important;
+}
+
+.dropdown-toggle{
+    &:after {
+      margin-left: 0;
+      margin-right: .255em;
+    }
+}
+
+.btn-group>.btn:last-child:not(:first-child), .btn-group>.dropdown-toggle:not(:first-child),.page-item:last-child .page-link,
+.input-group .form-control:not(:first-child), .input-group-btn:not(:first-child)>.btn,
+.input-group-btn:not(:first-child)>.btn-group>.btn, .input-group-btn:not(:first-child)>.dropdown-toggle,
+.input-group-btn:not(:last-child)>.btn-group:not(:first-child)>.btn, .input-group-btn:not(:last-child)>.btn:not(:first-child),
+.input-group>.input-group-append>.btn, .input-group>.input-group-append>.input-group-text, .input-group>.input-group-prepend:first-child>.btn:not(:first-child), .input-group>.input-group-prepend:first-child>.input-group-text:not(:first-child), .input-group>.input-group-prepend:not(:first-child)>.btn{
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: .25rem !important;
+  border-bottom-left-radius: .25rem !important;
+}
+
+.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle),.page-item:first-child .page-link,
+.input-group .form-control:not(:last-child), .input-group-btn:not(:first-child)>.btn-group:not(:last-child)>.btn,
+.input-group-btn:not(:first-child)>.btn:not(:last-child):not(.dropdown-toggle), .input-group-btn:not(:last-child)>.btn,
+.input-group-btn:not(:last-child)>.btn-group>.btn, .input-group-btn:not(:last-child)>.dropdown-toggle, .input-group>.input-group-append:last-child>.input-group-text:not(:last-child), .input-group>.input-group-append:not(:last-child)>.btn, .input-group>.input-group-prepend>.btn, .input-group>.input-group-prepend>.input-group-text{
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: .25rem !important;
+  border-bottom-right-radius: .25rem !important;
+}
+
+// margin/padding
+
+.mr-1{
+    margin-left: .25rem;
+    margin-right: 0 !important;
+}
+
+.mr-2{
+    margin-left: .5rem;
+    margin-right: 0 !important;
+}
+
+.mr-3{
+    margin-left: 1rem;
+    margin-right: 0 !important;
+}
+
+.mr-4 {
+    margin-left: 1.5rem!important;
+    margin-right: 0 !important;
+}
+
+.ml-1 {
+    margin-right: .25rem;
+    margin-left: 0 !important;
+}
+
+.ml-2 {
+    margin-right: .5rem;
+    margin-left: 0 !important;
+}
+
+.ml-3{
+    margin-right: 1rem;
+    margin-left: 0 !important;
+}
+
+
+.pr-3{
+    padding-left: 1rem;
+    padding-right: 0 !important;
+}
+
+// list
+
+.list-inline-item{
+    &:not(:last-child){
+        margin-left: .5rem;
+        margin-right: 0;
+    }
+}
+
+// breadcrumb
+
+.breadcrumb{
+    .breadcrumb-item+.breadcrumb-item{
+        padding-right: .5rem;
+        padding-left: 0px;
+        &:before{
+            padding-left: .5rem;
+            padding-right: 5px !important; 
+        }
+    }
+}
+
+// alert
+
+.alert-dismissible{
+    padding-right: 1.25rem;
+    .close {
+        position: absolute;
+        left: 0;
+    }
+} 
+
+// modal
+
+.modal-header {
+    .close{
+      margin: -1rem auto -1rem -1rem;
+    }
+}
+  
+.modal-footer>:not(:last-child) {
+    margin-left: .25rem;
+}
+
+
+// typography (dl list)
+
+dd{
+    margin-right: 0;
+}
+
+// custom control
+
+.custom-control {
+    padding-right: 1.5rem;
+    padding-left: 0;
+}
+  
+.custom-control-label {
+    &:before, &:after {
+      left: auto;
+      right: -22px;
+    }  
+}
+
+.custom-control-inline{
+    margin-left: 1rem;
+    margin-right: 0;
+}
+
+.form-check{
+    padding-right: 1.25rem;
+    padding-left: 0;
+}
+
+.form-check-input{
+    margin-right: -1.25rem;
+    margin-left: 0;
+}
+
+.custom-switch {
+    padding-right: 0;
+}

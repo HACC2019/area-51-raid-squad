@@ -1,0 +1,21 @@
+.react-datepicker__day, .react-datepicker__month-text, .react-datepicker__quarter-text
+{
+    color :#f2f2f2;
+}
+
+.react-datepicker {
+    background-color: #383c40;
+    color :#f2f2f2;
+}
+.react-datepicker__header {
+    background-color: #383c40 !important;
+}
+.react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name
+{
+color: #f2f2f2!important;
+}
+.react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header
+{
+    
+color: #f2f2f2!important;
+}

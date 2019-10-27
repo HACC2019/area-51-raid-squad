@@ -1,0 +1,61 @@
+
+
+/* ==============
+  Ecommerce
+===================*/
+
+.product-list-img, .sorting_1 {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.product-box{
+    .product-img{
+        position: relative;
+        overflow: hidden;
+    }
+
+    .product-overlay{
+        background: rgba($dark, 0.3);
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+        transition: all 0.4s;
+        text-align: center;
+        transform: translateY(60px);
+        .product-links{
+            padding: 7px 0px;
+            li{
+                a{
+                    transition: all 0.4s;
+                    background-color: $white;
+                    color: $gray-600;
+                    transform: translateY(60px);
+                }
+            }
+        }
+    }
+    &:hover{
+        .product-overlay{
+            transform: translateY(0px);
+        }
+        .product-links{
+            li{
+                a{
+                    transform: translateY(0px);
+                }
+                &:nth-child(2){
+                    a{
+                        transition-delay: 0.2s;
+                    }
+                }
+                &:nth-child(3){
+                    a{
+                        transition-delay: 0.4s;
+                    }
+                }
+            }
+        }
+    }
+}

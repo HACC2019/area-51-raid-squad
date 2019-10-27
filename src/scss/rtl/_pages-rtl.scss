@@ -1,0 +1,127 @@
+
+
+
+/******** email **********/ 
+
+.email-rightbar {
+    margin-right: 260px;
+    margin-left: 0px;
+}
+
+.message-list {
+    li {
+        .col-mail{
+            float: right;
+        }
+        .col-mail-1{
+            .star-toggle, .checkbox-wrapper-mail, .dot{
+                float: right
+            }
+            .checkbox-wrapper-mail {
+                margin: 15px 20px 0 10px;
+            }
+            .star-toggle {
+                margin-right: 5px;
+            }
+            
+            .title {
+                right: 110px;
+                left: 0;
+            }
+        }
+        .col-mail-2{
+            right: 320px;
+            left: 0;
+
+            .subject {
+                right: 0;
+                left: 200px;
+            }
+
+            .date {
+                left: 0;
+                right: auto;
+                padding-right: 80px;
+                padding-left: 0px;
+            }
+        
+        }
+    }
+    .checkbox-wrapper-mail {
+        label{
+            &:before{
+                right: 4px;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px){
+    .email-leftbar {
+        float: none !important;
+        width: 100%;
+    }
+    .email-rightbar {
+        margin-right: 0;
+    }
+}
+
+/******** Project **********/ 
+
+.project-table{
+    .action{
+        a{
+            &.mr-4{
+                margin-right: 1.5rem !important;
+                margin-left: 0 !important;
+            }
+        }
+    }
+}
+
+/******** Account pages **********/ 
+
+.home-btn {
+    right: auto;
+    left: 25px;
+}
+
+.account-process{
+    &:before{
+        right: 50%;
+    }
+}
+
+/******** Invoice pages **********/ 
+
+@media print {
+    .content-page {
+        margin-right: 0;
+    }
+}
+
+/******** pricing **********/ 
+
+.plan-box{
+    .card-body{
+        text-align: center !important;
+    }
+}
+
+/******** Faq **********/ 
+
+.faq-title{
+    i{
+        margin-right: 1rem !important;
+        margin-left: 0;
+    }
+}
+
+.faq-box {
+    .faq-icon{
+        &:after{
+            right: auto;
+            left: -11px;
+        }
+    }
+}

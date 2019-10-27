@@ -1,0 +1,95 @@
+/* =============
+   Tabs & Accordions
+============= */
+
+.nav-tabs,.nav-pills {
+  .nav-link {
+    color: $gray-300;
+    font-weight: 500;
+  }
+}
+
+.nav-tabs{
+  border-color: lighten($dark, 4%);
+  .nav-item{
+    .nav-link{
+      &.active, &:hover{
+        background: $dark;
+        color: $gray-200;
+        border-color: lighten($dark, 4%) lighten($dark, 4%) $dark;
+      }
+    }
+  }
+}
+
+.nav-pills {
+  .nav-link.active, .show>.nav-link{
+    background: $primary;
+  }
+}
+
+.verti-tab{
+  .nav{
+    .nav-link{
+      margin-bottom: 7px;
+    }
+  }
+}
+
+@media (min-width: 540px) {
+  .nav-tabs-custom {
+    .nav-item {
+      position: relative;
+      padding-top: 3rem;
+  
+      .nav-link {
+        padding: 1rem;
+  
+        &::before{
+          content: "";
+          position: absolute;
+          background: $primary;
+          width: 2px;
+          height: 0%;
+          left: 0;
+          right: 0;
+          margin: 0px auto;
+          bottom: 44px;
+          transition: all 0.4s;
+        }
+  
+        &:hover, &:focus, &.active{
+          &::before{
+            height: 34px;
+          }
+          .tab-icon{
+            opacity: 1;
+          }
+        }
+  
+        .tab-icon{
+          position: absolute;
+          top: 0px;
+          left: 0;
+          right: 0;
+          margin: 0px auto;
+          opacity: 0;
+          transition: all 0.4s;
+        }
+      }
+    }
+  }
+}
+
+
+
+#accordion {
+  .card{
+    box-shadow: none !important;
+    border: 1px solid lighten($dark, 4%);
+    .card-header{
+      background: lighten($dark, 4%);
+      border-bottom: 1px solid lighten($dark, 4%);
+    }
+  }
+}

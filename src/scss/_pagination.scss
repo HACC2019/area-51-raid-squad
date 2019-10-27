@@ -1,0 +1,33 @@
+/* ==============
+  Pagination
+===================*/
+
+.pagination{
+  .page-link {
+    background: lighten($dark, 4%);
+    color: $gray-500;
+    border-color: lighten($dark, 7%);
+  
+    &:focus, &:hover {
+      box-shadow: none;
+      background-color: lighten($dark, 6%);
+    }
+  }
+  .page-item{
+    &.active{
+      .page-link{
+        background-color: $primary;
+        border-color: $primary;
+        color: $white;
+      }
+    }
+    &.disabled{
+      .page-link{
+        background: lighten($dark, 7%);
+        color: $gray-600;
+        border-color: lighten($dark, 7%);
+      }
+    }
+  }
+}
+

@@ -1,0 +1,347 @@
+/* ==============
+  Form-Advanced
+===================*/
+
+/* Select 2 */
+.select2-container {
+  width: 100% !important;
+  .select2-selection{
+    background: lighten($dark, 4%);
+    border: 1px solid rgba($white, 0.07) !important;
+  }
+  .select2-selection--single {
+    height: 38px;
+    &:focus{
+      outline: none;
+    }
+
+    .select2-selection__rendered {
+      line-height: 36px;
+      padding-left: 12px;
+      color: $gray-500;
+    }
+
+    .select2-selection__arrow {
+      height: 34px;
+      width: 34px;
+      right: 3px;
+
+      b{
+        border-color: $gray-500 transparent transparent transparent;
+        border-width: 6px 6px 0 6px;
+      }
+    }
+  }
+}
+
+.select2-container--open {
+  .select2-selection--single {
+
+    .select2-selection__arrow {
+
+      b{
+        border-color: transparent transparent $gray-500 transparent !important;
+        border-width: 0 6px 6px 6px !important;
+      }
+    }
+  }
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: $primary;
+}
+.select2-results__option {
+  padding: 6px 12px;
+  &[aria-selected=true]{
+    background: $dark !important;
+  }
+}
+
+.select2-dropdown {
+  border: 1px solid rgba($white, 0.07);
+  padding-top: 5px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .15);
+  background: $dark;
+}
+.select2-search {
+  input{
+    border: 1px solid $gray-300;
+  }
+}
+
+.select2-container .select2-selection--multiple {
+  min-height: 38px;
+
+  .select2-selection__rendered {
+    padding: 2px 10px;
+  }
+  .select2-search__field {
+    margin-top: 7px;
+    border: 0;
+    color: $white;
+  }
+  .select2-selection__choice {
+    background-color: $dark;
+    border: 1px solid $dark;
+    border-radius: 1px;
+    padding: 0 7px;
+  }
+}
+
+.select2-container--default{
+  &.select2-container--focus {
+    .select2-selection--multiple{
+      border-color: $gray-400;
+    }
+  }
+}
+
+/* Datepicker */
+.datepicker {
+  border: 1px solid lighten($dark, 6%);
+  padding: 8px;
+  background: lighten($dark, 4%);
+  color: $gray-200;
+  table{
+    tr{
+      .day, .month, .year, .prev, .next, .datepicker-switch {
+        &:hover{
+          background: lighten($dark, 8%) !important;
+        }
+    }
+      th{
+        font-weight: 500;
+      }
+      td{
+        padding: 15px 12px;
+      }
+      td{
+        &.active, &.active:hover, .active.disabled, &.active.disabled:hover,
+        &.today,  &.today:hover, &.today.disabled, &.today.disabled:hover, 
+        &.selected, &.selected:hover, &.selected.disabled, &.selected.disabled:hover{
+          background-color: $danger !important;
+          background-image: none;
+          box-shadow: none;
+          color: $white !important;
+        }
+      }
+    }
+  }
+
+}
+
+.table-condensed{
+  >thead>tr>th, >tbody>tr>td {
+    padding: 5px;
+  }
+}
+
+/* Bootstrap-touchSpin */
+.bootstrap-touchspin {
+  .input-group-btn-vertical {
+    .btn {
+      padding: 9px 12px;
+    }
+    i {
+      top: 4px;
+      left: 8px;
+    }
+  }
+}
+
+/* Color Picker */
+.colorpicker-visible {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+  margin-top: 0;
+}
+
+.datepicker-dropdown.dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  margin-top: 0;
+}
+
+.colorpicker-selectors {
+  i {
+    margin-top: 5px;
+    margin-left: 5px;
+  }
+}
+
+.colorpicker-element{
+  .btn-light{
+    background: lighten($dark, 8%) !important;
+    border-color: lighten($dark, 8%) !important;
+  }
+}
+
+// Colorpicker 2X
+.colorpicker-2x {
+  .colorpicker-saturation {
+    width: 200px;
+    height: 200px;
+  }
+
+  .colorpicker-hue, .colorpicker-alpha {
+    width: 30px;
+    height: 200px;
+  }
+
+  .colorpicker-color, .colorpicker-color div {
+    height: 30px;
+  }
+}
+
+
+
+/* CSS Switch */
+input[switch] {
+  display: none;
+}
+input[switch] + label {
+  font-size: 1em;
+  line-height: 1;
+  width: 56px;
+  height: 24px;
+  background-color: $gray-300;
+  background-image: none;
+  border-radius: 2rem;
+  padding: 0.16667rem;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  font-weight: 500;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+input[switch] + label:before {
+  color: $dark;
+  content: attr(data-off-label);
+  display: block;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 21px;
+  position: absolute;
+  right: 1px;
+  margin: 3px;
+  top: -2px;
+  text-align: center;
+  min-width: 1.66667rem;
+  overflow: hidden;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+input[switch] + label:after {
+  content: '';
+  position: absolute;
+  left: 3px;
+  background-color: $gray-200;
+  box-shadow: none;
+  border-radius: 2rem;
+  height: 20px;
+  width: 20px;
+  top: 2px;
+  -webkit-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+input[switch]:checked + label {
+  background-color: $primary;
+}
+input[switch]:checked + label:before {
+  color: $white;
+  content: attr(data-on-label);
+  right: auto;
+  left: 3px;
+}
+input[switch]:checked + label:after {
+  left: 33px;
+  background-color: $gray-200;
+}
+
+input[switch="bool"] + label {
+  background-color: $danger;
+}
+input[switch="bool"] + label:before,input[switch="bool"]:checked + label:before,
+input[switch="default"]:checked + label:before{
+  color: $white;
+}
+
+input[switch="bool"]:checked + label {
+  background-color: $success;
+}
+
+input[switch="default"]:checked + label {
+  background-color: #a2a2a2;
+}
+
+input[switch="primary"]:checked + label {
+  background-color: $primary;
+}
+
+input[switch="success"]:checked + label {
+  background-color: $success;
+}
+
+input[switch="info"]:checked + label {
+  background-color: $info;
+}
+
+input[switch="warning"]:checked + label {
+  background-color: $warning;
+}
+
+input[switch="danger"]:checked + label {
+  background-color: $danger;
+}
+
+input[switch="dark"]:checked + label {
+  background-color: lighten($dark, 4%);
+}
+
+// emoji picker
+
+.emoji-wysiwyg-editor{
+  padding-right: 35px;
+}
+
+.emoji-picker-icon{
+  color: $gray-500;
+  top: 8px;
+}
+.emoji-menu{
+  border-color: lighten($dark, 4%);
+
+  .emoji-items-wrap1{
+    background-color: lighten($dark, 4%);
+  }
+  .emoji-menu-tabs{
+    td{
+      padding: 0px;
+    }
+  }
+  .emoji-items {
+    a:hover{
+      background-color: lighten($dark, 8%);
+    }
+  }
+}
+
+/* Bootstrap filestyle */
+.icon-span-filestyle {
+  padding-right: 5px;
+}
+.bootstrap-filestyle {
+  label {
+    margin-bottom: 0;
+  }
+}
+.group-span-filestyle {
+  .badge {
+    background-color: $dark;
+  }
+}
+

@@ -1,0 +1,131 @@
+/* ==============
+  timeline
+===================*/
+
+/************** Horizontal timeline **************/ 
+
+.hori-timeline{
+    .events{
+        border-top: 3px solid lighten($dark, 4%);
+        .event-list{
+            display: block;
+            position: relative;
+            text-align: center;
+            padding-top: 70px;
+            margin-right: 0px;
+            &:before{
+                content: "";
+                position: absolute;
+                height: 36px;
+                border-right: 2px dashed lighten($dark, 4%);
+                top: 0px;
+            }
+
+            .event-date{
+                position: absolute;
+                top: 38px;
+                left: 0px;
+                right: 0;
+                width: 75px;
+                margin: 0px auto;
+                border-radius: 4px;
+                padding: 2px 4px;
+            }
+        }
+    }
+}
+
+
+@media (min-width: 1140px) {
+    .hori-timeline{
+        .events{
+            .event-list{
+                display: inline-block;
+                width: 24%;
+                padding-top: 45px;
+                .event-date{
+                    top: -12px;
+                }
+            }
+        }
+    }
+}
+
+/************** Vertical timeline **************/ 
+
+.verti-timeline{
+    border-left: 3px dashed lighten($dark, 4%);
+    margin: 0 10px;
+    .event-list{
+        position: relative;
+        padding: 40px 15px 40px;
+        border-top: 3px solid lighten($dark, 4%);
+        .event-date {
+            position: absolute;
+            right: 0px;
+            top: -2px;
+            padding: 12px;
+            color: $white;
+            border-radius: 0px 0px 7px 7px;
+            text-align: center;
+        }
+
+        .event-content{
+            position: relative;
+            border: 2px solid lighten($dark, 4%);
+            border-radius: 7px;
+            text-align: center;
+            &::before{
+                content: "";
+                position: absolute;
+                height: 40px;
+                width: 75%;
+                top: -42px;
+                left: 0;
+                right: 0;
+                margin: 0px auto;
+                border-left: 12px double lighten($dark, 4%);
+                border-right: 12px double lighten($dark, 4%);
+            }
+        }
+
+        .timeline-icon{
+            position: absolute;
+            left: -14px;
+            top: -10px;
+            i{
+                display: inline-block;
+                width: 23px;
+                height: 23px;
+                line-height: 23px;
+                font-size: 20px;
+                border-radius: 50%;
+                text-align: center;
+                color: $white;
+            }
+        }
+        
+        &:last-child{
+            padding-bottom: 0px;
+        }
+    }
+}
+
+@media (min-width: 769px){
+    .verti-timeline{
+        margin: 0px 60px; 
+        .event-list{
+            padding: 40px 90px 60px 40px;
+        }
+    }
+}
+
+@media (max-width: 576px){
+    .verti-timeline{
+        .event-list{
+           .event-date{
+            right: -20px;
+           }
+        }
+    }
+}

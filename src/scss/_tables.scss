@@ -1,0 +1,195 @@
+/* ==============
+  Tables
+===================*/
+
+.table{
+  color: $gray-400;
+  th{
+    font-weight: 500;
+  }
+  td{
+    padding: 15px 12px;
+  }
+
+  th, td{
+    vertical-align: middle;
+    border-color: rgba($white, 0.05) !important;
+  }
+  .thead-light {
+    th{
+      background-color: lighten($dark, 4%);
+      color: $gray-400;
+    }
+  }
+}
+
+.table-hover tbody tr:hover,.table-striped tbody tr:nth-of-type(odd),
+.thead-default th{
+  background-color: lighten($dark, 2%);
+  color: $gray-400;
+}
+
+.table-sm{
+  th, td{
+    padding: .3rem !important;
+  }
+}
+
+
+// datatable
+
+.dataTable{
+  border-color: rgba($white, 0.07);
+}
+
+/* == Responsive Table ==*/
+
+.table-rep-plugin {
+  .btn-toolbar {
+    display: block;
+  }
+  .table-responsive {
+    border: none !important;
+  }
+  .btn-group.float-right .dropdown-menu {
+    right: 0;
+    transform: none !important;
+    top: 100% !important;
+  }
+  tbody {
+    th {
+      font-size: 14px;
+      font-weight: normal;
+    }
+  }
+  .checkbox-row {
+    padding-left: 40px;
+    color: $gray-300 !important;
+    &:hover{
+      background-color: lighten($dark, 4%) !important;
+    }
+    label {
+      display: inline-block;
+      padding-left: 5px;
+      position: relative;
+      &::before {
+        -o-transition: 0.3s ease-in-out;
+        -webkit-transition: 0.3s ease-in-out;
+        background-color: lighten($dark, 4%);
+        border-radius: 3px;
+        border: 1px solid lighten($dark, 8%);
+        content: "";
+        display: inline-block;
+        height: 17px;
+        left: 0;
+        margin-left: -20px;
+        position: absolute;
+        transition: 0.3s ease-in-out;
+        width: 17px;
+        outline: none !important;
+      }
+      &::after {
+        color: $gray-200;
+        display: inline-block;
+        font-size: 11px;
+        height: 16px;
+        left: 0;
+        margin-left: -20px;
+        padding-left: 3px;
+        padding-top: 1px;
+        position: absolute;
+        top: -1px;
+        width: 16px;
+      }
+    }
+    input[type="checkbox"] {
+      cursor: pointer;
+      opacity: 0;
+      z-index: 1;
+      outline: none !important;
+
+      &:disabled + label {
+        opacity: 0.65;
+      }
+    }
+    input[type="checkbox"]:focus + label {
+      &::before {
+        outline-offset: -2px;
+        outline: none;
+      }
+    }
+    input[type="checkbox"]:checked + label {
+      &::after {
+        content: "\f00c";
+        font-family: 'Font Awesome 5 Free';
+        font-weight: 900;
+      }
+    }
+    input[type="checkbox"]:disabled + label {
+      &::before {
+        background-color: $gray-100;
+        cursor: not-allowed;
+      }
+    }
+    input[type="checkbox"]:checked + label {
+      &::before {
+        background-color: $primary;
+        border-color: $primary;
+      }
+      &::after {
+        color: $white;
+      }
+    }
+  }
+
+  .fixed-solution {
+    .sticky-table-header{
+      top: 70px !important;
+      .table{
+        color: $dark;
+      }
+    }
+  }
+
+}
+
+
+/******** table editable **********/ 
+
+.table-editable{
+  .editable-input{
+    .form-control{
+      height: 2rem;
+    }
+  }
+  .editable-buttons{
+    .btn {
+      &.btn-sm{
+        font-size: 12px;
+      }
+    }
+  }
+  tbody {
+    td{
+      &.focus{
+        box-shadow: inset 0 0 1px 1px $primary !important;
+      }
+    }
+  }
+}
+
+.dt-autofill-list{
+  background: $dark !important;
+  border-color: lighten($dark, 4%) !important;
+  box-shadow: none !important;
+  ul{
+    li{
+      &:hover{
+        background-color: lighten($dark, 4%) !important;
+      }
+      .dt-autofill-question, .dt-autofill-button{
+        border-color: rgba($white, 0.05);
+      }
+    }
+  }
+}
