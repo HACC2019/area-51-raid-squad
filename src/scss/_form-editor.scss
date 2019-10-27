@@ -1,0 +1,55 @@
+/* ==============
+  Form Editor
+===================*/
+
+.mce-panel {
+  border-color: rgba($white, 0.07) !important;
+  background-color: lighten($dark, 4%) !important;
+}
+
+.mce-menubar, .mce-btn-group:not(:first-child){
+  border-color: rgba($white, 0.07) !important;
+}
+.mce-btn{
+    background-color: lighten($dark, 4%) !important;
+    border-color: lighten($dark, 4%) !important;
+    button{
+      background-color: lighten($dark, 4%) !important;
+      
+      span, i{
+        color: $white  !important;
+      }
+      .mce-caret{
+        border-top-color: rgba($white, 0.7) !important;
+      }
+    }
+}
+
+.mce-content-body {
+  background: $dark !important;
+}
+
+.mce-menu-item{
+  .mce-ico, .mce-text{
+    color: $gray-500 !important;
+  }
+  &:hover, &.mce-selected, &:focus {
+    background-color: $primary !important;
+  }
+}
+
+.mce-menu-item-sep{
+  border-color: lighten($dark, 8%) !important;
+}
+
+.mce-open{
+  border-color: lighten($dark, 4%) !important;
+}
+
+.mce-path-item, .mce-wordcount{
+  color: $white !important;
+}
+
+.mce-container, .mce-widget, .mce-widget *, .mce-reset {
+  color: $white !important;
+}

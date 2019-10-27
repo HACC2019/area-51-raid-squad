@@ -1,0 +1,96 @@
+
+
+
+
+/****** Datepicker *******/
+
+.datepicker{
+    table{
+        th{
+            text-align: center !important;
+        }
+    }
+}
+
+/****** Magnific Popup *******/
+
+.mfp-close{
+    right: auto;
+    left: 0;
+}
+
+/****** Summernote *******/
+
+.note-editor{
+    .note-toolbar{
+        .dropdown-menu.show{
+            left: auto !important;
+        }
+    }
+}
+
+/****** Select2 *******/
+
+.select2-container {
+    .select2-selection--single {
+        .select2-selection__arrow{
+            left: 3px;
+        }
+    }
+}
+
+/****** Bootstrap FileStyle *******/
+
+.icon-span-filestyle{
+    padding-left: 5px;
+    padding-right: 0px
+}
+
+/****** Form wizard *******/
+
+.wizard {
+    > .steps {
+        .number{
+            margin-right: 0px;
+            margin-left: 10px;
+        }
+    }
+}
+
+/****** Form x-editable *******/
+
+.editable-buttons{
+    margin-right: 7px;
+    margin-left: 0px;
+    .editable-cancel {
+        margin-right: 7px;
+        margin-left: 0px;
+    }
+}
+
+/****** Datatables *******/
+
+.dataTables_wrapper {
+    input {
+        margin-right: 0.5em;
+        margin-left: 0 !important;
+    }
+}
+
+/****** Table Responsive *******/
+
+.table-rep-plugin {
+    .checkbox-row {
+        label{
+            padding-left: 0px;
+            padding-right: 5px;
+
+            &::before, &:after{
+                right: 0px;
+                margin-right: -20px;
+                padding-right: 3px;
+            }
+
+        }
+    }
+}

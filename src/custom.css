@@ -1,0 +1,310 @@
+.ps__rail-y:hover > .ps__thumb-y, .ps__rail-y:focus > .ps__thumb-y, .ps__rail-y.ps--clicking .ps__thumb-y, .ps__rail-y {
+    width: auto !important;
+  }
+
+  .react-datepicker__header {
+    background-color: #ffffff !important;
+    border :none;
+  }
+  .react-datepicker
+  {
+    border: none !important;
+  }
+
+  .react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range, .react-datepicker__month-text--selected, .react-datepicker__month-text--in-selecting-range, .react-datepicker__month-text--in-range {
+    border-radius: 2.3rem;
+    background-color: #e74c5e;
+  }
+  .react-datepicker__day--selected:hover, .react-datepicker__day--in-selecting-range:hover, .react-datepicker__day--in-range:hover, .react-datepicker__month-text--selected:hover, .react-datepicker__month-text--in-selecting-range:hover, .react-datepicker__month-text--in-range:hover
+  {
+    border-radius: 2.3rem;
+    background-color: #e74c5e;
+  }
+  .react-datepicker__day:hover, .react-datepicker__month-text:hover {
+    border-radius: 1.3rem;
+    background-color: #f0f0f0;
+}
+.rdw-editor-wrapper
+{
+    height: 200px!important;
+    overflow: hidden!important;
+    border: 1px solid #f1f1f1!important;
+}
+.rdw-editor-main
+{
+    overflow: hidden!important;
+}
+.rangeslider-horizontal .rangeslider__fill {
+  background-color: #f90000!important;
+  height: 83%!important;
+}
+.rangeslider-horizontal {
+  height: 8px!important;
+}
+.rangeslider-horizontal .rangeslider__handle
+{
+  border: 1px solid  #f90000!important;
+}
+.ql-container
+{
+  height: 172px!important;
+  border: 1px solid #cccccc!important;
+}
+.dz-message 
+{
+  text-align: center!important;
+}
+.dataTables_filter {
+  float: right;
+}
+.dataTables_paginate {
+  float: right;
+}
+.react-datepicker-wrapper
+{
+  width: 100%!important;
+}
+.react-datepicker__input-container
+{
+  width: 100%!important;
+}
+.rdt_TableRow
+{
+  padding: 7px!important;
+}
+
+.react-datepicker-popper
+{
+  z-index: 1111!important;
+}
+
+.radial-chart{
+  height: 453px;
+}
+
+.social-source .apexcharts-canvas{
+  top: 22px;
+}
+
+.recent-stock .apexcharts-canvas{
+  top: 20px;
+}
+
+/* ecommerce-products-list */
+.ecommerce-product .rdt_TableHeader{
+  display: none;
+}
+.ecommerce-product .rdt_TableHeadRow{
+  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+}
+.ecommerce-product .rdt_TableRow {
+  padding: 0px!important;
+}
+.ecommerce-product .bZYBY:nth-child(odd) {
+  background-color: #f0f4f7;
+}
+.ecommerce-product .cPZsbN{
+  padding: 15px 12px;
+}
+.ecommerce-product .kXTIEO, .ecommerce-product .dJFOdV{
+  padding: .75rem;
+  font-size: 14px;  
+  color: #212529;
+  font-weight: 500;
+}
+
+/* eccommerce-order-history */
+.ecommerce-order .rdt_TableHeader{
+  display: none;
+}
+.ecommerce-order .rdt_TableHeadRow{
+  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+}
+.ecommerce-order .dJFOdV {
+  padding: .75rem;
+}
+.ecommerce-order .rdt_TableRow {
+  padding: 0px!important;
+}
+.ecommerce-order .cPZsbN {
+  padding: 18px 12px;
+}
+.ecommerce-order .bZYBY:nth-child(odd) {
+  background-color: #f0f4f7;
+}
+.ecommerce-order .sc-jTzLTM {
+  font-size: 14px;
+  font-weight: 500;
+  color: #212529;
+}
+.ecommerce-order .cPZsbN .react-data-table--cell-content{
+  font-size: 14px;
+}
+.ecommerce-order .rdt_TableRow .rdt_TableCell:first-child{
+  font-weight: 500;
+  color: #616f80;
+}
+
+/* ecommerce-customers */
+.ecommerce-customers .rdt_TableHeader{
+  display: none;
+}
+.ecommerce-customers .rdt_TableHeadRow{
+  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+}
+.ecommerce-customers .sc-ifAKCX{
+  padding: .75rem !important;
+}
+.ecommerce-customers .rdt_TableRow {
+  padding: 0px!important;
+}
+.ecommerce-customers .cPZsbN {
+  padding: 18px 12px !important;
+}
+.ecommerce-customers .bZYBY:nth-child(odd) {
+  background-color: #f0f4f7;
+}
+.ecommerce-customers .sc-jTzLTM {
+  font-size: 14px;
+  font-weight: 500;
+  color: #212529;
+}
+.ecommerce-customers .react-data-table--cell-content{
+  font-size: 14px;
+}
+
+
+/* .form-advanced-switch */
+.form-advanced .react-switch-bg{
+    height: 24px !important;
+}
+
+.form-advanced .react-switch-bg div div{
+  font-size: 12px !important;
+  height: 24px !important;
+  width: 39px !important;
+}
+.form-advanced .react-switch-handle{
+  height: 20px !important; 
+  width: 20px !important;
+  left: 4px !important;
+  top: 0.1rem !important;
+}
+
+/* .form-elements-checked-switch */
+.react-toggle-track {
+  width: 29px;
+  height: 16px;
+}
+.react-toggle-thumb {
+  width: calc(1rem - 4px);
+  height: calc(1rem - 4px);
+  top: 2px;
+}
+.react-toggle--checked .react-toggle-thumb {
+  left: 15px;
+  top: 2px;
+  border-color: white;
+  background-color: white !important;
+}
+.react-toggle--checked .react-toggle-track {
+  background-color: #e74c5e;
+}
+.react-toggle--focus .react-toggle-thumb {
+  box-shadow: none !important;
+}
+.react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track{
+  background-color: #e74c5e !important; 
+}
+
+
+/* .form-elements-checked-disabled */
+.react-toggle--disabled .react-toggle-track {
+  background-color: #e9ecef;
+  border: 1px solid #727375 !important;
+}
+
+.react-toggle--disabled .react-toggle-thumb {
+  background-color: #465c72;
+  left: 3px;
+  top: 2px;
+}
+
+/* color-peacker */
+.react-color-picker{
+  display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+/* file-upload */
+.dropzone{
+  position: relative;
+}
+.dz-message{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.fWmJgw
+{
+  overflow: hidden;
+}
+
+
+/* from new scss for plugin */
+/* .rdw-editor-toolbar    
+{
+  background: #383c40
+}
+
+.rdt_TableRow, .rdt_TableHeadRow > div
+{
+  color: #ced4d0;
+}
+
+.rdt_TableFooter > span,div,svg,select,option, * {
+  color: #ced4d0;
+}
+*/
+
+div[class^="sc-"]  {
+  color: #ced4d0;
+}
+
+div[id^="pagination"]   {
+  color: #ced4d0;
+} 
+/* .rdt_TableFooter > div,svg,select,option, *
+{
+  color: #ced4d0;
+} */
+.sc-iAyFgw
+{
+  color: #ced4d0;
+}
+.rdt_TableFooter div select
+{
+  color: #ced4d0;
+}
+.rdt_TableHead .rdt_TableHeadRow div
+{
+  color: #ced4d0;
+}
+
+.text-theme
+{
+  color: #ffffff;
+}
+
+
+
+
+
+

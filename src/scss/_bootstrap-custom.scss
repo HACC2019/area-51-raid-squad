@@ -1,0 +1,323 @@
+/* ==============
+  Bootstrap-custom
+===================*/
+
+//Dropdown
+.dropdown-menu {
+  padding: 4px 0;
+  font-size: $base-font;
+  box-shadow: $shadow;
+  background-color: lighten($dark, 2%);
+  border-color: $dark;
+  margin: 0;
+  .dropdown-divider{
+    border-color: rgba($white, 0.07);
+  }
+}
+.dropdown-item {
+  background-color: lighten($dark, 2%);
+  padding: .4rem 1rem;
+  color: $gray-500;
+  
+  &:focus, &:active, &:hover {
+    background-color: lighten($dark, 4%);
+    color: $white;
+  }
+}
+
+.dropdown-item-text{
+  color: $white;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  background-color: lighten($dark, 4%);
+  color: $white;
+}
+
+.breadcrumb>li+li:before {
+  padding: 0 5px;
+  color: $muted;
+  content: "\f105" !important;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
+
+// list
+
+.list-group-item{
+  background-color: $dark;
+  color: $gray-500;
+  border-color: lighten($dark, 4%);
+  &.active{
+    background-color: $primary;
+    border-color: $primary;
+  }
+}
+
+// blockquote
+
+.blockquote {
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-left: 4px solid lighten($dark, 4%);
+}
+
+.blockquote-reverse {
+  border-left: 0;
+  border-right: 4px solid lighten($dark, 4%);
+  text-align: right;
+}
+
+// hr
+
+hr{
+  border-color: rgba($white, 0.1);
+}
+
+// border
+
+.border{
+  border-color: lighten($dark, 4%) !important;
+}
+
+//Background color
+.bg-primary {
+  background-color: $primary !important;
+}
+
+.bg-success {
+  background-color: $success !important;
+}
+
+.bg-info {
+  background-color: $info !important;
+}
+
+.bg-warning {
+  background-color: $warning !important;
+}
+
+.bg-danger {
+  background-color: $danger !important;
+}
+
+.bg-muted {
+  background-color: $muted !important;
+}
+
+.bg-white {
+  background-color: $dark !important;
+}
+
+// Background soft color
+
+.bg-lighten-primary {
+  background-color: rgba($primary, 0.4);
+}
+
+.bg-lighten-success {
+  background-color: rgba($success, 0.4);
+}
+
+.bg-lighten-info {
+  background-color: rgba($info, 0.4);
+}
+
+.bg-lighten-warning {
+  background-color: rgba($warning, 0.4);
+}
+
+.bg-lighten-danger {
+  background-color: rgba($danger, 0.4);
+}
+
+//Text Color
+.text-white {
+  color: $white !important;
+}
+
+.text-danger {
+  color: $danger !important;
+}
+
+.text-muted {
+  color: $muted !important;
+}
+
+.text-primary {
+  color: $primary !important;
+}
+
+.text-warning {
+  color: $warning !important;
+}
+
+.text-success {
+  color: $success !important;
+}
+
+.text-info {
+  color: $info !important;
+}
+
+.text-dark {
+  color: $gray-200 !important;
+}
+
+a{
+  &.text-dark{
+    color: $gray-200 !important;
+    &:focus, &:hover{
+      color: $gray-200 !important;
+    }
+  }
+}
+
+//Badge
+
+.badge {
+  font-weight: 500;
+}
+
+
+.badge-primary {
+  background-color: $primary;
+}
+
+.badge-success {
+  background-color: $success;
+}
+
+.badge-info {
+  background-color: $info;
+}
+
+.badge-warning {
+  background-color: $warning;
+  color: $white;
+}
+
+.badge-danger {
+  background-color: $danger;
+}
+
+.badge-dark {
+  background-color: darken($dark, 4%);
+}
+
+// Badge soft
+.badge-soft-primary {
+  background-color: rgba($primary, 0.2);
+  color: $primary;
+}
+
+.badge-soft-success {
+  background-color: rgba($success, 0.2);
+  color: $success;
+}
+
+.badge-soft-info {
+  background-color: rgba($info, 0.2);
+  color: $info;
+}
+
+.badge-soft-warning {
+  background-color: rgba($warning, 0.2);
+  color: $warning;
+}
+
+.badge-soft-danger {
+  background-color: rgba($danger, 0.2);
+  color: $danger;
+}
+
+.badge-soft-dark {
+  background-color: rgba($dark, 0.2);
+  color: $dark;
+}
+
+// border
+
+.border-primary{
+  border-color: $primary !important;
+}
+
+.border-success {
+  border-color: $success !important;
+}
+
+.border-info {
+  border-color: $info !important;
+}
+
+.border-warning {
+  border-color: $warning !important;
+}
+
+.border-danger {
+  border-color: $danger !important;
+}
+
+.border-dark{
+  border-color: $dark !important;
+}
+
+// typography
+
+dt {
+  font-weight: 500;
+}
+
+// progress
+
+.progress {
+  background: lighten($dark, 4%);
+}
+
+// images
+
+.img-thumbnail{
+  background: lighten($dark, 4%);
+  border-color: lighten($dark, 4%);
+}
+
+
+// spinner
+
+.spinner-border, .spinner-grow {
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+// modal
+
+.modal{
+  .modal-content{
+    background: lighten($dark, 4%);
+    border-color: lighten($dark, 4%);
+    button.close{
+      color: $white;
+    }
+    .modal-header, .modal-footer {
+      border-color: lighten($dark, 7%);
+    }
+  }
+}
+
+// checkbox
+
+.custom-control-input{
+  &:checked~.custom-control-label{
+    &:before {
+      border-color: $danger;
+      background-color: $danger;
+    }
+  }
+}
+
+.custom-control-label{
+  &:before{
+    background: lighten($dark, 4%);
+    border-color: lighten($dark, 6%);
+  }
+}

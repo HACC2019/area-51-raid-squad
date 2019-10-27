@@ -1,12 +1,65 @@
-import React from 'react';
-import './App.css';
+import React, { Component } from 'react';
+import Layout from './components/Layout/';
+import { withRouter, Route, Switch, BrowserRouter as Router, Redirect } from 'react-router-dom';
 
-function App() {
-  return (
-    <div class="embed-container">
-      <iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="HACC19_A51RS" src="//bmcfeeley.maps.arcgis.com/apps/Embed/index.html?webmap=536079264d0b4d25a513cd09daf15f38&extent=-158.619,21.0924,-157.2629,21.8508&zoom=true&previewImage=false&scale=true&disable_scroll=true&theme=light"></iframe>
-    </div>
-  );
+import routes from './routes';
+import './custom.css';
+import './App.scss';
+
+//Fake backend
+import fakeBackend from './helpers/fakeBackend';
+
+// Get all Auth methods
+import { isUserAuthenticated } from './helpers/authUtils';
+
+// Activating fake backend
+fakeBackend();
+
+function withLayout(WrappedComponent) {
+  // ...and returns another component...
+  return class extends React.Component {
+    render() {
+      return <Layout>
+        <WrappedComponent></WrappedComponent>
+      </Layout>
+    }
+  };
 }
 
-export default App; 
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
+
+  render() {
+
+    const PrivateRoute = ({ component: Component, ...rest }) => (
+      <Route {...rest} render={(props) => (
+        isUserAuthenticated() === true
+          ? <Component {...props} />
+          : <Redirect to='/logout' />
+      )} />
+    )
+
+    return (
+      <React.Fragment>
+        <Router>
+          <Switch>
+            {routes.map((route, idx) =>
+              route.ispublic ?
+                <Route path={route.path} component={withLayout(route.component)} key={idx} />
+                :
+                <PrivateRoute path={route.path} component={withLayout(route.component)} key={idx} />
+            )}
+          </Switch>
+        </Router>
+      </React.Fragment>
+    );
+  }
+}
+
+
+export default withRouter(App);
+
+
