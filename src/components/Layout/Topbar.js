@@ -63,7 +63,7 @@ class Topbar extends Component {
                     <div className="topbar-left">
                         <Link to="/" className="logo">
                             <span className="logo-light">
-                                {this.props.is_light ?  <img src={logoLight} alt="" height="16" /> :  <img src={logoDark} alt="" height="16" /> }
+                                AREA 51 RAID SQUAD
                             </span>
                             <span className="logo-sm">
                                 <img src={logoSmall} alt="" height="22" />

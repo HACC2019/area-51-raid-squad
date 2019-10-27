@@ -16,7 +16,7 @@ const SideNav = () => { return <div id="sidebar-menu">
                                 </Link>
                             </li>
 
-                            <li className="menu-title">Apps</li>
+                            {/* <li className="menu-title">Apps</li>
                             <li>
                                 <Link to="/#" className="waves-effect"><i className="ion ion-md-mail"></i><span> Email <span className="float-right menu-arrow"><i className="mdi mdi-chevron-right"></i></span> </span></Link>
                                 <ul className="submenu">
@@ -24,7 +24,7 @@ const SideNav = () => { return <div id="sidebar-menu">
                                     <li><Link to="email-read">Email Read</Link></li>
                                     <li><Link to="email-compose">Email Compose</Link></li>
                                 </ul>
-                            </li>
+                            </li> */}
 
                             <li>
                                 <Link to="calendar" className="waves-effect"><i className="ion ion-md-calendar"></i><span> Calendar </span></Link>
@@ -45,7 +45,7 @@ const SideNav = () => { return <div id="sidebar-menu">
                                 <Link to="projects" className="waves-effect waves-light"><i className="ion ion-md-clipboard"></i><span> Projects </span></Link>
                             </li>
 
-                            <li className="menu-title">Pages</li>
+                            {/* <li className="menu-title">Pages</li>
 
                             <li>
                                 <Link to="/#" className="waves-effect"><i className="ion ion-md-wifi"></i><span> Authentication <span className="badge badge-pill badge-light float-right">New</span> </span></Link>
@@ -78,7 +78,7 @@ const SideNav = () => { return <div id="sidebar-menu">
                                     <li><Link to="email-template-alert">Alert Email</Link></li>
                                     <li><Link to="email-template-billing">Billing Email</Link></li>
                                 </ul>
-                            </li>
+                            </li> */}
 
                             <li className="menu-title">Layouts</li>
 
