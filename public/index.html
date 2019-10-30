@@ -9,7 +9,29 @@
         <meta content="Admin Dashboard" name="description" />
         <meta content="Themesbrand" name="author" />
         <link rel="shortcut icon" href="assets/images/favicon.ico">
-        </head>
+
+        <!-- Firebase -->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.2.2/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+        <script>
+          // Your web app's Firebase configuration
+          var firebaseConfig = {
+            apiKey: "AIzaSyC7B4lfv4_ls8_0JSEPsPvK5sLEnfmcuQs",
+            authDomain: "area-51-rs.firebaseapp.com",
+            databaseURL: "https://area-51-rs.firebaseio.com",
+            projectId: "area-51-rs",
+            storageBucket: "area-51-rs.appspot.com",
+            messagingSenderId: "805985707758",
+            appId: "1:805985707758:web:25c29503f7d055fd17f5ff"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+        </script>
+      </head>
         <body>
           <noscript>You need to enable JavaScript to run this app.</noscript>
           <div id="root"></div>
