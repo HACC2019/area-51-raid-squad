@@ -7,11 +7,11 @@ import Settingmenu from '../Subpages/Settingmenu';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
-import Rightsidebar from '../../../components/RightSidebar';
+// import Rightsidebar from '../../../components/RightSidebar'; // to be removed
 //Charts
 import Apexarea from '../../../containers/charts/apex/apexarea';
 import Apexbar from '../../../containers/charts/apex/apexbar';
-import Apexchart1 from '../../../containers/charts/apex/apexchart1';
+import BarChart_RevenuePerDay from '../../charts/apex/barChart_RevenuePerDay';
 import Apexchart2 from '../../../containers/charts/apex/apexchart2';
 import Apexchart3 from '../../../containers/charts/apex/apexchart3';
 import Apexradial from '../../../containers/charts/apex/apexradial';
@@ -26,7 +26,7 @@ import user5 from '../../../images/users/user-5.jpg';
 import user6 from '../../../images/users/user-6.jpg';
 import user7 from '../../../images/users/user-7.jpg';
 
-import DashboardRightSidebar from './rightbar';
+// import DashboardRightSidebar from './rightbar'; // to be removed, also reduced right-margin to 0
 
 class Dashboard extends Component {
 
@@ -92,9 +92,9 @@ class Dashboard extends Component {
                                 <Card className="mini-stat bg-pattern">
                                     <CardBody className="mini-stat-img">
                                         <div className="mini-stat-icon">
-                                            <i className="dripicons-broadcast bg-soft-primary text-primary float-right h4"></i>
+                                            <i className="dripicons-box bg-soft-primary text-primary float-right h4"></i>
                                         </div>
-                                        <h6 className="text-uppercase mb-3 mt-0">Orders</h6>
+                                        <h6 className="text-uppercase mb-3 mt-0">Revenue</h6>
                                         <h5 className="mb-3">1,687</h5>
                                         <p className="text-muted mb-0"><span className="text-success mr-2"> 12% <i className="mdi mdi-arrow-up"></i> </span> From previous period</p>
                                     </CardBody>
@@ -141,7 +141,7 @@ class Dashboard extends Component {
                             <Col xl="8">
                                 <Card>
                                     <CardBody>
-                                        <h4 className="mt-0 header-title mb-4">Email Sent</h4>
+                                        <h4 className="mt-0 header-title mb-4">Revenue per day</h4> {/*changed title*/}
                                         <div id="column-chart" dir="ltr">
                                             <Apexbar />
                                         </div>
@@ -166,7 +166,7 @@ class Dashboard extends Component {
                                                     </div>
                                                     <div className="col-md-5">
                                                         <div id="chart1">
-                                                            <Apexchart1 />
+                                                            <BarChart_RevenuePerDay />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -512,9 +512,10 @@ class Dashboard extends Component {
                     </div>
                 </div>
 
-                <Rightsidebar>
-                    <DashboardRightSidebar />
-                </Rightsidebar>
+                {/*to be removed*/}
+                {/*<Rightsidebar>*/}
+                {/*    <DashboardRightSidebar />*/}
+                {/*</Rightsidebar>*/}
             </React.Fragment>
         );
     }

@@ -361,6 +361,9 @@
           .logo-light {
             display: none;
             opacity: 0;
+            .full-heco-logo{
+              width: 330px;
+            }
           }
           .logo-sm {
             display: block;
@@ -370,6 +373,8 @@
         }
       }
     }
+
+
 
     .navbar-custom {
       margin-left: 70px;
@@ -632,7 +637,7 @@
 
 @media (min-width: 1200px){
   .dasboard-content{
-    margin-right: 280px;
+    margin-right: 0px; //reduced from 280 after removing rightsidebar
   }
 }
 

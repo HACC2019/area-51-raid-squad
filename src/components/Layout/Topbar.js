@@ -7,11 +7,12 @@ import ProfileMenu from './Menus/profileMenu';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { connect } from 'react-redux';
 import { toggleSidebar  } from '../../store/actions';
+import HecoLogo from '../../images/heco-logo.png';
 
 // import { getLoggedInUser } from '../../helpers/authUtils';
 
-import logoLight from "../../images/logo-light.png";
-import logoDark from "../../images/logo-dark.png";
+// import logoLight from "../../images/logo-light.png";  //old images, can be reomoved
+// import logoDark from "../../images/logo-dark.png";
 import logoSmall from "../../images/logo-sm.png";
 
 class Topbar extends Component {
@@ -63,7 +64,7 @@ class Topbar extends Component {
                     <div className="topbar-left">
                         <Link to="/" className="logo">
                             <span className="logo-light">
-                                AREA 51 RAID SQUAD
+                                <img width="330px" className="full-heco-logo" style={{resizeMode: "center"}} src={HecoLogo} alt="HECO Logo"/>
                             </span>
                             <span className="logo-sm">
                                 <img src={logoSmall} alt="" height="22" />
@@ -101,17 +102,17 @@ class Topbar extends Component {
                                 </button>
                             </li>
  
-                            <li className="d-none d-sm-block">
+                            <li className="d-none d-sm-block"> {/*this dropdown menu will change timescale*/}
                             <Dropdown isOpen={this.state.create_menu} toggle={this.toggleCreate} className="pt-3 d-inline-block">
                                 <DropdownToggle className="btn btn-light" caret tag="a">
-                                    Create {' '}{' '}{' '}
+                                    Month {' '}{' '}{' '}
                                 </DropdownToggle>
                                 <DropdownMenu >
-                                    <DropdownItem tag="a" href="#">Action</DropdownItem>
-                                    <DropdownItem tag="a" href="#">Another action</DropdownItem>
-                                    <DropdownItem tag="a" href="#">Something else here</DropdownItem>
-                                    <div className="dropdown-divider"></div>
-                                    <DropdownItem tag="a" href="#">Separated link</DropdownItem>
+                                    <DropdownItem tag="a" href="#">Day</DropdownItem>
+                                    <DropdownItem tag="a" href="#">Week</DropdownItem>
+                                    <DropdownItem tag="a" href="#">Year</DropdownItem>
+                                    {/*<div className="dropdown-divider"></div>*  un-needed divider/}
+                                    {/*<DropdownItem tag="a" href="#">Separated link</DropdownItem>*/}
                                 </DropdownMenu>
                             </Dropdown>
                         </li>

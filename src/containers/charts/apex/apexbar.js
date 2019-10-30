@@ -34,12 +34,13 @@ class Apexbar extends Component {
                     labels: {
                       rotate: -90
                     },
-                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug','Sep', 'Oct', 'Nov', 'Dec'],
+                    //needs data
+                    categories: ['09/01', '09/02', '09/03', '09/04', '09/05', '09/06', '09/07', '09/08','09/09', '09/10', '09/11', '09/12'],
                   },
-                  colors: ['#e74c5e'],
+                  colors: ['#4090cb'],
                 
                   fill: {
-                    type: 'gradient',
+                    type: 'solid',
                     gradient: {
                       shade: 'dark',
                       type: "vertical",
@@ -57,8 +58,9 @@ class Apexbar extends Component {
 
     render() {
         const apexBarChartData = [{
-            name: 'Series 1',
-            data: [42, 56, 40, 64, 26, 42, 56, 35, 62, 46, 32, 26]
+          //needs data
+            name: 'Total revenue made',
+            data: [218, 115, 223, 109, 124, 217, 90, 0, 0, 0, 0, 0]
           }];
 
         return (
