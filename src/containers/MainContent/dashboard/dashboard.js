@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, CardBody, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
+import { Row, Col, Card, Button, CardBody, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import { activateAuthLayout } from '../../../store/actions';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -141,7 +141,7 @@ class Dashboard extends Component {
                             <Col xl="8">
                                 <Card>
                                     <CardBody>
-                                        <h4 className="mt-0 header-title mb-4">Email Sent</h4>
+                                        <h4 className="mt-0 header-title mb-4">Kenneth's Test Area</h4>
                                         <div id="column-chart" dir="ltr">
                                             <Apexbar />
                                         </div>

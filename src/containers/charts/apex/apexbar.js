@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import { Button } from 'reactstrap';
+
+const data = require('./../../../Data_HACC.json');
 
 class Apexbar extends Component {
 
@@ -7,6 +10,7 @@ class Apexbar extends Component {
         super(props);
 
         this.state = {
+            data_mode: 'energy',
             apexBarChartOpt: {
                 chart: {
                     type: 'bar',
@@ -17,7 +21,7 @@ class Apexbar extends Component {
                   },
                   plotOptions: {
                     bar: {
-                      columnWidth: '14%',
+                      columnWidth: '70%',
                       endingShape: 'rounded'
                     }
                   },
@@ -55,14 +59,45 @@ class Apexbar extends Component {
         }
     }
 
+    onEnergyPress = () => {
+      this.setState({
+        data_mode: 'energy'
+      });
+    }
+
+    onMoneyPress = () => {
+      this.setState({
+        data_mode: 'money'
+      });
+    }
+
     render() {
+
+        // Initialize data stores
+        let energy_manifold = [];
+        let moneyfold = [];
+
+        data.forEach(function(item) {
+          energy_manifold.push(item.energy);
+          moneyfold.push(parseFloat(item.amount.slice(1)));
+        })
+
+        let toshow = (this.state.data_mode === 'energy' ? energy_manifold : moneyfold);
+       
+
         const apexBarChartData = [{
-            name: 'Series 1',
-            data: [42, 56, 40, 64, 26, 42, 56, 35, 62, 46, 32, 26]
+            name: this.state.data_mode,
+            data: toshow.slice(50, 71),
           }];
 
         return (
             <React.Fragment>
+              <div className="btn-group" data-toggle="buttons" role="group" aria-label="Data View">
+              <Button color="secondary" onClick={this.onEnergyPress}>Energy</Button>{' '}
+              <Button color="secondary" onClick={this.onMoneyPress}>Revenue</Button>{' '}
+              </div>
+
+
                 <ReactApexChart options={this.state.apexBarChartOpt} series={apexBarChartData}  width="100%" height="299"  type="bar"  />
             </React.Fragment>
         );
