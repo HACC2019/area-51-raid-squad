@@ -107,11 +107,11 @@ class Topbar extends Component {
                                     Create {' '}{' '}{' '}
                                 </DropdownToggle>
                                 <DropdownMenu >
-                                    <DropdownItem tag="a" href="#">Action</DropdownItem>
-                                    <DropdownItem tag="a" href="#">Another action</DropdownItem>
-                                    <DropdownItem tag="a" href="#">Something else here</DropdownItem>
+                                    <DropdownItem tag="a" href="#">Today</DropdownItem>
+                                    <DropdownItem tag="a" href="#">Yesterday</DropdownItem>
+                                    <DropdownItem tag="a" href="#">Last Month</DropdownItem>
                                     <div className="dropdown-divider"></div>
-                                    <DropdownItem tag="a" href="#">Separated link</DropdownItem>
+                                    <DropdownItem tag="a" href="#">Current Year</DropdownItem>
                                 </DropdownMenu>
                             </Dropdown>
                         </li>
