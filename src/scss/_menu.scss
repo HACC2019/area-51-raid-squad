@@ -632,7 +632,7 @@
 
 @media (min-width: 1200px){
   .dasboard-content{
-    margin-right: 280px;
+    margin-right: 0px;
   }
 }
 
@@ -657,6 +657,7 @@
       font-size: 18px;
       margin: 0;
       line-height: 30px;
+      color: black; //text color
   }
   .breadcrumb {
       padding: 4px 0;

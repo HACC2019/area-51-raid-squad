@@ -14,14 +14,13 @@ class SettingMenu extends Component {
             <React.Fragment>
                 <Dropdown isOpen={this.state.setting_menu} toggle={() => this.setState({ setting_menu: !this.state.setting_menu })}>
                     <DropdownToggle color="primary" className="arrow-none waves-effect waves-light">
-                        <i className="mdi mdi-settings mr-2"></i> Settings
+                        <i className="mdi mdi-settings mr-2"></i>Week
                                         </DropdownToggle>
                     <DropdownMenu className="language-switch" right>
-                        <DropdownItem tag="a" href="#">Action</DropdownItem>
-                        <DropdownItem tag="a" href="#">Another action</DropdownItem>
-                        <DropdownItem tag="a" href="#">Something else here</DropdownItem>
+                        <DropdownItem tag="a" href="#">Previous Week</DropdownItem>
+                        <DropdownItem tag="a" href="#">Month</DropdownItem>
                         <div className="dropdown-divider"></div>
-                        <DropdownItem tag="a" href="#">Separated link</DropdownItem>
+                        <DropdownItem tag="a" href="#">Year</DropdownItem>
                     </DropdownMenu>
                 </Dropdown>
             </React.Fragment>

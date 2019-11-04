@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { Button } from 'reactstrap';
+import { _ } from 'lodash';
 
 const data = require('./../../../Data_HACC.json');
 
@@ -22,7 +23,7 @@ class Apexbar extends Component {
                   plotOptions: {
                     bar: {
                       columnWidth: '70%',
-                      endingShape: 'rounded'
+                      endingShape: 'flat'
                     }
                   },
                   dataLabels: {
