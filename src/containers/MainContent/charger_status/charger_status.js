@@ -17,6 +17,8 @@ import user7 from '../../../images/users/user-7.jpg';
 import user8 from '../../../images/users/user-8.jpg';
 import { func } from 'prop-types';
 
+// just read access prototype; let the api keys free!
+
 let firebase = Firebase.initializeApp({
     apiKey: "AIzaSyC7B4lfv4_ls8_0JSEPsPvK5sLEnfmcuQs",
     authDomain: "area-51-rs.firebaseapp.com",
@@ -27,19 +29,7 @@ let firebase = Firebase.initializeApp({
     appId: "1:805985707758:web:25c29503f7d055fd17f5ff"
   });
 
-// if(!Firebase.apps.length) {
-//     Firebase.initializeApp({
-//         apiKey: "AIzaSyC7B4lfv4_ls8_0JSEPsPvK5sLEnfmcuQs",
-//         authDomain: "area-51-rs.firebaseapp.com",
-//         databaseURL: "https://area-51-rs.firebaseio.com",
-//         projectId: "area-51-rs",
-//         storageBucket: "area-51-rs.appspot.com",
-//         messagingSenderId: "805985707758",
-//         appId: "1:805985707758:web:25c29503f7d055fd17f5ff"
-//       });
-// }
-
-let query = firebase.database().ref("Site_Power");
+let query = firebase.database().ref("Site_Power").orderByChild("island");
 
 // Firebase.database.ref("Site_Power").once("value").then(function(snapshot) {
 //     this.setState({chargers: snapshot.val()});
@@ -82,7 +72,7 @@ class Charger_Status extends Component {
         const rows = this.state.chargers.map(charger =>
             <tr>
                 <th scope="row">{charger.name}</th>
-                <td><span className="badge badge-soft-success badge-pill"><i className="mdi mdi-checkbox-blank-circle mr-1"></i>{charger.status}</span></td>
+                <td><span style={charger.status == "Offline" ? {color: '#de4040', backgroundColor: 'rgba(222, 64, 64, 0.2)'} : {color: '#47bd9a'}} className="badge badge-soft-success badge-pill"><i className="mdi mdi-checkbox-blank-circle mr-1"></i>{charger.status}</span></td>
                 <td>{charger.island}</td>
                 <td><span className="badge badge-soft-success badge-pill"><i className="mdi mdi-checkbox-blank-circle mr-1"></i> Completed</span></td>
 
