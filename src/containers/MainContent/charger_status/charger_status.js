@@ -17,26 +17,39 @@ import user7 from '../../../images/users/user-7.jpg';
 import user8 from '../../../images/users/user-8.jpg';
 import { func } from 'prop-types';
 
+let firebase = Firebase.initializeApp({
+    apiKey: "AIzaSyC7B4lfv4_ls8_0JSEPsPvK5sLEnfmcuQs",
+    authDomain: "area-51-rs.firebaseapp.com",
+    databaseURL: "https://area-51-rs.firebaseio.com",
+    projectId: "area-51-rs",
+    storageBucket: "area-51-rs.appspot.com",
+    messagingSenderId: "805985707758",
+    appId: "1:805985707758:web:25c29503f7d055fd17f5ff"
+  });
 
+// if(!Firebase.apps.length) {
+//     Firebase.initializeApp({
+//         apiKey: "AIzaSyC7B4lfv4_ls8_0JSEPsPvK5sLEnfmcuQs",
+//         authDomain: "area-51-rs.firebaseapp.com",
+//         databaseURL: "https://area-51-rs.firebaseio.com",
+//         projectId: "area-51-rs",
+//         storageBucket: "area-51-rs.appspot.com",
+//         messagingSenderId: "805985707758",
+//         appId: "1:805985707758:web:25c29503f7d055fd17f5ff"
+//       });
+// }
+
+let query = firebase.database().ref("Site_Power");
+
+// Firebase.database.ref("Site_Power").once("value").then(function(snapshot) {
+//     this.setState({chargers: snapshot.val()});
+//  });
 
 class Charger_Status extends Component {
+    _isMounted = false
 
     constructor(props) {
         super(props);
-
-        if(!Firebase.apps.length) {
-            Firebase.initializeApp({
-                apiKey: "AIzaSyC7B4lfv4_ls8_0JSEPsPvK5sLEnfmcuQs",
-                authDomain: "area-51-rs.firebaseapp.com",
-                databaseURL: "https://area-51-rs.firebaseio.com",
-                projectId: "area-51-rs",
-                storageBucket: "area-51-rs.appspot.com",
-                messagingSenderId: "805985707758",
-                appId: "1:805985707758:web:25c29503f7d055fd17f5ff"
-              });
-        }
-
-          
 
         this.state = {
             chargers: []
@@ -44,42 +57,31 @@ class Charger_Status extends Component {
     }
 
     componentDidMount() {
+        this._isMounted = true;
         this.props.activateAuthLayout();
-        this.getUserData();
+        //this.getUserData();
+        query.on('value', snapshot => {
+            if (this._isMounted) {
+                let chargersTemp = []
+
+                snapshot.forEach(function(childSnapshot) {
+                    chargersTemp.push(childSnapshot.val());
+                })
+
+                this.setState({chargers: chargersTemp})
+            }})
+
+    }
+       
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
-    
-    getUserData = () => {
-        let values = [];
-        let stations = [];
-        let stationsTemp = [];
-        let i = 0;
-        let query = Firebase.database();
-
-        query.ref("Site_Power/Oahu").once("value").then((snapshot) =>
-            snapshot.forEach((childSnapshot) =>
-                stationsTemp.push(childSnapshot.val())
-
-                stations.push({
-                    island: "Oahu",
-                    stationName: childSnapshot.key,
-                    address: stationsTemp[i]["address"],
-                    charger_details: stationsTemp[i]["charger_details"],
-                    charging_standards: stationsTemp[i]["charging_standards"],
-                    cost: stationsTemp[i]["cost"],
-                    hours: stationsTemp[i]["hours"],
-                    payment_options: stationsTemp[i]["payment_options"],
-                    status: stationsTemp[i]["status"]
-            });
-            i++;
-            this.setState({
-                chargers : stations
-            }));
-        ));
-        console.log('DATA RETRIEVED');
-    };
-
     render() {
+        const address = this.state.chargers.map(charger =>
+            <h1 key={charger.name}>{charger.address}</h1>
+            )
 
         return (
             <React.Fragment>
@@ -101,6 +103,8 @@ class Charger_Status extends Component {
                                 </Col>
                             </Row>
                         </div>
+
+                        <div>{address}</div>
 
                         <Row>
                             <Col xl="3" md="6">
@@ -164,12 +168,10 @@ class Charger_Status extends Component {
                                             <table className="table project-table">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">#</th>
-                                                        <th scope="col">Charger_Status</th>
-                                                        <th scope="col">Date</th>
+                                                        <th scope="col">Charger Name</th>
                                                         <th scope="col">Status</th>
-                                                        <th scope="col">Team</th>
-                                                        <th scope="col" style={{ width: "16%" }}>Progress</th>
+                                                        <th scope="col">Island</th>
+                                                        <th scope="col" style={{ width: "16%" }}>Usage</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
