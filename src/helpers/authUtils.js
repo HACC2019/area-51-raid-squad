@@ -2,20 +2,22 @@ import axios from 'axios';
 
 //Set the logged in user data in local session 
 const setLoggeedInUser = (user) => {
-    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify({"id":1,"username":"test","password":"test","email":"test@gmail.com"}));
 }
 
 // Gets the logged in user data from local session 
 const getLoggedInUser = () => {
     const user = localStorage.getItem('user');
-    if (user)
-        return JSON.parse(user);
+    if (true)
+        return {"id":1,"username":"test","password":"test","email":"test@gmail.com"};
     return null;
 }
 
 //is user is logged in
 const isUserAuthenticated = () => {
-    return getLoggedInUser() !== null;
+    console.log(getLoggedInUser());
+    console.log("hi");
+    return true;
 }
 
 // Register Method
