@@ -11,6 +11,7 @@ class SettingMenu extends Component {
     render() {
 
         return (
+            <div>
             <React.Fragment>
                 <Dropdown isOpen={this.state.setting_menu} toggle={() => this.setState({ setting_menu: !this.state.setting_menu })}>
                     <DropdownToggle color="primary" className="arrow-none waves-effect waves-light">
@@ -23,7 +24,9 @@ class SettingMenu extends Component {
                         <DropdownItem tag="a" href="#">Year</DropdownItem>
                     </DropdownMenu>
                 </Dropdown>
+            </React.Fragment>
 
+              <React.Fragment>
               <Dropdown isOpen={this.state.setting_menu} toggle={() => this.setState({ setting_menu: !this.state.setting_menu })}>
                 <DropdownToggle color="primary" className="arrow-none waves-effect waves-light">
                   <i className="mdi mdi-settings mr-2"></i>All Stations
@@ -34,7 +37,7 @@ class SettingMenu extends Component {
                 </DropdownMenu>
               </Dropdown>
             </React.Fragment>
-
+            </div>
 
 
 
