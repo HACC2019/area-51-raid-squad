@@ -99,7 +99,7 @@ class Apexbar extends Component {
               </div>
 
 
-                <ReactApexChart options={this.state.apexBarChartOpt} series={apexBarChartData}  width="100%" height="299"  type="bar"  />
+                <ReactApexChart options={this.state.apexBarChartOpt} series={apexBarChartData}  width="100%" height="265"  type="bar"  />
             </React.Fragment>
         );
     }

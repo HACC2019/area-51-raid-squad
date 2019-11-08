@@ -151,123 +151,123 @@ class Dashboard extends Component {
                         </Row>
 
                         <Row>
-                            <Col xl="4">
-                                <Card>
-                                    <CardBody>
-                                        <h4 className="mt-0 header-title">Earning</h4>
-                                        <div>
-                                            <div className="wid-earning">
-                                                <div className="row">
-                                                    <div className="col-md-6">
-                                                        <div>
-                                                            <h5 className="mt-0">$1,452</h5>
-                                                            <p className="text-muted mb-md-0">Weekly</p>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-md-5">
-                                                        <div id="chart1">
-                                                            <Apexchart1 />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="wid-earning">
-                                                <div className="row">
-                                                    <div className="col-md-6">
-                                                        <div>
-                                                            <h5 className="mt-0">$4,150</h5>
-                                                            <p className="text-muted mb-md-0">Monthly</p>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-md-5">
-                                                        <div id="chart2">
-                                                            <Apexchart2 />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="wid-earning">
-                                                <div className="row">
-                                                    <div className="col-md-6">
-                                                        <div>
-                                                            <h5 className="mt-0">$38,759</h5>
-                                                            <p className="text-muted mb-md-0">Yearly</p>
+                            {/*<Col xl="4">*/}
+                            {/*    <Card>*/}
+                            {/*        <CardBody>*/}
+                            {/*            <h4 className="mt-0 header-title">Earning</h4>*/}
+                            {/*            <div>*/}
+                            {/*                <div className="wid-earning">*/}
+                            {/*                    <div className="row">*/}
+                            {/*                        <div className="col-md-6">*/}
+                            {/*                            <div>*/}
+                            {/*                                <h5 className="mt-0">$1,452</h5>*/}
+                            {/*                                <p className="text-muted mb-md-0">Weekly</p>*/}
+                            {/*                            </div>*/}
+                            {/*                        </div>*/}
+                            {/*                        <div className="col-md-5">*/}
+                            {/*                            <div id="chart1">*/}
+                            {/*                                <Apexchart1 />*/}
+                            {/*                            </div>*/}
+                            {/*                        </div>*/}
+                            {/*                    </div>*/}
+                            {/*                </div>*/}
+                            {/*                <div className="wid-earning">*/}
+                            {/*                    <div className="row">*/}
+                            {/*                        <div className="col-md-6">*/}
+                            {/*                            <div>*/}
+                            {/*                                <h5 className="mt-0">$4,150</h5>*/}
+                            {/*                                <p className="text-muted mb-md-0">Monthly</p>*/}
+                            {/*                            </div>*/}
+                            {/*                        </div>*/}
+                            {/*                        <div className="col-md-5">*/}
+                            {/*                            <div id="chart2">*/}
+                            {/*                                <Apexchart2 />*/}
+                            {/*                            </div>*/}
+                            {/*                        </div>*/}
+                            {/*                    </div>*/}
+                            {/*                </div>*/}
+                            {/*                <div className="wid-earning">*/}
+                            {/*                    <div className="row">*/}
+                            {/*                        <div className="col-md-6">*/}
+                            {/*                            <div>*/}
+                            {/*                                <h5 className="mt-0">$38,759</h5>*/}
+                            {/*                                <p className="text-muted mb-md-0">Yearly</p>*/}
 
-                                                        </div>
-                                                    </div>
-                                                    <div className="col-md-5">
-                                                        <div id="chart3">
-                                                            <Apexchart3 />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </CardBody>
-                                </Card>
-                            </Col>
-
-
-                            <Col xl="4">
-                                <Card className="messages recent-stock">
-                                    <CardBody>
-                                        <h4 className="mt-0 header-title">Station Specifics</h4>
-
-                                        <Nav tabs className="tab-wid recent-stock-widget nav-justified">
-                                            <NavItem>
-                                                <NavLink
-                                                    className={classnames({ active: this.state.activeTab === '1' })}
-                                                    onClick={() => { this.toggleStock('1'); }}
-                                                >
-                                                    <i className="dripicons-device-desktop h4 product-icon"></i>
-                                                    <p className="text-muted mb-0">Station A</p>
-                                                </NavLink>
-                                            </NavItem>
-                                            <NavItem>
-                                                <NavLink
-                                                    className={classnames({ active: this.state.activeTab === '2' })}
-                                                    onClick={() => { this.toggleStock('2'); }} >
-                                                    <i className="dripicons-monitor h4 product-icon"></i>
-                                                    <p className="text-muted mb-0">Station B</p>
-                                                </NavLink>
-                                            </NavItem>
-                                        </Nav>
+                            {/*                            </div>*/}
+                            {/*                        </div>*/}
+                            {/*                        <div className="col-md-5">*/}
+                            {/*                            <div id="chart3">*/}
+                            {/*                                <Apexchart3 />*/}
+                            {/*                            </div>*/}
+                            {/*                        </div>*/}
+                            {/*                    </div>*/}
+                            {/*                </div>*/}
+                            {/*            </div>*/}
+                            {/*        </CardBody>*/}
+                            {/*    </Card>*/}
+                            {/*</Col>*/}
 
 
-                                        <TabContent activeTab={this.state.activeTab}>
-                                            <TabPane tabId="1">
-                                                <div className="text-center">
-                                                    <div id="radial-chart">
-                                                        <Apexradial />
-                                                    </div>
-                                                    <h5 className="font-18">Computer</h5>
-                                                    <p className="text-muted mb-0">Neque porro quisquam est</p>
-                                                </div>
-                                            </TabPane>
-                                            <TabPane tabId="2">
-                                                <div className="text-center">
-                                                    <div id="radial-chart-2">
-                                                        <Apexradial2 />
+                            {/*<Col xl="4">*/}
+                            {/*    <Card className="messages recent-stock">*/}
+                            {/*        <CardBody>*/}
+                            {/*            <h4 className="mt-0 header-title">Station Specifics</h4>*/}
 
-                                                    </div>
-                                                    <h5 className="font-18">Laptop</h5>
-                                                    <p className="text-muted mb-0">Ut enim ad veniam quis</p>
-                                                </div>
-                                            </TabPane>
-                                        </TabContent>
-                                    </CardBody>
-                                </Card>
-                            </Col>
-                            <Col xl="4">
-                                <Card>
-                                    <CardBody>
-                                        <h4 className="mt-0 header-title">Port Usages</h4>
-                                        <div id="multiple-radial-chart" className="social-source" dir="ltr">
-                                            <Apexsocial />
-                                        </div>
-                                    </CardBody>
-                                </Card>
-                            </Col>
+                            {/*            <Nav tabs className="tab-wid recent-stock-widget nav-justified">*/}
+                            {/*                <NavItem>*/}
+                            {/*                    <NavLink*/}
+                            {/*                        className={classnames({ active: this.state.activeTab === '1' })}*/}
+                            {/*                        onClick={() => { this.toggleStock('1'); }}*/}
+                            {/*                    >*/}
+                            {/*                        <i className="dripicons-device-desktop h4 product-icon"></i>*/}
+                            {/*                        <p className="text-muted mb-0">Station A</p>*/}
+                            {/*                    </NavLink>*/}
+                            {/*                </NavItem>*/}
+                            {/*                <NavItem>*/}
+                            {/*                    <NavLink*/}
+                            {/*                        className={classnames({ active: this.state.activeTab === '2' })}*/}
+                            {/*                        onClick={() => { this.toggleStock('2'); }} >*/}
+                            {/*                        <i className="dripicons-monitor h4 product-icon"></i>*/}
+                            {/*                        <p className="text-muted mb-0">Station B</p>*/}
+                            {/*                    </NavLink>*/}
+                            {/*                </NavItem>*/}
+                            {/*            </Nav>*/}
+
+
+                            {/*            <TabContent activeTab={this.state.activeTab}>*/}
+                            {/*                <TabPane tabId="1">*/}
+                            {/*                    <div className="text-center">*/}
+                            {/*                        <div id="radial-chart">*/}
+                            {/*                            <Apexradial />*/}
+                            {/*                        </div>*/}
+                            {/*                        <h5 className="font-18">Computer</h5>*/}
+                            {/*                        <p className="text-muted mb-0">Neque porro quisquam est</p>*/}
+                            {/*                    </div>*/}
+                            {/*                </TabPane>*/}
+                            {/*                <TabPane tabId="2">*/}
+                            {/*                    <div className="text-center">*/}
+                            {/*                        <div id="radial-chart-2">*/}
+                            {/*                            <Apexradial2 />*/}
+
+                            {/*                        </div>*/}
+                            {/*                        <h5 className="font-18">Laptop</h5>*/}
+                            {/*                        <p className="text-muted mb-0">Ut enim ad veniam quis</p>*/}
+                            {/*                    </div>*/}
+                            {/*                </TabPane>*/}
+                            {/*            </TabContent>*/}
+                            {/*        </CardBody>*/}
+                            {/*    </Card>*/}
+                            {/*</Col>*/}
+                            {/*<Col xl="4">*/}
+                            {/*    <Card>*/}
+                            {/*        <CardBody>*/}
+                            {/*            <h4 className="mt-0 header-title">Port Usages</h4>*/}
+                            {/*            <div id="multiple-radial-chart" className="social-source" dir="ltr">*/}
+                            {/*                <Apexsocial />*/}
+                            {/*            </div>*/}
+                            {/*        </CardBody>*/}
+                            {/*    </Card>*/}
+                            {/*</Col>*/}
                         </Row>
                     </div>
                 </div>

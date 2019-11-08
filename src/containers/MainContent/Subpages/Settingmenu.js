@@ -23,7 +23,21 @@ class SettingMenu extends Component {
                         <DropdownItem tag="a" href="#">Year</DropdownItem>
                     </DropdownMenu>
                 </Dropdown>
+
+              <Dropdown isOpen={this.state.setting_menu} toggle={() => this.setState({ setting_menu: !this.state.setting_menu })}>
+                <DropdownToggle color="primary" className="arrow-none waves-effect waves-light">
+                  <i className="mdi mdi-settings mr-2"></i>All Stations
+                </DropdownToggle>
+                <DropdownMenu className="language-switch" right>
+                  <DropdownItem tag="a" href="#">Station A</DropdownItem>
+                  <DropdownItem tag="a" href="#">Station B</DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
             </React.Fragment>
+
+
+
+
         );
     }
 }

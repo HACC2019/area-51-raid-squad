@@ -7,6 +7,7 @@ import ProfileMenu from './Menus/profileMenu';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { connect } from 'react-redux';
 import { toggleSidebar  } from '../../store/actions';
+import HecoLogo from '../../images/heco-logo3.png';
 
 // import { getLoggedInUser } from '../../helpers/authUtils';
 
@@ -63,11 +64,11 @@ class Topbar extends Component {
                     <div className="topbar-left">
                         <Link to="/" className="logo">
                             <span className="logo-light">
-                                AREA 51 RAID SQUAD
+                                <img width='200px' className="full-heco-logo" src={HecoLogo} />
                             </span>
-                            <span className="logo-sm">
-                                <img src={logoSmall} alt="" height="22" />
-                            </span>
+                            {/*<span className="logo-sm">*/}
+                            {/*    <img src={logoSmall} alt="" height="22" />*/}
+                            {/*</span>*/}
                         </Link>
                     </div>
 
@@ -96,9 +97,9 @@ class Topbar extends Component {
 
                         <ul className="list-inline menu-left mb-0">
                             <li className="float-left">
-                                <button onClick={ this.sidebarToggle }   className="button-menu-mobile open-left waves-effect">
-                                    <i className="mdi mdi-menu"></i>
-                                </button>
+                                {/*<button onClick={ this.sidebarToggle }   className="button-menu-mobile open-left waves-effect">*/}
+                                {/*    <i className="mdi mdi-menu"></i>*/}
+                                {/*</button>*/}
                             </li>
  
                             <li className="d-none d-sm-block">
