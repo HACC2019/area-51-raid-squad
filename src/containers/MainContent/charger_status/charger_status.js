@@ -6,17 +6,6 @@ import { connect } from 'react-redux';
 import Settingmenu from '../Subpages/Settingmenu';
 import Firebase from 'firebase';
 
-//images
-import user1 from '../../../images/users/user-1.jpg';
-import user2 from '../../../images/users/user-2.jpg';
-import user3 from '../../../images/users/user-3.jpg';
-import user4 from '../../../images/users/user-4.jpg';
-import user5 from '../../../images/users/user-5.jpg';
-import user6 from '../../../images/users/user-6.jpg';
-import user7 from '../../../images/users/user-7.jpg';
-import user8 from '../../../images/users/user-8.jpg';
-import { func } from 'prop-types';
-
 // just read access prototype; let the api keys free!
 
 let firebase = Firebase.initializeApp({
@@ -30,10 +19,6 @@ let firebase = Firebase.initializeApp({
   });
 
 let query = firebase.database().ref("Site_Power").orderByChild("island");
-
-// Firebase.database.ref("Site_Power").once("value").then(function(snapshot) {
-//     this.setState({chargers: snapshot.val()});
-//  });
 
 class Charger_Status extends Component {
     _isMounted = false
@@ -74,14 +59,11 @@ class Charger_Status extends Component {
                 <th scope="row">{charger.name}</th>
                 <td><span style={charger.status == "Offline" ? {color: '#de4040', backgroundColor: 'rgba(222, 64, 64, 0.2)'} : {color: '#47bd9a'}} className="badge badge-soft-success badge-pill"><i className="mdi mdi-checkbox-blank-circle mr-1"></i>{charger.status}</span></td>
                 <td>{charger.island}</td>
-                <td><span className="badge badge-soft-success badge-pill"><i className="mdi mdi-checkbox-blank-circle mr-1"></i> Completed</span></td>
+                <td><p className="float-right mb-0 ml-3">80%</p>
+                <Progress className="mt-2" style={{ height: '5px' }} color="success" value={80} /></td>
 
                 <td>
                     yo
-                </td>
-                <td>
-                <p className="float-right mb-0 ml-3">80%</p>
-                <Progress className="mt-2" style={{ height: '5px' }} color="success" value={80} />
                 </td>
                 <td>
                     <div>
@@ -94,6 +76,11 @@ class Charger_Status extends Component {
                 </td>
             </tr>
         )
+
+        let onlineChargers = 0;
+        
+        this.state.chargers.forEach(charger => 
+            charger.status == "Online" ? onlineChargers++ : onlineChargers = onlineChargers)
 
         return (
             <React.Fragment>
@@ -125,7 +112,7 @@ class Charger_Status extends Component {
                                             <i className="dripicons-archive text-primary h4 ml-3"></i>
                                         </div>
 
-                                        <h5 className="font-20 mt-0 pt-1">24</h5>
+                                        <h5 className="font-20 mt-0 pt-1">{this.state.chargers.length}</h5>
                                         <p className="text-muted mb-0">Total Chargers</p>
                                     </CardBody>
                                 </Card>
@@ -136,7 +123,7 @@ class Charger_Status extends Component {
                                         <div className="float-right">
                                             <i className="dripicons-trophy text-primary h4 ml-3"></i>
                                         </div>
-                                        <h5 className="font-20 mt-0 pt-1">18</h5>
+                                        <h5 className="font-20 mt-0 pt-1">{onlineChargers}</h5>
                                         <p className="text-muted mb-0">Chargers Online</p>
                                     </CardBody>
                                 </Card>
@@ -147,8 +134,8 @@ class Charger_Status extends Component {
                                         <div className="float-right">
                                             <i className="dripicons-hourglass text-primary h4 ml-3"></i>
                                         </div>
-                                        <h5 className="font-20 mt-0 pt-1">06</h5>
-                                        <p className="text-muted mb-0">Pending Charger_Status</p>
+                                        <h5 className="font-20 mt-0 pt-1">{this.state.chargers.length - onlineChargers}</h5>
+                                        <p className="text-muted mb-0">Chargers Offline</p>
                                     </CardBody>
                                 </Card>
                             </Col>
@@ -182,7 +169,7 @@ class Charger_Status extends Component {
                                                         <th scope="col">Charger Name</th>
                                                         <th scope="col">Status</th>
                                                         <th scope="col">Island</th>
-                                                        <th scope="col" style={{ width: "16%" }}>Usage</th>
+                                                        <th scope="col" style={{ width: "12%" }}>Average Usage</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
