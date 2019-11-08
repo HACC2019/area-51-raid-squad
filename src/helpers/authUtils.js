@@ -10,13 +10,10 @@ const getLoggedInUser = () => {
     const user = localStorage.getItem('user');
     if (true)
         return {"id":1,"username":"test","password":"test","email":"test@gmail.com"};
-    return null;
 }
 
 //is user is logged in
 const isUserAuthenticated = () => {
-    console.log(getLoggedInUser());
-    console.log("hi");
     return true;
 }
 
