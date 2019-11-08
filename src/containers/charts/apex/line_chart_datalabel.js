@@ -11,7 +11,7 @@ class line_chart_datalabel extends Component {
                 chart: {
                     height: 380,
                     type: 'line',
-                    foreColor: '#9f9ea4',
+                    foreColor: '#000000',
                     zoom: {
                       enabled: false
                     },

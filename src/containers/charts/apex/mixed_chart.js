@@ -11,7 +11,7 @@ class mixed_chart extends Component {
                 chart: {
                     height: 350,
                     type: 'line',
-                    foreColor: '#9f9ea4',
+                    foreColor: '#000000',
                     stacked: false,
                     toolbar: {
                         show: false

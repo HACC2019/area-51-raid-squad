@@ -4,6 +4,7 @@ import { activateAuthLayout } from '../../../store/actions';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Settingmenu from '../Subpages/Settingmenu';
+import ButtonDD from '../Subpages/ButtonDD_Stations';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
@@ -81,8 +82,11 @@ class Dashboard extends Component {
                                 </div>
                                 <div className="col-sm-6">
                                     <div className="float-right d-none d-md-block">
-                                        <Settingmenu />
+                                         <Settingmenu/>
                                     </div>
+                                  <div className="float-right d-none d-md-block">
+                                    <ButtonDD/>
+                                  </div>
                                 </div>
                             </div>
                         </div>

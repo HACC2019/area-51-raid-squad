@@ -15,7 +15,7 @@ class Apexbar extends Component {
             apexBarChartOpt: {
                 chart: {
                     type: 'bar',
-                    foreColor: '#9f9ea4',
+                    foreColor: '#000000',
                     toolbar: {
                       show: false,
                     }
