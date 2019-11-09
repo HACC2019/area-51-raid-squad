@@ -10,7 +10,7 @@ class Apexarea extends Component {
             options: {
                 chart: {
                     type: 'area',   
-                    foreColor: '#000000',
+                    foreColor: '#000000', // adjusts the text of the charts
                     toolbar: {
                         show: false,
                     }

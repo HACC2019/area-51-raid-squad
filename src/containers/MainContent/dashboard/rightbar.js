@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { VectorMap } from 'react-jvectormap';
-import user1 from "../../../images/users/user-1.jpg";
+// import { VectorMap } from 'react-jvectormap';
+// import user1 from "../../../images/users/user-1.jpg";
 import "./rightbar.css";
 
 class Rightbar extends Component {

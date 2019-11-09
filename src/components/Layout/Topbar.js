@@ -11,10 +11,6 @@ import HecoLogo from '../../images/heco-logo3.png';
 
 // import { getLoggedInUser } from '../../helpers/authUtils';
 
-import logoLight from "../../images/logo-light.png";
-import logoDark from "../../images/logo-dark.png";
-import logoSmall from "../../images/logo-sm.png";
-
 class Topbar extends Component {
 
     constructor(props) {
@@ -64,7 +60,7 @@ class Topbar extends Component {
                     <div className="topbar-left">
                         <Link to="/" className="logo">
                             <span className="logo-light">
-                                <img width='200px' className="full-heco-logo" src={HecoLogo} />
+                                <img width='200px' className="full-heco-logo" src={HecoLogo} alt=""/>
                             </span>
                             {/*<span className="logo-sm">*/}
                             {/*    <img src={logoSmall} alt="" height="22" />*/}

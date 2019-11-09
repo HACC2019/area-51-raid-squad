@@ -1,31 +1,31 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, Button, CardBody, TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
+import { Row, Col, Card, CardBody } from 'reactstrap';
 import { activateAuthLayout } from '../../../store/actions';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Settingmenu from '../Subpages/Settingmenu';
 import ButtonDD from '../Subpages/ButtonDD_Stations';
-import { Link } from 'react-router-dom';
-import classnames from 'classnames';
+// import { Link } from 'react-router-dom';
+// import classnames from 'classnames';
 
 import Rightsidebar from '../../../components/RightSidebar';
 //Charts
 import Apexarea from '../../../containers/charts/apex/apexarea';
 import Apexbar from '../../../containers/charts/apex/apexbar';
-import Apexchart1 from '../../../containers/charts/apex/apexchart1';
-import Apexchart2 from '../../../containers/charts/apex/apexchart2';
-import Apexchart3 from '../../../containers/charts/apex/apexchart3';
-import Apexradial from '../../../containers/charts/apex/apexradial';
-import Apexradial2 from '../../../containers/charts/apex/apexradial2';
-import Apexsocial from '../../../containers/charts/apex/apexsocial';
+// import Apexchart1 from '../../../containers/charts/apex/apexchart1';
+// import Apexchart2 from '../../../containers/charts/apex/apexchart2';
+// import Apexchart3 from '../../../containers/charts/apex/apexchart3';
+// import Apexradial from '../../../containers/charts/apex/apexradial';
+// import Apexradial2 from '../../../containers/charts/apex/apexradial2';
+// import Apexsocial from '../../../containers/charts/apex/apexsocial';
 
 //Images
-import user2 from '../../../images/users/user-2.jpg';
-import user3 from '../../../images/users/user-3.jpg';
-import user4 from '../../../images/users/user-4.jpg';
-import user5 from '../../../images/users/user-5.jpg';
-import user6 from '../../../images/users/user-6.jpg';
-import user7 from '../../../images/users/user-7.jpg';
+// import user2 from '../../../images/users/user-2.jpg';
+// import user3 from '../../../images/users/user-3.jpg';
+// import user4 from '../../../images/users/user-4.jpg';
+// import user5 from '../../../images/users/user-5.jpg';
+// import user6 from '../../../images/users/user-6.jpg';
+// import user7 from '../../../images/users/user-7.jpg';
 
 import DashboardRightSidebar from './rightbar';
 

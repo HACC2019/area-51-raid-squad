@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { Button } from 'reactstrap';
-import { _ } from 'lodash';
 
 const data = require('./../../../Data_HACC.json');
 
