@@ -158,13 +158,14 @@ class Charger_Status extends Component {
                                                 <label>Filter</label>
                                                 <Dropdown>
                                                     <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                                        Dropdown Button
+                                                        Island
                                                     </Dropdown.Toggle>
 
                                                     <Dropdown.Menu>
-                                                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                                        <Dropdown.Item href="#/action-1">Oahu</Dropdown.Item>
+                                                        <Dropdown.Item href="#/action-1">Maui</Dropdown.Item>
+                                                        <Dropdown.Item href="#/action-1">Molokai</Dropdown.Item>
+                                                        <Dropdown.Item href="#/action-1">Hawaii</Dropdown.Item>
                                                     </Dropdown.Menu>
                                                     </Dropdown>
                                             </div>
