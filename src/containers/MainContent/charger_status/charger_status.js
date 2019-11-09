@@ -45,6 +45,8 @@ class Charger_Status extends Component {
                     chargersTemp.push(childSnapshot.val());
                 })
 
+                chargersTemp.reverse()
+
                 this.setState({chargers: chargersTemp})
             }})
 
