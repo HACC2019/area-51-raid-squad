@@ -30,7 +30,7 @@ class LanguageMenu extends Component {
         return (
             <React.Fragment>
                <Dropdown isOpen={this.state.menu} toggle={this.toggle} className="notification-list list-inline-item d-none  d-md-inline-block mr-1" tag="li">
-                     <DropdownToggle className="nav-link dropdown-toggle arrow-none" style={{ color:"#dee2e6" }} tag="a">
+                     <DropdownToggle className="nav-link dropdown-toggle arrow-none" style={{ color:"#FFFFFF" }} tag="a">
                         <img alt="Veltrix" src={usFlag} className="mr-2" height="12" /> English  <span className="mdi mdi-chevron-down"></span>
                     </DropdownToggle>
                     <DropdownMenu className="language-switch" right>

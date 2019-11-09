@@ -5,7 +5,7 @@ import { toggleSidebar, toggleLightDark  } from '../../store/actions';
 
 import Topbar from './Topbar';
 import Sidebar from './Sidebar';
-import Footer from './Footer';
+// import Footer from './Footer';
 
 // render if Auth Layout
 const AuthLayoutContent = (props) => {
@@ -16,7 +16,7 @@ const AuthLayoutContent = (props) => {
       <Sidebar />
       <div className="content-page">
            {props.children}
-        <Footer />
+        {/*<Footer />*/}
       </div>
     </div>
   </React.Fragment>
@@ -31,7 +31,7 @@ const NonAuthLayoutContent = (props) => {
       <Sidebar />
       <div className="content-page">
            {props.children}
-        <Footer />
+        {/*<Footer />*/}
       </div>
     </div>
   </React.Fragment>

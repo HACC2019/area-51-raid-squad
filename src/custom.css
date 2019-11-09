@@ -95,8 +95,8 @@
   display: none;
 }
 .ecommerce-product .rdt_TableHeadRow{
-  border-top: 1px solid #dee2e6;
-  border-bottom: 1px solid #dee2e6;
+  border-top: 1px solid #553c8b;
+  border-bottom: 1px solid #553c8b;
 }
 .ecommerce-product .rdt_TableRow {
   padding: 0px!important;
@@ -119,8 +119,8 @@
   display: none;
 }
 .ecommerce-order .rdt_TableHeadRow{
-  border-top: 1px solid #dee2e6;
-  border-bottom: 1px solid #dee2e6;
+  border-top: 1px solid #553c8b;
+  border-bottom: 1px solid #553c8b;
 }
 .ecommerce-order .dJFOdV {
   padding: .75rem;
