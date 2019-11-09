@@ -10,7 +10,7 @@ class radial_chart extends Component {
             chart: {
                 height: 380,
                 type: 'radialBar',
-                foreColor: '#9f9ea4',
+                foreColor: '#000000',
             },
             plotOptions: {
                 radialBar: {

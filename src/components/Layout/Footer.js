@@ -9,7 +9,7 @@ class Footer extends Component {
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-12">
-                                © {new Date().getFullYear()} Veltrix <span className="d-none d-sm-inline-block"> - Crafted with <i className="mdi mdi-heart text-danger"></i> by Themesbrand.</span>
+                              <span className="d-none d-sm-inline-block">Area 51 Raid Squad<i className="mdi mdi-heart text-danger"></i></span>
                             </div>
                         </div>
                     </div>

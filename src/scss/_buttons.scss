@@ -5,6 +5,7 @@
 .btn {
   border-radius: 3px;
   font-size: $base-font;
+  margin-left: 25px; // adjusts the location of the buttons
 }
 
 button:focus {

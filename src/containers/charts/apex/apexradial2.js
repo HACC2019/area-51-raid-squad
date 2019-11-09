@@ -9,7 +9,7 @@ class Apexradial2 extends Component {
           options: {
             chart: {
               offsetY: -20,
-              foreColor: '#9f9ea4',
+              foreColor: '#000000',
             },
             plotOptions: {
               radialBar: {

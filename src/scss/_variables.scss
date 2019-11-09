@@ -10,31 +10,31 @@ $success: #47bd9a;
 $info: #06c2de;
 $warning: #f9d570;
 $danger: #e74c5e;
-$dark: #383c40;
-$muted: #9ca8b3;
+$dark: #FFFFFF; // card graph thi ng
+$muted: #000000;
 
 // Gray Colors
-$gray-100:                  #f0f4f7;
-$gray-200:                  #e9ecef;
-$gray-300:                  #dee2e6;
-$gray-400:                  #ced4da;
-$gray-500:                  #adb5bd;
-$gray-600:                  #616f80;
-$gray-700:                  #495057;
-$gray-800:                  #343a40;
-$gray-900:                  #212529;
+$gray-100:                  #000000; // ??
+$gray-200:                  #000000; // topmenu left items - dropdown
+$gray-300:                  #000000; // search and square
+$gray-400:                  #000000; // ???
+$gray-500:                  #000000; // ??
+$gray-600:                  #000000; // ??
+$gray-700:                  #000000; // ??
+$gray-800:                  #000000; // ??
+$gray-900:                  #000000; // ??
 
-$bg-body: #2e3235;
+$bg-body: #d4d7dd; // body
 $body-color: #adb5bd;
-$left-bar: #383c40;
-$topbar-background: #4090cb;
-$footer-background: #3d4145;
+$left-bar: #553c8b; //leftbar
+$topbar-background: #FFFFFF; //topbar
+$footer-background: #FFFFFF; // foot fetish
 
 // light leftbar
 
-$light-leftbar:                     #ffffff;
+$light-leftbar:                     #90ee90;
 $light-leftbar-menu-active-color:   #4090cb;
-$topbar-background-dark:            #383c40;
+$topbar-background-dark:            #90ee90;
 
 $font-family: 'Roboto', sans-serif;
 $font-family-secondary: 'Rubik', sans-serif;
@@ -49,6 +49,6 @@ $width: 100%;
 // Height variables
 $height: 100%;
 
-$leftbar-menu-color: #7a8590;
+$leftbar-menu-color: #FFFFFF;
 $leftbar-menu-hover-color: #b4c9de;
-$leftbar-menu-active-color: #ffffff;
+$leftbar-menu-active-color: #FFFFFF;

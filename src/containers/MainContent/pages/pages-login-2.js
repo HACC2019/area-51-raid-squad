@@ -32,7 +32,7 @@ class Pageslogin2 extends Component {
                                             </div>
                                             <div className="text-left p-3">
                                                 <h4 className="font-18 text-center">Welcome Back !</h4>
-                                                <p className="text-muted text-center">Sign in to continue to Veltrix.</p>
+                                                <p className="text-muted text-center">Sign in to view the dashboard.</p>
 
                                                 <form className="form-horizontal mt-5" action="/dashboard">
 

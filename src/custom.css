@@ -13,7 +13,7 @@
 
   .react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range, .react-datepicker__month-text--selected, .react-datepicker__month-text--in-selecting-range, .react-datepicker__month-text--in-range {
     border-radius: 2.3rem;
-    background-color: #e74c5e;
+    background-color: mediumpurple;
   }
   .react-datepicker__day--selected:hover, .react-datepicker__day--in-selecting-range:hover, .react-datepicker__day--in-range:hover, .react-datepicker__month-text--selected:hover, .react-datepicker__month-text--in-selecting-range:hover, .react-datepicker__month-text--in-range:hover
   {
@@ -22,7 +22,7 @@
   }
   .react-datepicker__day:hover, .react-datepicker__month-text:hover {
     border-radius: 1.3rem;
-    background-color: #f0f0f0;
+    background-color: mediumpurple;
 }
 .rdw-editor-wrapper
 {

@@ -7,12 +7,9 @@ import ProfileMenu from './Menus/profileMenu';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { connect } from 'react-redux';
 import { toggleSidebar  } from '../../store/actions';
+import HecoLogo from '../../images/heco-logo3.png';
 
 // import { getLoggedInUser } from '../../helpers/authUtils';
-
-import logoLight from "../../images/logo-light.png";
-import logoDark from "../../images/logo-dark.png";
-import logoSmall from "../../images/logo-sm.png";
 
 class Topbar extends Component {
 
@@ -63,11 +60,11 @@ class Topbar extends Component {
                     <div className="topbar-left">
                         <Link to="/" className="logo">
                             <span className="logo-light">
-                                AREA 51 RAID SQUAD
+                                <img width='200px' className="full-heco-logo" src={HecoLogo} alt=""/>
                             </span>
-                            <span className="logo-sm">
-                                <img src={logoSmall} alt="" height="22" />
-                            </span>
+                            {/*<span className="logo-sm">*/}
+                            {/*    <img src={logoSmall} alt="" height="22" />*/}
+                            {/*</span>*/}
                         </Link>
                     </div>
 
@@ -96,9 +93,9 @@ class Topbar extends Component {
 
                         <ul className="list-inline menu-left mb-0">
                             <li className="float-left">
-                                <button onClick={ this.sidebarToggle }   className="button-menu-mobile open-left waves-effect">
-                                    <i className="mdi mdi-menu"></i>
-                                </button>
+                                {/*<button onClick={ this.sidebarToggle }   className="button-menu-mobile open-left waves-effect">*/}
+                                {/*    <i className="mdi mdi-menu"></i>*/}
+                                {/*</button>*/}
                             </li>
  
                             <li className="d-none d-sm-block">
@@ -107,11 +104,11 @@ class Topbar extends Component {
                                     Create {' '}{' '}{' '}
                                 </DropdownToggle>
                                 <DropdownMenu >
-                                    <DropdownItem tag="a" href="#">Action</DropdownItem>
-                                    <DropdownItem tag="a" href="#">Another action</DropdownItem>
-                                    <DropdownItem tag="a" href="#">Something else here</DropdownItem>
+                                    <DropdownItem tag="a" href="#">Today</DropdownItem>
+                                    <DropdownItem tag="a" href="#">Yesterday</DropdownItem>
+                                    <DropdownItem tag="a" href="#">Last Month</DropdownItem>
                                     <div className="dropdown-divider"></div>
-                                    <DropdownItem tag="a" href="#">Separated link</DropdownItem>
+                                    <DropdownItem tag="a" href="#">Current Year</DropdownItem>
                                 </DropdownMenu>
                             </Dropdown>
                         </li>

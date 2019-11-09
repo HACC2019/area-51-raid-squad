@@ -52,7 +52,7 @@ class Pagesregister extends Component {
                                         </div>
                                         <div className="p-3">
                                             <h4 className="font-18 text-center mb-3">Register</h4>
-                                            <p class="text-muted text-center mb-4">Sign up to continue to Veltrix.</p>
+                                            <p class="text-muted text-center mb-4">Sign up to view dashboard.</p>
 
                                             {this.props.user && <Alert color="success">
                                            Registration Done Successfully.</Alert>}
@@ -74,7 +74,7 @@ class Pagesregister extends Component {
                                 </div>
                                 <div className="mt-5 text-center text-white-50">
                                     <p>Already have an account ? <Link to="login" className="font-500 text-white"> Login </Link> </p>
-                                    <p>© {new Date().getFullYear()} Veltrix. Crafted with <i className="mdi mdi-heart text-danger"></i> by Themesbrand</p>
+                                    <p>Area 51 Raid Squad</p>
                                
                                 </div>
                             </Col>

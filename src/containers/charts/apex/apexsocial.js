@@ -33,12 +33,12 @@ class Apexsocial extends Component {
                         }
                     }
                 },
-                colors: ['#4090cb', '#06c2de', '#eb6776'],
-               
+                colors: ['#4090cb', '#eb6776'],
+
                 stroke: {
                     lineCap: 'round'
                   },
-                  labels: ['Facebook', 'Twitter', 'Instagram'],
+                  labels: ['DCCOMBOTYP1', 'CHADEMO'],
                   legend: {
                       show: true,
                       floating: true,
@@ -68,7 +68,7 @@ class Apexsocial extends Component {
                     }
                 }]
               },
-              series: [76,67,61],
+              series: [76,67],
         }
 }
 

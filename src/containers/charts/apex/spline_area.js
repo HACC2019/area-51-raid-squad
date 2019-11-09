@@ -11,7 +11,7 @@ class spline_area extends Component {
                 chart: {
                     height: 350,
                     type: 'area',
-                    foreColor: '#9f9ea4',
+                    foreColor: '#000000',
                 },
                 dataLabels: {
                     enabled: false

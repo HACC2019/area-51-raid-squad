@@ -10,7 +10,7 @@ class Apexchart1 extends Component {
             apexBarChartOpt: {
                 chart: {
                     type: 'line',
-                    foreColor: '#9f9ea4',
+                    foreColor: '#000000',
                     height: 60,
                     sparkline: {
                       enabled: true
