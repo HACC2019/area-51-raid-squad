@@ -65,26 +65,20 @@ class Charger_Status extends Component {
 
     render() {
 
-        setTimeout(this.generateRandomNumber.bind(this, 50, 75),1000)
+        setTimeout(this.generateRandomNumber.bind(this, 60, 75), 5000)
 
         const rows = this.state.chargers.map(charger =>
             <tr>
                 <th scope="row">{charger.name}</th>
                 <td><span style={charger.status == "Offline" ? {color: '#de4040', backgroundColor: 'rgba(222, 64, 64, 0.2)'} : {color: '#47bd9a'}} className="badge badge-soft-success badge-pill"><i className="mdi mdi-checkbox-blank-circle mr-1"></i>{charger.status}</span></td>
                 <td>{charger.island}</td>
-                <td><p className="float-right mb-0 ml-3">{this.state.chargerUsage}</p>
-                <Progress className="mt-2" style={{ height: '5px' }} color="success" value={this.state.chargerUsage} /></td>
+                <td><p className="float-right mb-0 ml-3">{charger.status == "Online" ? this.state.chargerUsage : 0}</p>
+                <Progress className="mt-2" style={{ height: '5px' }} color="success" value={charger.status == "Online" ? this.state.chargerUsage : 0} /></td>
 
-                <td>
-                    yo
-                </td>
                 <td>
                     <div>
                     <Tooltip placement="top" isOpen={this.state.t1} target="t1" toggle={() => this.setState({ t1: !this.state.t1 })}>Edit</Tooltip>
-                    <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-pencil h5 m-0"></i></Link>
-
-                    <Tooltip placement="top" isOpen={this.state.t2} target="t2" toggle={() => this.setState({ t2: !this.state.t2 })}>Delete</Tooltip>
-                    <Link to="#" id="t2" className="text-danger" > <i className="dripicons-cross h5 m-0"></i></Link>
+                    <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-map h5 m-0"></i></Link>
                     </div>
                 </td>
             </tr>
@@ -189,7 +183,8 @@ class Charger_Status extends Component {
                                                         <th scope="col">Status</th>
                                                         <th scope="col">Island</th>
                                                         <th scope="col">Average Usage (1 Week)</th>
-                                                        <th scope="col">Action</th>
+                                                        <th scope="col">Map</th>
+                                                        <th scope="col"></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
