@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LanguageMenu from './Menus/languageMenu';
+// import LanguageMenu from './Menus/languageMenu';
 import { Link } from 'react-router-dom';
 import { withRouter } from "react-router";
 import NotificationMenu from './Menus/notificationMenu';
@@ -79,7 +79,7 @@ class Topbar extends Component {
                                 </form>
                             </li>
 
-                            <LanguageMenu />
+                            {/*<LanguageMenu />*/}
 
                             <li className="dropdown notification-list list-inline-item d-none d-md-inline-block mr-1">
                                 <Link onClick={this.toggleFullscreen} className="nav-link waves-effect" to="#" id="btn-fullscreen">

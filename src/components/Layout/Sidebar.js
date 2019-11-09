@@ -82,30 +82,30 @@ const SideNav = () => { return <div id="sidebar-menu">
                                 </ul>
                             </li> */}
 
-                            <li>
-                                <Link to="/#" className="waves-effect waves-light"><i className="ion ion-md-cart"></i><span> Ecommerce <span className="float-right menu-arrow"><i className="mdi mdi-chevron-right"></i></span> </span></Link>
-                                <ul className="submenu">
-                                    <li><Link to="ecommerce-products">Products</Link></li>
-                                    <li><Link to="ecommerce-products-list">Products List</Link></li>
-                                    <li><Link to="ecommerce-order-history">Order History</Link></li>
-                                    <li><Link to="ecommerce-customers">Customers</Link></li>
-                                    <li><Link to="ecommerce-product-edit">Product Edit</Link></li>
-                                </ul>
-                            </li>
+                            {/*<li>*/}
+                            {/*    <Link to="/#" className="waves-effect waves-light"><i className="ion ion-md-cart"></i><span> Ecommerce <span className="float-right menu-arrow"><i className="mdi mdi-chevron-right"></i></span> </span></Link>*/}
+                            {/*    <ul className="submenu">*/}
+                            {/*        <li><Link to="ecommerce-products">Products</Link></li>*/}
+                            {/*        <li><Link to="ecommerce-products-list">Products List</Link></li>*/}
+                            {/*        <li><Link to="ecommerce-order-history">Order History</Link></li>*/}
+                            {/*        <li><Link to="ecommerce-customers">Customers</Link></li>*/}
+                            {/*        <li><Link to="ecommerce-product-edit">Product Edit</Link></li>*/}
+                            {/*    </ul>*/}
+                            {/*</li>*/}
 
-                            <li className="menu-title">Layouts</li>
+                            {/*<li className="menu-title">Layouts</li>*/}
 
-                            <li>
-                                <Link to="layout-light-sidebar" className="waves-effect">
-                                    <i className="ion ion-md-options"></i><span> Light Sidebar </span>
-                                </Link>
-                            </li>
+                            {/*<li>*/}
+                            {/*    <Link to="layout-light-sidebar" className="waves-effect">*/}
+                            {/*        <i className="ion ion-md-options"></i><span> Light Sidebar </span>*/}
+                            {/*    </Link>*/}
+                            {/*</li>*/}
 
-                            <li>
-                                <Link to="layout-collapsed-sidebar" className="waves-effect">
-                                    <i className="ion ion-md-switch"></i><span> Collapsed Sidebar </span>
-                                </Link>
-                            </li>
+                            {/*<li>*/}
+                            {/*    <Link to="layout-collapsed-sidebar" className="waves-effect">*/}
+                            {/*        <i className="ion ion-md-switch"></i><span> Collapsed Sidebar </span>*/}
+                            {/*    </Link>*/}
+                            {/*</li>*/}
 
                             {/*<li className="menu-title">Components</li>*/}
 
