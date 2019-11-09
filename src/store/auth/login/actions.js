@@ -1,6 +1,9 @@
 import { CHECK_LOGIN, LOGIN_USER_SUCCESSFUL, APILOGIN_FAILED, CHECK_OTP,VALIDATE_OTP_SUCCESS, VALIDATE_OTP_ERROR, ERROR_CLEAR } from './actionTypes';
 
 export const checkLogin = (username, password, history) => {
+    console.log(username);
+        console.log(password);
+        console.log(history);
     return {
         type: CHECK_LOGIN,
         payload: { username, password, history }
@@ -8,6 +11,9 @@ export const checkLogin = (username, password, history) => {
 }
 
 export const checkOtp = (user_id, otp, history) => {
+        console.log(user_id);
+        console.log(otp);
+        console.log(history);
     return {
         type: CHECK_OTP,
         payload: { user_id, otp, history }

@@ -15,7 +15,7 @@ class Pageslogin extends Component {
     }
 
     handleSubmit(event, values) {
-        this.props.checkLogin(values.username, values.password, this.props.history);
+        this.props.checkLogin("test@gmail.com", "test", this.props.history);
     }
 
     componentDidMount()

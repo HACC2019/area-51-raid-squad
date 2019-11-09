@@ -24,8 +24,16 @@ const AuthLayoutContent = (props) => {
 
 // render if Non-Auth Layout
 const NonAuthLayoutContent = (props) => {
+  document.body.classList.remove('bg-primary');
   return <React.Fragment>
-    {props.children}
+    <div id="wrapper">
+      <Topbar />
+      <Sidebar />
+      <div className="content-page">
+           {props.children}
+        <Footer />
+      </div>
+    </div>
   </React.Fragment>
 }
 
@@ -62,7 +70,7 @@ class Layout extends Component {
   render() {
     return (
       <React.Fragment>
-        {this.props.layout.layoutType === 'Auth' ? <AuthLayoutContent {...this.props} /> : <NonAuthLayoutContent {...this.props} />}
+        {this.props.layout.layoutType === 'Auth' ? <NonAuthLayoutContent {...this.props} /> : <NonAuthLayoutContent {...this.props} />}
       </React.Fragment>
     );
   }

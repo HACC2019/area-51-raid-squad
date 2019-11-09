@@ -16,15 +16,9 @@ const SideNav = () => { return <div id="sidebar-menu">
                                 </Link>
                             </li>
 
-                            {/* <li className="menu-title">Apps</li>
                             <li>
-                                <Link to="/#" className="waves-effect"><i className="ion ion-md-mail"></i><span> Email <span className="float-right menu-arrow"><i className="mdi mdi-chevron-right"></i></span> </span></Link>
-                                <ul className="submenu">
-                                    <li><Link to="email-inbox">Inbox</Link></li>
-                                    <li><Link to="email-read">Email Read</Link></li>
-                                    <li><Link to="email-compose">Email Compose</Link></li>
-                                </ul>
-                            </li> */}
+                                <Link to="charger_status" className="waves-effect waves-light"><i className="ion ion-md-clipboard"></i><span> Charger Status </span></Link>
+                            </li>
 
                             <li>
                                 <Link to="calendar" className="waves-effect"><i className="ion ion-md-calendar"></i><span> Calendar </span></Link>
@@ -87,6 +81,17 @@ const SideNav = () => { return <div id="sidebar-menu">
                                     <li><Link to="email-template-billing">Billing Email</Link></li>
                                 </ul>
                             </li> */}
+
+                            <li>
+                                <Link to="/#" className="waves-effect waves-light"><i className="ion ion-md-cart"></i><span> Ecommerce <span className="float-right menu-arrow"><i className="mdi mdi-chevron-right"></i></span> </span></Link>
+                                <ul className="submenu">
+                                    <li><Link to="ecommerce-products">Products</Link></li>
+                                    <li><Link to="ecommerce-products-list">Products List</Link></li>
+                                    <li><Link to="ecommerce-order-history">Order History</Link></li>
+                                    <li><Link to="ecommerce-customers">Customers</Link></li>
+                                    <li><Link to="ecommerce-product-edit">Product Edit</Link></li>
+                                </ul>
+                            </li>
 
                             <li className="menu-title">Layouts</li>
 
