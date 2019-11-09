@@ -6,10 +6,6 @@ import { connect } from 'react-redux';
 import Settingmenu from '../Subpages/Settingmenu';
 import Firebase from 'firebase';
 
-//
-import user8 from '../../../images/users/user-8.jpg';
-import { func } from 'prop-types';
-
 // just read access prototype; let the api keys free!
 
 let firebase = Firebase.initializeApp({
