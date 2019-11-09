@@ -5,7 +5,7 @@ import { activateAuthLayout } from '../../../store/actions';
 import { connect } from 'react-redux';
 import Settingmenu from '../Subpages/Settingmenu';
 import Firebase from 'firebase';
-import { Dropdow, DropdownButton } from 'react-bootstrap';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 
 // just read access prototype; let the api keys free!
 
