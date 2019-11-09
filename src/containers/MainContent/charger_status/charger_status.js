@@ -6,14 +6,7 @@ import { connect } from 'react-redux';
 import Settingmenu from '../Subpages/Settingmenu';
 import Firebase from 'firebase';
 
-//images
-import user1 from '../../../images/users/user-1.jpg';
-import user2 from '../../../images/users/user-2.jpg';
-import user3 from '../../../images/users/user-3.jpg';
-import user4 from '../../../images/users/user-4.jpg';
-import user5 from '../../../images/users/user-5.jpg';
-import user6 from '../../../images/users/user-6.jpg';
-import user7 from '../../../images/users/user-7.jpg';
+//
 import user8 from '../../../images/users/user-8.jpg';
 import { func } from 'prop-types';
 
@@ -30,10 +23,6 @@ let firebase = Firebase.initializeApp({
   });
 
 let query = firebase.database().ref("Site_Power").orderByChild("island");
-
-// Firebase.database.ref("Site_Power").once("value").then(function(snapshot) {
-//     this.setState({chargers: snapshot.val()});
-//  });
 
 class Charger_Status extends Component {
     _isMounted = false
@@ -62,7 +51,6 @@ class Charger_Status extends Component {
             }})
 
     }
-       
 
     componentWillUnmount() {
         this._isMounted = false;
