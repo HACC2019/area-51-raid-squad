@@ -31,7 +31,8 @@ class Charger_Status extends Component {
         super(props);
 
         this.state = {
-            chargers: []
+            chargers: [],
+            chargerUsage: 0
         }
     }
 
@@ -56,14 +57,24 @@ class Charger_Status extends Component {
         this._isMounted = false;
     }
 
+    generateRandomNumber = (min, max) => { 
+        const random = (Math.floor(Math.random() * (max - min + 1)) + min)
+        this.setState({
+          chargerUsage: random
+        })
+    }
+
     render() {
+
+        setTimeout(this.generateRandomNumber.bind(this, 50, 75),1000)
+
         const rows = this.state.chargers.map(charger =>
             <tr>
                 <th scope="row">{charger.name}</th>
                 <td><span style={charger.status == "Offline" ? {color: '#de4040', backgroundColor: 'rgba(222, 64, 64, 0.2)'} : {color: '#47bd9a'}} className="badge badge-soft-success badge-pill"><i className="mdi mdi-checkbox-blank-circle mr-1"></i>{charger.status}</span></td>
                 <td>{charger.island}</td>
-                <td><p className="float-right mb-0 ml-3">80%</p>
-                <Progress className="mt-2" style={{ height: '5px' }} color="success" value={80} /></td>
+                <td><p className="float-right mb-0 ml-3">{this.state.chargerUsage}</p>
+                <Progress className="mt-2" style={{ height: '5px' }} color="success" value={this.state.chargerUsage} /></td>
 
                 <td>
                     yo
@@ -147,7 +158,7 @@ class Charger_Status extends Component {
                                     <CardBody>
                                         <form>
                                             <div className="form-group mb-0">
-                                                <label>Search</label>
+                                                <label>Filter</label>
                                                 <div className="input-group mb-0">
                                                     <input type="text" className="form-control" placeholder="Search..." aria-describedby="project-search-addon" />
                                                     <div className="input-group-append">
@@ -172,7 +183,7 @@ class Charger_Status extends Component {
                                                         <th scope="col">Charger Name</th>
                                                         <th scope="col">Status</th>
                                                         <th scope="col">Island</th>
-                                                        <th scope="col" style={{ width: "12%" }}>Average Usage</th>
+                                                        <th scope="col">Average Usage (1 Week)</th>
                                                         <th scope="col">Action</th>
                                                     </tr>
                                                 </thead>
