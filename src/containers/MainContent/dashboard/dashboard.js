@@ -39,14 +39,6 @@ class Dashboard extends Component {
 
     componentDidMount() {
         this.props.activateAuthLayout();
-        // document.body.classList = "";
-        // if (this.props.location.pathname === '/layout-light') {
-        //     document.body.classList.add('left-side-menu-light');
-        // }
-        // else if (this.props.location.pathname === '/layout-collapsed') {
-        //     document.body.classList.toggle('enlarged');
-        // }
-        // else { }
     }
 
     toggleStock(tab) {

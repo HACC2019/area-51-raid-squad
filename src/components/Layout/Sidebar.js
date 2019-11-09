@@ -16,15 +16,9 @@ const SideNav = () => { return <div id="sidebar-menu">
                                 </Link>
                             </li>
 
-                            {/* <li className="menu-title">Apps</li>
                             <li>
-                                <Link to="/#" className="waves-effect"><i className="ion ion-md-mail"></i><span> Email <span className="float-right menu-arrow"><i className="mdi mdi-chevron-right"></i></span> </span></Link>
-                                <ul className="submenu">
-                                    <li><Link to="email-inbox">Inbox</Link></li>
-                                    <li><Link to="email-read">Email Read</Link></li>
-                                    <li><Link to="email-compose">Email Compose</Link></li>
-                                </ul>
-                            </li> */}
+                                <Link to="charger_status" className="waves-effect waves-light"><i className="ion ion-md-clipboard"></i><span> Charger Status </span></Link>
+                            </li>
 
                             <li>
                                 <Link to="calendar" className="waves-effect"><i className="ion ion-md-calendar"></i><span> Calendar </span></Link>
@@ -40,45 +34,6 @@ const SideNav = () => { return <div id="sidebar-menu">
                                     <li><Link to="ecommerce-product-edit">Product Edit</Link></li>
                                 </ul>
                             </li>
-
-                            <li>
-                                <Link to="charger_status" className="waves-effect waves-light"><i className="ion ion-md-clipboard"></i><span> Charger Status </span></Link>
-                            </li>
-
-                            {/* <li className="menu-title">Pages</li>
-
-                            <li>
-                                <Link to="/#" className="waves-effect"><i className="ion ion-md-wifi"></i><span> Authentication <span className="badge badge-pill badge-light float-right">New</span> </span></Link>
-                                <ul className="submenu">
-                                    <li><Link to="pages-login-2">Login Two</Link></li>
-                                    <li><Link to="pages-register-2">Register Two</Link></li>
-                                    <li><Link to="pages-recoverpw-2">Recover Password Two</Link></li>
-                                    <li><Link to="pages-lock-screen-2">Lock Screen Two</Link></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <Link to="/#" className="waves-effect"><i className="ion ion-md-copy"></i><span> Extra Pages <span className="float-right menu-arrow"><i className="mdi mdi-chevron-right"></i></span> </span></Link>
-                                <ul className="submenu">
-                                    <li><Link to="pages-blank">Blank Page</Link></li>
-                                    <li><Link to="pages-timeline">Timeline</Link></li>
-                                    <li><Link to="pages-invoice">Invoice</Link></li>
-                                    <li><Link to="pages-pricing">Pricing</Link></li>
-                                    <li><Link to="pages-maintenance">Maintenance</Link></li>
-                                    <li><Link to="pages-faq">Faq</Link></li>
-                                    <li><Link to="pages-404">Error 404</Link></li>
-                                    <li><Link to="pages-500">Error 500</Link></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <Link to="/#" className="waves-effect"><i className="ion ion-md-paper-plane"></i><span> Email Templates <span className="float-right menu-arrow"><i className="mdi mdi-chevron-right"></i></span> </span></Link>
-                                <ul className="submenu">
-                                    <li><Link to="email-template-basic">Basic Action Email</Link></li>
-                                    <li><Link to="email-template-alert">Alert Email</Link></li>
-                                    <li><Link to="email-template-billing">Billing Email</Link></li>
-                                </ul>
-                            </li> */}
 
                             <li className="menu-title">Layouts</li>
 
