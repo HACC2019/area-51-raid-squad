@@ -5,6 +5,7 @@ import { activateAuthLayout } from '../../../store/actions';
 import { connect } from 'react-redux';
 import Settingmenu from '../Subpages/Settingmenu';
 import Firebase from 'firebase';
+import { Dropdow, DropdownButton } from 'react-bootstrap';
 
 // just read access prototype; let the api keys free!
 
@@ -155,12 +156,17 @@ class Charger_Status extends Component {
                                         <form>
                                             <div className="form-group mb-0">
                                                 <label>Filter</label>
-                                                <div className="input-group mb-0">
-                                                    <input type="text" className="form-control" placeholder="Search..." aria-describedby="project-search-addon" />
-                                                    <div className="input-group-append">
-                                                        <button className="btn btn-danger" type="button" id="project-search-addon"><i className="mdi mdi-magnify search-icon font-12"></i></button>
-                                                    </div>
-                                                </div>
+                                                <Dropdown>
+                                                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                                        Dropdown Button
+                                                    </Dropdown.Toggle>
+
+                                                    <Dropdown.Menu>
+                                                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                                                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                                                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                                    </Dropdown.Menu>
+                                                    </Dropdown>
                                             </div>
                                         </form>
                                     </CardBody>
