@@ -153,7 +153,7 @@ class Charger_Status extends Component {
                                 </Card>
                             </Col>
                             <Col xl="3" md="6">
-                                <Card>
+                                <Card className='bg-pattern'>
                                     <CardBody>
                                         <form>
                                             <div className="form-group mb-0">
