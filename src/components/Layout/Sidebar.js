@@ -20,9 +20,9 @@ const SideNav = () => { return <div id="sidebar-menu">
                                 <Link to="charger_status" className="waves-effect waves-light"><i className="ion ion-md-clipboard"></i><span> Charger Status </span></Link>
                             </li>
 
-                            <li>
-                                <Link to="calendar" className="waves-effect"><i className="ion ion-md-calendar"></i><span> Calendar </span></Link>
-                            </li>
+                            {/*<li>*/}
+                            {/*    <Link to="calendar" className="waves-effect"><i className="ion ion-md-calendar"></i><span> Calendar </span></Link>*/}
+                            {/*</li>*/}
 
                   <li>
                     <Link to="/#" className="waves-effect"><i className="ion ion-md-pin"></i><span> Maps <span className="float-right menu-arrow"><i className="mdi mdi-chevron-right"></i></span> </span></Link>
