@@ -114,7 +114,7 @@ class Charger_Status extends Component {
                                 <Card className="bg-pattern">
                                     <CardBody>
                                         <div className="float-right">
-                                            <i className="dripicons-archive text-primary h4 ml-3"></i>
+                                            <i className="dripicons-graph-bar text-primary h4 ml-3"></i>
                                         </div>
 
                                         <h5 className="font-20 mt-0 pt-1">{this.state.chargers.length}</h5>
@@ -126,7 +126,7 @@ class Charger_Status extends Component {
                                 <Card className="bg-pattern">
                                     <CardBody>
                                         <div className="float-right">
-                                            <i className="dripicons-trophy text-primary h4 ml-3"></i>
+                                            <i className="dripicons-power text-primary h4 ml-3"></i>
                                         </div>
                                         <h5 className="font-20 mt-0 pt-1">{onlineChargers}</h5>
                                         <p className="text-muted mb-0">Chargers Online</p>
@@ -150,6 +150,7 @@ class Charger_Status extends Component {
                                         <form>
                                             <div className="form-group mb-0">
                                               <label>Filter</label>
+                                              <i className="dripicons-experiment text-primary h4 ml-3"></i>
                                               <Dropdown>
                                                 <Dropdown.Toggle variant="success" id="dropdown-basic">
                                                   Island
