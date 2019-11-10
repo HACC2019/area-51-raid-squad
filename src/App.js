@@ -6,8 +6,6 @@ import routes from './routes';
 import './custom.css';
 import './App.scss';
 
-// import bootstrap from react-bootstrap
-
 //Fake backend
 import fakeBackend from './helpers/fakeBackend';
 
