@@ -88,7 +88,7 @@ class Dashboard extends Component {
                                 <Card className="mini-stat bg-pattern">
                                     <CardBody className="mini-stat-img">
                                         <div className="mini-stat-icon">
-                                            <i className="dripicons-broadcast bg-soft-primary text-primary float-right h4"></i>
+                                            <i className="dripicons-direction bg-soft-primary text-primary float-right h4"></i>
                                         </div>
                                         <h6 className="text-uppercase mb-3 mt-0">Amount Made</h6>
                                         <h5 className="mb-3">$1,687</h5>
@@ -100,7 +100,7 @@ class Dashboard extends Component {
                                 <Card className="mini-stat bg-pattern">
                                     <CardBody className="mini-stat-img">
                                         <div className="mini-stat-icon">
-                                            <i className="dripicons-box bg-soft-primary text-primary float-right h4"></i>
+                                            <i className="dripicons-graph-line bg-soft-primary text-primary float-right h4"></i>
                                         </div>
                                         <h6 className="text-uppercase mb-3 mt-0">Total Revenue Generated</h6>
                                         <h5 className="mb-3">$48,265</h5>
@@ -112,10 +112,10 @@ class Dashboard extends Component {
                                 <Card className="mini-stat bg-pattern">
                                     <CardBody className="mini-stat-img">
                                         <div className="mini-stat-icon">
-                                            <i className="dripicons-tags bg-soft-primary text-primary float-right h4"></i>
+                                            <i className="dripicons-stopwatch bg-soft-primary text-primary float-right h4"></i>
                                         </div>
-                                        <h6 className="text-uppercase mb-3 mt-0">Average Sale Made</h6>
-                                        <h5 className="mb-3">$14.6</h5>
+                                        <h6 className="text-uppercase mb-3 mt-0">Average Charge Duration</h6>
+                                        <h5 className="mb-3">00:10:20</h5>
                                         <p className="text-muted mb-0"><span className="text-danger mr-2"> -26% <i className="mdi mdi-arrow-down"></i> </span> From previous period</p>
                                     </CardBody>
                                 </Card>
