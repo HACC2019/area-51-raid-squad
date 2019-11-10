@@ -45,8 +45,6 @@ class Charger_Status extends Component {
                     chargersTemp.push(childSnapshot.val());
                 })
 
-                chargersTemp.reverse()
-
                 this.setState({chargers: chargersTemp})
             }})
 
@@ -147,23 +145,23 @@ class Charger_Status extends Component {
                                 </Card>
                             </Col>
                             <Col xl="3" md="6">
-                                <Card>
+                                <Card className="bg-pattern">
                                     <CardBody>
                                         <form>
                                             <div className="form-group mb-0">
-                                                <label>Filter</label>
-                                                <Dropdown>
-                                                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                                        Island
-                                                    </Dropdown.Toggle>
+                                              <label>Filter</label>
+                                              <Dropdown>
+                                                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                                  Island
+                                                </Dropdown.Toggle>
 
-                                                    <Dropdown.Menu>
-                                                        <Dropdown.Item href="#/action-1">Oahu</Dropdown.Item>
-                                                        <Dropdown.Item href="#/action-1">Maui</Dropdown.Item>
-                                                        <Dropdown.Item href="#/action-1">Molokai</Dropdown.Item>
-                                                        <Dropdown.Item href="#/action-1">Hawaii</Dropdown.Item>
-                                                    </Dropdown.Menu>
-                                                    </Dropdown>
+                                                <Dropdown.Menu>
+                                                  <Dropdown.Item href="#/action-1">Oahu</Dropdown.Item>
+                                                  <Dropdown.Item href="#/action-1">Maui</Dropdown.Item>
+                                                  <Dropdown.Item href="#/action-1">Molokai</Dropdown.Item>
+                                                  <Dropdown.Item href="#/action-1">Hawaii</Dropdown.Item>
+                                                </Dropdown.Menu>
+                                              </Dropdown>
                                             </div>
                                         </form>
                                     </CardBody>
