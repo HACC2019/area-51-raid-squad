@@ -5,6 +5,7 @@ import { activateAuthLayout } from '../../../store/actions';
 import { connect } from 'react-redux';
 import Settingmenu from '../Subpages/Settingmenu';
 import Firebase from 'firebase';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
 
 // just read access prototype; let the api keys free!
 
@@ -150,17 +151,23 @@ class Charger_Status extends Component {
                                 </Card>
                             </Col>
                             <Col xl="3" md="6">
-                                <Card>
+                                <Card className="bg-pattern">
                                     <CardBody>
                                         <form>
                                             <div className="form-group mb-0">
-                                                <label>Filter</label>
-                                                <div className="input-group mb-0">
-                                                    <input type="text" className="form-control" placeholder="Search..." aria-describedby="project-search-addon" />
-                                                    <div className="input-group-append">
-                                                        <button className="btn btn-danger" type="button" id="project-search-addon"><i className="mdi mdi-magnify search-icon font-12"></i></button>
-                                                    </div>
-                                                </div>
+                                              <label>Filter</label>
+                                              <Dropdown>
+                                                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                                  Island
+                                                </Dropdown.Toggle>
+
+                                                <Dropdown.Menu>
+                                                  <Dropdown.Item href="#/action-1">Oahu</Dropdown.Item>
+                                                  <Dropdown.Item href="#/action-1">Maui</Dropdown.Item>
+                                                  <Dropdown.Item href="#/action-1">Molokai</Dropdown.Item>
+                                                  <Dropdown.Item href="#/action-1">Hawaii</Dropdown.Item>
+                                                </Dropdown.Menu>
+                                              </Dropdown>
                                             </div>
                                         </form>
                                     </CardBody>
