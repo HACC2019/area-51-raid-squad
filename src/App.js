@@ -6,13 +6,14 @@ import routes from './routes';
 import './custom.css';
 import './App.scss';
 
-// import bootstrap from react-bootstrap
-
 //Fake backend
 import fakeBackend from './helpers/fakeBackend';
 
 // Get all Auth methods
 import { isUserAuthenticated } from './helpers/authUtils';
+
+// import bootstrap from react-bootstrap
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Activating fake backend
 fakeBackend();
