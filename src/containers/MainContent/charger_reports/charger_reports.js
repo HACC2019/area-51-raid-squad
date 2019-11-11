@@ -5,24 +5,12 @@ import { activateAuthLayout } from '../../../store/actions';
 import { connect } from 'react-redux';
 import Settingmenu from '../Subpages/Settingmenu';
 import Firebase from 'firebase';
-import { Dropdown, DropdownButton } from 'react-bootstrap';
-
-// just read access prototype; let the api keys free!
-
-// let firebase = Firebase.initializeApp({
-//     apiKey: "AIzaSyC7B4lfv4_ls8_0JSEPsPvK5sLEnfmcuQs",
-//     authDomain: "area-51-rs.firebaseapp.com",
-//     databaseURL: "https://area-51-rs.firebaseio.com",
-//     projectId: "area-51-rs",
-//     storageBucket: "area-51-rs.appspot.com",
-//     messagingSenderId: "805985707758",
-//     appId: "1:805985707758:web:25c29503f7d055fd17f5ff"
-//   });
+import * as Bootstrap from 'react-bootstrap';
 
 let query = Firebase.database().ref("Site_Power").orderByChild("island");
 
 class Charger_Reports extends Component {
-    _isMounted = false
+    _isMounted = false;
 
     constructor(props) {
         super(props);
@@ -62,31 +50,48 @@ class Charger_Reports extends Component {
     }
 
     render() {
-
         setTimeout(this.generateRandomNumber.bind(this, 60, 75), 5000)
 
-        const rows = this.state.chargers.map(charger =>
-            <tr>
-                <th scope="row">{charger.name}</th>
-                <td><span style={charger.status == "Offline" ? {color: '#de4040', backgroundColor: 'rgba(222, 64, 64, 0.2)'} : {color: '#47bd9a'}} className="badge badge-soft-success badge-pill"><i className="mdi mdi-checkbox-blank-circle mr-1"></i>{charger.status}</span></td>
-                <td>{charger.island}</td>
-                <td><p className="float-right mb-0 ml-3">{charger.status == "Online" ? this.state.chargerUsage : 0}</p>
-                <Progress className="mt-2" style={{ height: '5px' }} color="success" value={charger.status == "Online" ? this.state.chargerUsage : 0} /></td>
+        // const rows = this.state.chargers.map(charger =>
+        //     <tr>
+        //         <th scope="row">{charger.name}</th>
+        //         <td><span style={charger.status == "Offline" ? {color: '#de4040', backgroundColor: 'rgba(222, 64, 64, 0.2)'} : {color: '#47bd9a'}} className="badge badge-soft-success badge-pill"><i className="mdi mdi-checkbox-blank-circle mr-1"></i>{charger.status}</span></td>
+        //         <td>{charger.island}</td>
+        //         <td><p className="float-right mb-0 ml-3">{charger.status == "Online" ? this.state.chargerUsage : 0}</p>
+        //         <Progress className="mt-2" style={{ height: '5px' }} color="success" value={charger.status == "Online" ? this.state.chargerUsage : 0} /></td>
 
-                <td></td>
-                <td>
-                    <div>
-                    <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-map h5 m-0"></i></Link>
-                    </div>
-                </td>
-                <td></td>
-                <td>
-                    <div>
-                    <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-warning h5 m-0"></i></Link>
-                    </div>
-                </td>
-            </tr>
-        )
+        //         <td></td>
+        //         <td>
+        //             <div>
+        //             <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-map h5 m-0"></i></Link>
+        //             </div>
+        //         </td>
+        //         <td></td>
+        //         <td>
+        //             <div>
+        //             <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-warning h5 m-0"></i></Link>
+        //             </div>
+        //         </td>
+        //     </tr>
+        // )
+
+        const rows = this.state.chargers.map(charger =>
+                <div>
+                    <Bootstrap.Accordion defaultActiveKey="1">
+                        <Bootstrap.Card>
+                            <Bootstrap.Accordion.Toggle as={Card.Header} eventKey="0">
+                                {charger.name}
+                                <i className="dripicons-chevron-down text-primary h4 ml-3"></i>
+                            </Bootstrap.Accordion.Toggle>
+                            <Bootstrap.Accordion.Collapse eventKey="0">
+                                <Bootstrap.Card.Body>
+                                    <div>For station : {charger.name} the system has dected voltage output of 0.00 between 9/1/17 8:37 AM and 9/3/17 9:30 AM.</div>
+                                </Bootstrap.Card.Body>
+                            </Bootstrap.Accordion.Collapse>
+                        </Bootstrap.Card>
+                    </Bootstrap.Accordion>
+                </div>
+            );
 
         let onlineChargers = 0;
         
@@ -100,10 +105,10 @@ class Charger_Reports extends Component {
                         <div className="page-title-box">
                             <Row className="align-items-center">
                                 <Col sm="6">
-                                    <h4 className="page-title">Charger Status</h4>
+                                    <h4 className="page-title">Reports</h4>
                                     <ol className="breadcrumb">
                                         <li className="breadcrumb-item"><Link to="#"><i className="mdi mdi-home-outline"></i></Link></li>
-                                        <li className="breadcrumb-item active">Charger Status</li>
+                                        <li className="breadcrumb-item active">Reports</li>
                                     </ol>
                                 </Col>
                                 <Col sm="6">
@@ -135,7 +140,7 @@ class Charger_Reports extends Component {
                                             <i className="dripicons-power text-primary h4 ml-3"></i>
                                         </div>
                                         <h5 className="font-20 mt-0 pt-1">{onlineChargers}</h5>
-                                        <p className="text-muted mb-0">Chargers Online</p>
+                                        <p className="text-muted mb-0">Healthy Chargers</p>
                                     </CardBody>
                                 </Card>
                             </Col>
@@ -146,34 +151,22 @@ class Charger_Reports extends Component {
                                             <i className="dripicons-warning text-primary h4 ml-3"></i>
                                         </div>
                                         <h5 className="font-20 mt-0 pt-1">{this.state.chargers.length - onlineChargers}</h5>
-                                        <p className="text-muted mb-0">Chargers Offline</p>
+                                        <p className="text-muted mb-0">Warnings</p>
                                     </CardBody>
                                 </Card>
                             </Col>
                             <Col xl="3" md="6">
                                 <Card className="bg-pattern">
                                     <CardBody>
-                                        <form>
-                                            <div className="form-group mb-0">
-                                              <label>Filter</label>
-                                              <i className="dripicons-experiment text-primary h4 ml-3"></i>
-                                              <Dropdown>
-                                                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                                  Island
-                                                </Dropdown.Toggle>
-
-                                                <Dropdown.Menu>
-                                                  <Dropdown.Item href="#/action-1">Oahu</Dropdown.Item>
-                                                  <Dropdown.Item href="#/action-1">Maui</Dropdown.Item>
-                                                  <Dropdown.Item href="#/action-1">Molokai</Dropdown.Item>
-                                                  <Dropdown.Item href="#/action-1">Hawaii</Dropdown.Item>
-                                                </Dropdown.Menu>
-                                              </Dropdown>
-                                            </div>
-                                        </form>
+                                        <div className="float-right">
+                                            <i className="dripicons-warning text-primary h4 ml-3"></i>
+                                        </div>
+                                        <h5 className="font-20 mt-0 pt-1">{this.state.chargers.length - onlineChargers}</h5>
+                                        <p className="text-muted mb-0">Malfunctions</p>
                                     </CardBody>
                                 </Card>
                             </Col>
+
                         </Row>
 
                         <Row>
@@ -224,8 +217,9 @@ class Charger_Reports extends Component {
                     </div>
                 </div>
             </React.Fragment>
+            
         );
-    }
+      }
 }
 
 
