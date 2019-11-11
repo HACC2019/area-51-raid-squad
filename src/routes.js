@@ -20,6 +20,7 @@ import Ecommercecustomers from './containers/MainContent/ecommerce/ecommerce-cus
 import Ecommerceproductedit from './containers/MainContent/ecommerce/ecommerce-product-edit';
 
 import Charger_Status from './containers/MainContent/charger_status/charger_status';
+import Charger_Reports from './containers/MainContent/charger_reports/charger_reports';
 
 import Pageslogin2 from './containers/MainContent/pages/pages-login-2';
 import Pagesregister2 from './containers/MainContent/pages/pages-register-2';
@@ -110,6 +111,7 @@ const routes = [
     { path: '/ecommerce-customers', component: Ecommercecustomers },
     { path: '/ecommerce-product-edit', component: Ecommerceproductedit },
     { path: '/charger_status', component: Charger_Status },
+    { path: '/charger_reports', component: Charger_Reports },
 
     { path: '/pages-login-2', component: Pageslogin2 },
     { path: '/pages-register-2', component: Pagesregister2 },

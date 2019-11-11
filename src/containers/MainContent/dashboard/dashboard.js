@@ -12,22 +12,26 @@ import Rightsidebar from '../../../components/RightSidebar';
 //Charts
 import Apexarea from '../../../containers/charts/apex/apexarea';
 import Apexbar from '../../../containers/charts/apex/apexbar';
-// import Apexchart1 from '../../../containers/charts/apex/apexchart1';
-// import Apexchart2 from '../../../containers/charts/apex/apexchart2';
-// import Apexchart3 from '../../../containers/charts/apex/apexchart3';
-// import Apexradial from '../../../containers/charts/apex/apexradial';
-// import Apexradial2 from '../../../containers/charts/apex/apexradial2';
-// import Apexsocial from '../../../containers/charts/apex/apexsocial';
 
-//Images
-// import user2 from '../../../images/users/user-2.jpg';
-// import user3 from '../../../images/users/user-3.jpg';
-// import user4 from '../../../images/users/user-4.jpg';
-// import user5 from '../../../images/users/user-5.jpg';
-// import user6 from '../../../images/users/user-6.jpg';
-// import user7 from '../../../images/users/user-7.jpg';
+import Firebase from 'firebase';
 
 import DashboardRightSidebar from './rightbar';
+
+// Initialize firebase
+// open API key because this is prototype
+// you cant write to it anyways hehe xd
+
+Firebase.initializeApp({
+    apiKey: "AIzaSyC7B4lfv4_ls8_0JSEPsPvK5sLEnfmcuQs",
+    authDomain: "area-51-rs.firebaseapp.com",
+    databaseURL: "https://area-51-rs.firebaseio.com",
+    projectId: "area-51-rs",
+    storageBucket: "area-51-rs.appspot.com",
+    messagingSenderId: "805985707758",
+    appId: "1:805985707758:web:25c29503f7d055fd17f5ff"
+  });
+
+
 
 class Dashboard extends Component {
 
