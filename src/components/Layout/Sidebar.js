@@ -17,11 +17,11 @@ const SideNav = () => { return <div id="sidebar-menu">
                             </li>
 
                             <li>
-                                <Link to="charger_status" className="waves-effect waves-light"><i className="ion ion-md-clipboard"></i><span> Charger Status </span></Link>
+                                <Link to="charger_status" className="waves-effect waves-light"><i className="ion ion-md-clipboard"></i><span> Status </span></Link>
                             </li>
 
                             <li>
-                                <Link to="calendar" className="waves-effect"><i className="ion ion-md-calendar"></i><span> Calendar </span></Link>
+                                <Link to="charger_report" className="waves-effect"><i className="ion ion-md-clipboard"></i><span> Reports </span></Link>
                             </li>
 
                   <li>
