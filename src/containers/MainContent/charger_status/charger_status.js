@@ -9,17 +9,9 @@ import { Dropdown, DropdownButton } from 'react-bootstrap';
 
 // just read access prototype; let the api keys free!
 
-let firebase = Firebase.initializeApp({
-    apiKey: "AIzaSyC7B4lfv4_ls8_0JSEPsPvK5sLEnfmcuQs",
-    authDomain: "area-51-rs.firebaseapp.com",
-    databaseURL: "https://area-51-rs.firebaseio.com",
-    projectId: "area-51-rs",
-    storageBucket: "area-51-rs.appspot.com",
-    messagingSenderId: "805985707758",
-    appId: "1:805985707758:web:25c29503f7d055fd17f5ff"
-  });
 
-let query = firebase.database().ref("Site_Power").orderByChild("island");
+
+let query = Firebase.database().ref("Site_Power").orderByChild("island");
 
 class Charger_Status extends Component {
     _isMounted = false
