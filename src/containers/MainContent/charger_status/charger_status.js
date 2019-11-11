@@ -5,11 +5,7 @@ import { activateAuthLayout } from '../../../store/actions';
 import { connect } from 'react-redux';
 import Settingmenu from '../Subpages/Settingmenu';
 import Firebase from 'firebase';
-import { Dropdown, DropdownButton } from 'react-bootstrap';
-
-// just read access prototype; let the api keys free!
-
-
+import { Dropdown } from 'react-bootstrap';
 
 let query = Firebase.database().ref("Site_Power").orderByChild("island");
 
