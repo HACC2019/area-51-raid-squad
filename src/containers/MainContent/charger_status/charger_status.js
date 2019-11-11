@@ -73,10 +73,16 @@ class Charger_Status extends Component {
                 <td><p className="float-right mb-0 ml-3">{charger.status == "Online" ? this.state.chargerUsage : 0}</p>
                 <Progress className="mt-2" style={{ height: '5px' }} color="success" value={charger.status == "Online" ? this.state.chargerUsage : 0} /></td>
 
+                <td></td>
                 <td>
                     <div>
-                    <Tooltip placement="top" isOpen={this.state.t1} target="t1" toggle={() => this.setState({ t1: !this.state.t1 })}>Edit</Tooltip>
                     <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-map h5 m-0"></i></Link>
+                    </div>
+                </td>
+                <td></td>
+                <td>
+                    <div>
+                    <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-warning h5 m-0"></i></Link>
                     </div>
                 </td>
             </tr>
@@ -94,7 +100,7 @@ class Charger_Status extends Component {
                         <div className="page-title-box">
                             <Row className="align-items-center">
                                 <Col sm="6">
-                                    <h4 className="page-title">Charger Status </h4>
+                                    <h4 className="page-title">Charger Status</h4>
                                     <ol className="breadcrumb">
                                         <li className="breadcrumb-item"><Link to="#"><i className="mdi mdi-home-outline"></i></Link></li>
                                         <li className="breadcrumb-item active">Charger Status</li>
@@ -182,8 +188,10 @@ class Charger_Status extends Component {
                                                         <th scope="col">Status</th>
                                                         <th scope="col">Island</th>
                                                         <th scope="col">Average Usage (1 Week)</th>
+                                                        <th></th>
                                                         <th scope="col">Map</th>
                                                         <th scope="col"></th>
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
