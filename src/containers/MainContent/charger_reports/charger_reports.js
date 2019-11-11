@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, CardBody, Progress, Tooltip } from 'reactstrap';
+import { Row, Col, Card, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { activateAuthLayout } from '../../../store/actions';
 import { connect } from 'react-redux';
