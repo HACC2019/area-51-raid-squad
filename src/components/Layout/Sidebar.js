@@ -21,7 +21,7 @@ const SideNav = () => { return <div id="sidebar-menu">
                             </li>
 
                             <li>
-                                <Link to="charger_report" className="waves-effect"><i className="ion ion-md-clipboard"></i><span> Reports </span></Link>
+                                <Link to="charger_reports" className="waves-effect"><i className="ion ion-md-clipboard"></i><span> Reports </span></Link>
                             </li>
 
                   <li>
