@@ -25,6 +25,11 @@ const SideNav = () => { return <div id="sidebar-menu">
                             </li>
 
                   <li>
+                    <Link to="/energycharts" className="waves-effect"><i className="ion ion-md-clipboard"></i><span> Brendt Click Here </span></Link>
+                  </li>
+
+
+                  <li>
                     <Link to="/#" className="waves-effect"><i className="ion ion-md-pin"></i><span> Maps <span className="float-right menu-arrow"><i className="mdi mdi-chevron-right"></i></span> </span></Link>
                     <ul className="submenu">
                       <li><Link to="maps-google"> Google Map</Link></li>
