@@ -8,7 +8,6 @@ import Firebase from 'firebase';
 import * as Bootstrap from 'react-bootstrap';
 
 let Site_Power_query = Firebase.database().ref("Site_Power").orderByChild("island");
-let SiteX_Power_query = Firebase.database().ref("SiteX_Power").orderByChild("start");
 
 class Charger_Reports extends Component {
     _isMounted = false;
@@ -37,19 +36,6 @@ class Charger_Reports extends Component {
                 this.setState({chargers: chargersTemp})
             }
         });
-
-        Site_Power_query.on('value', snapshot => {
-            if (this._isMounted) {
-                let chargersTemp = []
-    
-                snapshot.forEach(function(childSnapshot) {
-                    chargersTemp.push(childSnapshot.val());
-                })
-    
-                this.setState({chargers: chargersTemp})
-            }
-        });
-
     }
 
     componentWillUnmount() {
@@ -63,10 +49,24 @@ class Charger_Reports extends Component {
         })
     }
 
+    countChargerType = (chargerPowerData) => {
+        let chad = 0;
+
+        for (let data in chargerPowerData) {
+            data.port = "CHADEMO" ? chad++ : chad = chad + 0;
+        }
+
+        return chad;
+    }
+
     render() {
         setTimeout(this.generateRandomNumber.bind(this, 60, 75), 5000);
 
-        const rows = this.state.chargers.map(charger =>
+        console.log(this.state.chargers[8]);
+
+        let rows;
+
+            rows = this.state.chargers.map(charger =>
                 <div>
                     <Bootstrap.Accordion defaultActiveKey="1">
                         <Bootstrap.Card>
@@ -76,13 +76,16 @@ class Charger_Reports extends Component {
                             </Bootstrap.Accordion.Toggle>
                             <Bootstrap.Accordion.Collapse eventKey="0">
                                 <Bootstrap.Card.Body>
-                                    <div>For station : {charger.name} the system has dected voltage output of 0.00 between 9/1/17 8:37 AM and 9/3/17 9:30 AM.</div>
+                                    <span>For station : {charger.name} the system has dected voltage output of 0.00 between 9/1/17 8:37 AM and 9/3/17 9:30 AM.</span>
+                                    <br/>
+                                    <span>{charger.name === "Hawaiian Electric Ward Office" ? this.countChargerType.bind(charger.power) : 0}</span>
                                 </Bootstrap.Card.Body>
                             </Bootstrap.Accordion.Collapse>
                         </Bootstrap.Card>
                     </Bootstrap.Accordion>
                 </div>
             );
+        
 
         let onlineChargers = 0;
         
