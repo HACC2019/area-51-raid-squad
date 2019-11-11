@@ -303,6 +303,14 @@ div[id^="pagination"]   {
   color: #553c8b;
 }
 
+.page-title {
+  color: #553c8b !important;
+}
+
+.breadcrumb-item.active {
+  color: #553c8b !important;
+}
+
 
 
 

@@ -7,7 +7,7 @@ import ProfileMenu from './Menus/profileMenu';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { connect } from 'react-redux';
 import { toggleSidebar  } from '../../store/actions';
-import HecoLogo from '../../images/heco-logo3.png';
+import HecoLogo from '../../images/heco-logo-white.png';
 
 // import { getLoggedInUser } from '../../helpers/authUtils';
 

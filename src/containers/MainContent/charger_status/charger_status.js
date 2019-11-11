@@ -105,7 +105,7 @@ class Charger_Status extends Component {
 
                         <Row>
                             <Col xl="3" md="6">
-                                <Card className="bg-pattern">
+                                <Card className="bg-pattern-blue">
                                     <CardBody>
                                         <div className="float-right">
                                             <i className="dripicons-graph-bar text-primary h4 ml-3"></i>
@@ -128,10 +128,10 @@ class Charger_Status extends Component {
                                 </Card>
                             </Col>
                             <Col xl="3" md="6">
-                                <Card className="bg-pattern">
+                                <Card className="bg-pattern-red">
                                     <CardBody>
                                         <div className="float-right">
-                                            <i className="dripicons-warning text-primary h4 ml-3"></i>
+                                            <i className="dripicons-hourglass text-primary h4 ml-3"></i>
                                         </div>
                                         <h5 className="font-20 mt-0 pt-1">{this.state.chargers.length - onlineChargers}</h5>
                                         <p className="text-muted mb-0">Chargers Offline</p>
@@ -139,7 +139,7 @@ class Charger_Status extends Component {
                                 </Card>
                             </Col>
                             <Col xl="3" md="6">
-                                <Card className="bg-pattern">
+                                <Card>
                                     <CardBody>
                                         <form>
                                             <div className="form-group mb-0">
