@@ -17,23 +17,6 @@ import Firebase from 'firebase';
 
 import DashboardRightSidebar from './rightbar';
 
-
-// import Apexchart1 from '../../../containers/charts/apex/apexchart1';
-// import Apexchart2 from '../../../containers/charts/apex/apexchart2';
-// import Apexchart3 from '../../../containers/charts/apex/apexchart3';
-// import Apexradial from '../../../containers/charts/apex/apexradial';
-// import Apexradial2 from '../../../containers/charts/apex/apexradial2';
-// import Apexsocial from '../../../containers/charts/apex/apexsocial';
-
-//Images
-// import user2 from '../../../images/users/user-2.jpg';
-// import user3 from '../../../images/users/user-3.jpg';
-// import user4 from '../../../images/users/user-4.jpg';
-// import user5 from '../../../images/users/user-5.jpg';
-// import user6 from '../../../images/users/user-6.jpg';
-// import user7 from '../../../images/users/user-7.jpg';
-
-
 // Initialize firebase
 // open API key because this is prototype
 // you cant write to it anyways hehe xd
