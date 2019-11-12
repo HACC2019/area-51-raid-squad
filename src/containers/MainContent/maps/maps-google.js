@@ -56,6 +56,17 @@ class Mapsgoogle extends Component {
     }
 
     render() {
+
+        // const locations = this.state.chargers.map(charger =>
+        //     <Marker
+        //         name={charger.name}
+        //         title={"what does this do"}
+        //         position={{lat: 20.266}, {lng: -156.27}}
+        //     />
+        // )
+
+        // console.log(locations);
+
         return (
             <React.Fragment>
                 <div className="content">
@@ -70,7 +81,12 @@ class Mapsgoogle extends Component {
                                                     lng: -156.27
                                                 }}>
 
-                                                {/* <Marker onClick={this.onMarkerClick} /> */}
+                                                {this.state.chargers.map(charger =>
+                                                    <Marker
+                                                    name={'Dolores park'}
+                                                    position={{lat: charger.lat, lng: charger.lng}} />
+                                                )}
+
                                                 <InfoWindow>
                                                     <div>
                                                         <h1>{this.state.selectedPlace.name}</h1>
@@ -85,7 +101,7 @@ class Mapsgoogle extends Component {
 }
 
 export default connect(null, { activateAuthLayout })(GoogleApiWrapper({
-    apiKey: "AIzaSyAbvyBxmMbFhrzP9Z8moyYr6dCr-pzjhBE",
+    apiKey: "AIzaSyDAyU96p2SuAik_SvA8nd1C1D1-M4EtiCM",
     LoadingContainer: LoadingContainer,
     v: "3"
 })(Mapsgoogle));
