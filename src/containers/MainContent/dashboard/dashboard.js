@@ -154,7 +154,7 @@ class Dashboard extends Component {
                           <Col xl="8">
                             <Card>
                               <CardBody>
-                                <h4 className="mt-0 header-title mb-4">Average Weekly Energy Charged</h4>
+                                <h4 className="mt-0 header-title mb-4">Average Hourly Energy Charged</h4>
                                 <div id="area-chart">
                                   <Apexarea />
                                 </div>

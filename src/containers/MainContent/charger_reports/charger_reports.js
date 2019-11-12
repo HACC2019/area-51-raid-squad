@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, CardBody } from 'reactstrap';
+import { Row, Col, Card, CardHeader, CardBody, Collapse } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { activateAuthLayout } from '../../../store/actions';
 import { connect } from 'react-redux';
@@ -14,10 +14,11 @@ class Charger_Reports extends Component {
 
     constructor(props) {
         super(props);
-
+        this.toggle = this.toggle.bind(this);
         this.state = {
             chargers: [],
-            chargerUsage: 0
+            chargerUsage: 0,
+            collapseBanner: ""
         }
     }
 
@@ -42,13 +43,24 @@ class Charger_Reports extends Component {
         this._isMounted = false;
     }
 
-    generateRandomNumber = (min, max) => { 
+    generateRandomNumber = (min, max) => {
         const random = (Math.floor(Math.random() * (max - min + 1)) + min)
         this.setState({
           chargerUsage: random
         })
     }
 
+    toggle(e) {
+        let event = e.target.dataset.event;
+        let key = e.target.dataset.type;
+        switch(key) {
+            case "collapseBanner": {
+                this.setState({ collapseBanner: event});
+                break;
+            }
+            default: break;
+        }
+    }
     countChargerType = (charger) => {
         let currentRFID = {
             total: 0,
@@ -67,7 +79,7 @@ class Charger_Reports extends Component {
         }
 
 
-            for (let i = 0; i < charger.power.length; i++) { 
+            for (let i = 0; i < charger.power.length; i++) {
                 charger.power[i].payment === "RFID" ? (currentRFID.total = currentRFID.total + 1) && (currentRFID.concurrent = currentRFID.concurrent + 1) : currentCredit.concurrent = 0;
                 charger.power[i].payment === "CREDITCARD" ? (currentCredit.total = currentCredit.total + 1) && (currentCredit.concurrent = currentCredit.concurrent + 1) : currentRFID.concurrent = 0;
 
@@ -90,28 +102,30 @@ class Charger_Reports extends Component {
 
         const rows = this.state.chargers.map(charger =>
                 <div>
-                    <Bootstrap.Accordion defaultActiveKey="1">
-                        <Bootstrap.Card>
-                            <Bootstrap.Accordion.Toggle as={Card.Header} eventKey="0">
-                                {charger.name}
-                                <i className="dripicons-chevron-down text-primary h4 ml-3"></i>
-                            </Bootstrap.Accordion.Toggle>
-                            <Bootstrap.Accordion.Collapse eventKey="0">
-                                <Bootstrap.Card.Body>
-                                    <span>For station : {charger.name} the system has dected voltage output of 0.00 between 9/1/17 8:37 AM and 9/3/17 9:30 AM.</span>
+                    <Card style={{ marginBotttom: '1rem'}} key={charger.name}>
+                        <CardHeader onClick={this.toggle} data-event={charger.name} data-type='collapseBanner'>{charger.name}</CardHeader>
+                        <Collapse isOpen={this.state.collapseBanner === charger.name}>
+                            <CardBody>
+                              <Card className="bg-pattern">
+                                <CardBody>
+                                  <div className="float-right">
+                                    <i className="text-primary h4 ml-3"></i>
+                                  </div>
+                                  <h5 className="font-20 mt-0 pt-1">{charger.name}</h5>
+                                  <p className="text-muted mb-0"><span>For station : {charger.name} the system has dected voltage output of 0.00 between 9/1/17 8:37 AM and 9/3/17 9:30 AM.</span>
                                     <br/>
-                                    {this.countChargerType(charger)}
-                                </Bootstrap.Card.Body>
-                            </Bootstrap.Accordion.Collapse>
-                        </Bootstrap.Card>
-                    </Bootstrap.Accordion>
+                                    {this.countChargerType(charger)}</p>
+                                </CardBody>
+                              </Card>
+                            </CardBody>
+                        </Collapse>
+                    </Card>
                 </div>
             );
-        
 
         let onlineChargers = 0;
-        
-        this.state.chargers.forEach(charger => 
+
+        this.state.chargers.forEach(charger =>
             charger.status === "Online" ? onlineChargers++ : onlineChargers = onlineChargers)
 
         return (
@@ -138,7 +152,7 @@ class Charger_Reports extends Component {
 
                         <Row>
                             <Col xl="3" md="6">
-                                <Card className="bg-pattern">
+                                <Card className="bg-pattern-blue">
                                     <CardBody>
                                         <div className="float-right">
                                             <i className="dripicons-graph-bar text-primary h4 ml-3"></i>
@@ -161,7 +175,7 @@ class Charger_Reports extends Component {
                                 </Card>
                             </Col>
                             <Col xl="3" md="6">
-                                <Card className="bg-pattern">
+                                <Card className="bg-pattern-red">
                                     <CardBody>
                                         <div className="float-right">
                                             <i className="dripicons-warning text-primary h4 ml-3"></i>
@@ -172,7 +186,7 @@ class Charger_Reports extends Component {
                                 </Card>
                             </Col>
                             <Col xl="3" md="6">
-                                <Card className="bg-pattern">
+                                <Card className="bg-pattern-red">
                                     <CardBody>
                                         <div className="float-right">
                                             <i className="dripicons-warning text-primary h4 ml-3"></i>
@@ -194,13 +208,6 @@ class Charger_Reports extends Component {
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">Charger Name</th>
-                                                        <th scope="col">Status</th>
-                                                        <th scope="col">Island</th>
-                                                        <th scope="col">Average Usage (1 Week)</th>
-                                                        <th></th>
-                                                        <th scope="col">Map</th>
-                                                        <th scope="col"></th>
-                                                        <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -233,7 +240,7 @@ class Charger_Reports extends Component {
                     </div>
                 </div>
             </React.Fragment>
-            
+
         );
       }
 }
