@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, CardBody, Progress, Tooltip } from 'reactstrap';
+import { Row, Col, Card, CardBody, Progress } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { activateAuthLayout } from '../../../store/actions';
 import { connect } from 'react-redux';
@@ -14,11 +14,52 @@ class Charger_Status extends Component {
 
     constructor(props) {
         super(props);
+        this.generateGaussianPoint = this.generateGaussianPoint.bind(this);
+        this.generateDataSet = this.generateDataSet.bind(this);
+        this.randData = [];
+
+        for(let item = 0; item < 16; item++) {
+            this.randData.push(this.generateDataSet(100, 0, 85, .5));
+        }
 
         this.state = {
+            dataIndex: 0,
             chargers: [],
             chargerUsage: 0
         }
+    }
+
+    // TODO: Should probably move this to a data generation module or helper function file
+    generateGaussianPoint = (min, max, skew) => {
+        // Generates a random point that fits within a gaussian distribution
+        // Args:
+        // min (int): The minimum possible value
+        // max (int): The maximum possible value
+        // skew (float): Skew
+        let u = 0, v = 0;
+        while(u === 0) u = Math.random();
+        while(v === 0) v = Math.random();
+        let num = -1;
+        while (num > 1 || num < 0) {
+            num = Math.sqrt( -2.0 * Math.log( u )) * Math.cos(2.0 * Math.PI * v);
+            num = num / 10.0 + 0.5
+        }
+
+        num = Math.pow(num, skew);
+        num *= max - min;
+        num += min;
+
+        return Math.round(num);
+    }
+
+    generateDataSet = (numItems, min, max, skew) => {
+        let dataSet = [];
+
+        for (let itemCount = 0; itemCount < numItems; itemCount++) {
+            dataSet.push(this.generateGaussianPoint(min, max, skew))
+        }
+
+        return dataSet;
     }
 
     componentDidMount() {
@@ -27,39 +68,50 @@ class Charger_Status extends Component {
 
         query.on('value', snapshot => {
             if (this._isMounted) {
-                let chargersTemp = []
+                let chargersTemp = [];
 
+                let id = 0;
                 snapshot.forEach(function(childSnapshot) {
-                    chargersTemp.push(childSnapshot.val());
-                })
+                    let chargerData = childSnapshot.val();
+                    chargerData['id'] = id;
+
+                    chargersTemp.push(chargerData);
+                    id++;
+                });
 
                 this.setState({chargers: chargersTemp})
             }})
-
     }
 
     componentWillUnmount() {
         this._isMounted = false;
     }
 
-    generateRandomNumber = (min, max) => { 
-        const random = (Math.floor(Math.random() * (max - min + 1)) + min)
-        this.setState({
-          chargerUsage: random
-        })
+    iterateRotatingIndex = () => {
+        this.state.dataIndex === 99 ? this.setState({dataIndex: 0 }) : this.setState({dataIndex: this.state.dataIndex + 1});
     }
+
 
     render() {
 
-        setTimeout(this.generateRandomNumber.bind(this, 60, 75), 5000)
 
-        const rows = this.state.chargers.map(charger =>
+        setTimeout(this.iterateRotatingIndex.bind(this), 5000);
+
+
+        const rows = this.state.chargers.map((charger, cIndex) =>
             <tr>
                 <th scope="row">{charger.name}</th>
-                <td><span style={charger.status == "Offline" ? {color: '#de4040', backgroundColor: 'rgba(222, 64, 64, 0.2)'} : {color: '#47bd9a'}} className="badge badge-soft-success badge-pill"><i className="mdi mdi-checkbox-blank-circle mr-1"></i>{charger.status}</span></td>
+                <td>
+                    <span
+                        style={charger.status === "Offline" ? {color: '#de4040', backgroundColor: 'rgba(222, 64, 64, 0.2)'} : {color: '#47bd9a'}}
+                        className="badge badge-soft-success badge-pill"
+                    >
+                        <i className="mdi mdi-checkbox-blank-circle mr-1"></i>{charger.status}
+                    </span>
+                </td>
                 <td>{charger.island}</td>
-                <td><p className="float-right mb-0 ml-3">{charger.status == "Online" ? this.state.chargerUsage : 0}</p>
-                <Progress className="mt-2" style={{ height: '5px' }} color="success" value={charger.status == "Online" ? this.state.chargerUsage : 0} /></td>
+                <td><p className="float-right mb-0 ml-3">{charger.status === "Online" ? this.randData[cIndex][this.state.dataIndex] : 0}</p>
+                <Progress className="mt-2" style={{ height: '5px' }} color="success" value={charger.status === "Online" ? this.randData[cIndex][this.state.dataIndex] : 0} /></td>
 
                 <td></td>
                 <td>
@@ -77,9 +129,9 @@ class Charger_Status extends Component {
         )
 
         let onlineChargers = 0;
-        
-        this.state.chargers.forEach(charger => 
-            charger.status == "Online" ? onlineChargers++ : onlineChargers = onlineChargers)
+
+        this.state.chargers.forEach(charger =>
+            charger.status === "Online" ? onlineChargers++ : onlineChargers = onlineChargers)
 
         return (
             <React.Fragment>

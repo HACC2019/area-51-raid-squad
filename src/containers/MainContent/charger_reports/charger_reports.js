@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, CardBody, Progress, Tooltip } from 'reactstrap';
+import { Row, Col, Card, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { activateAuthLayout } from '../../../store/actions';
 import { connect } from 'react-redux';
@@ -49,24 +49,46 @@ class Charger_Reports extends Component {
         })
     }
 
-    countChargerType = (chargerPowerData) => {
-        let chad = 0;
-
-        for (let data in chargerPowerData) {
-            data.port = "CHADEMO" ? chad++ : chad = chad + 0;
+    countChargerType = (charger) => {
+        let currentRFID = {
+            total: 0,
+            concurrent: 0,
+            broken : 'false',
+            startCurr: [],
+            endCurr: []
         }
 
-        return chad;
+        let currentCredit = {
+            total: 0,
+            concurrent: 0,
+            broken : 'false',
+            startCurr: [],
+            endCurr: []
+        }
+
+
+            for (let i = 0; i < charger.power.length; i++) { 
+                charger.power[i].payment === "RFID" ? (currentRFID.total = currentRFID.total + 1) && (currentRFID.concurrent = currentRFID.concurrent + 1) : currentCredit.concurrent = 0;
+                charger.power[i].payment === "CREDITCARD" ? (currentCredit.total = currentCredit.total + 1) && (currentCredit.concurrent = currentCredit.concurrent + 1) : currentRFID.concurrent = 0;
+
+                if (currentRFID.concurrent >= 100) { if (currentCredit.broken === 'false') { currentCredit.startCurr.push(charger.power[i - 200].start); } currentCredit.broken = 'true'; }
+                if (currentCredit.concurrent >= 100) { if (currentRFID.broken === 'false') { currentRFID.startCurr.push(charger.power[i - 200].start); } currentRFID.broken = 'true'; }
+            }
+
+        currentRFID.startCurr.push('9/5/17 5:12 PM');
+        currentRFID.startCurr.push('9/10/17 3:45 AM');
+
+        let domRFID = <span>Total RFID sessions : {currentRFID.total}</span>;
+
+        let domCredit = <span>Total Credit Card sessions : {currentCredit.total}</span>;
+
+
+        return <div><div>{domRFID}</div><div>{domCredit}</div></div>;
     }
 
     render() {
-        setTimeout(this.generateRandomNumber.bind(this, 60, 75), 5000);
 
-        console.log(this.state.chargers[8]);
-
-        let rows;
-
-            rows = this.state.chargers.map(charger =>
+        const rows = this.state.chargers.map(charger =>
                 <div>
                     <Bootstrap.Accordion defaultActiveKey="1">
                         <Bootstrap.Card>
@@ -78,7 +100,7 @@ class Charger_Reports extends Component {
                                 <Bootstrap.Card.Body>
                                     <span>For station : {charger.name} the system has dected voltage output of 0.00 between 9/1/17 8:37 AM and 9/3/17 9:30 AM.</span>
                                     <br/>
-                                    <span>{charger.name === "Hawaiian Electric Ward Office" ? this.countChargerType.bind(charger.power) : 0}</span>
+                                    {this.countChargerType(charger)}
                                 </Bootstrap.Card.Body>
                             </Bootstrap.Accordion.Collapse>
                         </Bootstrap.Card>
@@ -90,7 +112,7 @@ class Charger_Reports extends Component {
         let onlineChargers = 0;
         
         this.state.chargers.forEach(charger => 
-            charger.status == "Online" ? onlineChargers++ : onlineChargers = onlineChargers)
+            charger.status === "Online" ? onlineChargers++ : onlineChargers = onlineChargers)
 
         return (
             <React.Fragment>
