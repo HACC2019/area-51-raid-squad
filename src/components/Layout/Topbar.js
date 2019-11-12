@@ -97,10 +97,6 @@ class Topbar extends Component {
                                 {/*    <i className="mdi mdi-menu"></i>*/}
                                 {/*</button>*/}
                             </li>
- 
-                            <li className="d-none d-sm-block">
-                            
-                        </li>
                         </ul>
                     </nav>
                 </div>

@@ -43,7 +43,7 @@ class Charger_Reports extends Component {
         this._isMounted = false;
     }
 
-    generateRandomNumber = (min, max) => { 
+    generateRandomNumber = (min, max) => {
         const random = (Math.floor(Math.random() * (max - min + 1)) + min)
         this.setState({
           chargerUsage: random
@@ -79,7 +79,7 @@ class Charger_Reports extends Component {
         }
 
 
-            for (let i = 0; i < charger.power.length; i++) { 
+            for (let i = 0; i < charger.power.length; i++) {
                 charger.power[i].payment === "RFID" ? (currentRFID.total = currentRFID.total + 1) && (currentRFID.concurrent = currentRFID.concurrent + 1) : currentCredit.concurrent = 0;
                 charger.power[i].payment === "CREDITCARD" ? (currentCredit.total = currentCredit.total + 1) && (currentCredit.concurrent = currentCredit.concurrent + 1) : currentRFID.concurrent = 0;
 
@@ -114,11 +114,10 @@ class Charger_Reports extends Component {
                     </Card>
                 </div>
             );
-        
 
         let onlineChargers = 0;
-        
-        this.state.chargers.forEach(charger => 
+
+        this.state.chargers.forEach(charger =>
             charger.status === "Online" ? onlineChargers++ : onlineChargers = onlineChargers)
 
         return (
@@ -201,7 +200,6 @@ class Charger_Reports extends Component {
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">Charger Name</th>
-                                                        
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -234,7 +232,7 @@ class Charger_Reports extends Component {
                     </div>
                 </div>
             </React.Fragment>
-            
+
         );
       }
 }
