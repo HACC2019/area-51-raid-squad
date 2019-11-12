@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
-let data = [];
-data =  require('./../../../fullworking1.json');
+const data =  require('./../../../fullworking1.json');
 
 class Apexarea extends Component {
 
@@ -27,7 +26,7 @@ class Apexarea extends Component {
         },
         colors: ['#4090cb'],
         xaxis: {
-          categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'],
+          categories: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'],
         },
         grid: {
           yaxis: {
@@ -46,26 +45,44 @@ class Apexarea extends Component {
 
   render() {
 
-    let powerData = [];
+    let dayData = [];
 
+    let segmentedData = Array(7).fill(0).map(x => Array(24).fill(0).map(x => Array()));
+
+    // console.log(segmentedData);
     data.forEach(function(item) {
-      // energy_manifold.push(item.energy);
-      // moneyfold.push(parseFloat(item.amount.slice(1)));
-      if (item.start.substring(0, 3) === "9/1") {
-        powerData.push(item.power);
-      }
-    })
+      let day = parseInt(item.start[2]) - 1;
 
-    this.state.series = powerData;
-    // const apexBarChartData = [{
-    //   power: powerData,
-    // }];
+      let time = item.start.substring(item.start.length-5, item.start.length - 3);
+      if (time[0] === ' ') {
+        time = time.replace(' ', '0');
+      }
+
+      let hour = parseInt(time);
+      segmentedData[day][hour].push(item.power);
+    });
+
+    for (let i = 0; i < segmentedData[0].length; i++) {
+      let total = 0;
+      for (let j = 0; j < segmentedData[0][i].length; j++) {
+        total += segmentedData[0][i][j];
+      }
+      let average = Math.round(((total / 60) * 100)) / 100;
+      dayData.push(average);
+    }
+
+    const apexChartData = [{
+      name: 'power',
+      data: dayData,
+    }];
+
+
 
     return (
         <React.Fragment>
           <ReactApexChart
               options={this.state.options}
-              series={this.state.series}
+              series={apexChartData}
               type="area"
               width="100%"
               height="300" />
