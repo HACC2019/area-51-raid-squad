@@ -241,11 +241,6 @@ class Uibuttons extends Component {
                                 <Card>
                                     <CardBody>
 
-                                        <h4 className="mt-0 header-title">Block Buttons</h4>
-                                        <p className="text-muted">Create block level buttons—those that
-                                            span the full width of a parent—by adding <code
-                                                className="highlighter-rouge">.btn-block</code>.</p>
-
                                         <div className="button-items">
 
                                             <Button className="btn waves-effect btn-block btn-lg waves-light" color="primary"> Block level Button</Button>{' '}
