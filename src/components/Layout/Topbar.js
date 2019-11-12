@@ -99,18 +99,7 @@ class Topbar extends Component {
                             </li>
  
                             <li className="d-none d-sm-block">
-                            <Dropdown isOpen={this.state.create_menu} toggle={this.toggleCreate} className="pt-3 d-inline-block">
-                                <DropdownToggle className="btn btn-light" caret tag="a">
-                                    Create {' '}{' '}{' '}
-                                </DropdownToggle>
-                                <DropdownMenu >
-                                    <DropdownItem tag="a" href="#">Today</DropdownItem>
-                                    <DropdownItem tag="a" href="#">Yesterday</DropdownItem>
-                                    <DropdownItem tag="a" href="#">Last Month</DropdownItem>
-                                    <div className="dropdown-divider"></div>
-                                    <DropdownItem tag="a" href="#">Current Year</DropdownItem>
-                                </DropdownMenu>
-                            </Dropdown>
+                            
                         </li>
                         </ul>
                     </nav>

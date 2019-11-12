@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import Settingmenu from '../Subpages/Settingmenu';
 import Firebase from 'firebase';
 import { Dropdown, Button, OverlayTrigger } from 'react-bootstrap';
-import { Manager, Reference, Popper } from 'react-popper';
 import Popover from 'react-bootstrap/Popover'
 
 let query = Firebase.database().ref("Site_Power").orderByChild("island");
@@ -92,7 +91,6 @@ class Charger_Status extends Component {
     iterateRotatingIndex = () => {
         this.state.dataIndex === 99 ? this.setState({dataIndex: 0 }) : this.setState({dataIndex: this.state.dataIndex + 1});
     }
-
 
     render() {
         setTimeout(this.iterateRotatingIndex.bind(this), 5000);
