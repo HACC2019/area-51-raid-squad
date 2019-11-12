@@ -42,9 +42,9 @@ class Charger_Status extends Component {
         let num = -1;
         while (num > 1 || num < 0) {
             num = Math.sqrt( -2.0 * Math.log( u )) * Math.cos(2.0 * Math.PI * v);
-            num = num / 10.0 + 0.5 
+            num = num / 10.0 + 0.5
         }
-        
+
         num = Math.pow(num, skew);
         num *= max - min;
         num += min;
@@ -60,7 +60,7 @@ class Charger_Status extends Component {
         }
 
         return dataSet;
-    } 
+    }
 
     componentDidMount() {
         this._isMounted = true;
@@ -74,13 +74,13 @@ class Charger_Status extends Component {
                 snapshot.forEach(function(childSnapshot) {
                     let chargerData = childSnapshot.val();
                     chargerData['id'] = id;
-                    
+
                     chargersTemp.push(chargerData);
                     id++;
                 });
 
                 this.setState({chargers: chargersTemp})
-            }})            
+            }})
     }
 
     componentWillUnmount() {
@@ -102,8 +102,8 @@ class Charger_Status extends Component {
             <tr>
                 <th scope="row">{charger.name}</th>
                 <td>
-                    <span 
-                        style={charger.status === "Offline" ? {color: '#de4040', backgroundColor: 'rgba(222, 64, 64, 0.2)'} : {color: '#47bd9a'}} 
+                    <span
+                        style={charger.status === "Offline" ? {color: '#de4040', backgroundColor: 'rgba(222, 64, 64, 0.2)'} : {color: '#47bd9a'}}
                         className="badge badge-soft-success badge-pill"
                     >
                         <i className="mdi mdi-checkbox-blank-circle mr-1"></i>{charger.status}
@@ -129,8 +129,8 @@ class Charger_Status extends Component {
         )
 
         let onlineChargers = 0;
-        
-        this.state.chargers.forEach(charger => 
+
+        this.state.chargers.forEach(charger =>
             charger.status === "Online" ? onlineChargers++ : onlineChargers = onlineChargers)
 
         return (
