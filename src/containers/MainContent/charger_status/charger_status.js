@@ -112,7 +112,7 @@ class Charger_Status extends Component {
             </OverlayTrigger>
         );
 
-        const rows = this.state.chargers.map(charger =>
+        const rows = this.state.chargers.map((charger, cIndex) =>
             <tr>
                 <th scope="row">{charger.name}</th>
                 <td>
