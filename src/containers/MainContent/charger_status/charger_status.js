@@ -5,7 +5,9 @@ import { activateAuthLayout } from '../../../store/actions';
 import { connect } from 'react-redux';
 import Settingmenu from '../Subpages/Settingmenu';
 import Firebase from 'firebase';
-import { Dropdown } from 'react-bootstrap';
+import { Dropdown, Button, OverlayTrigger } from 'react-bootstrap';
+import { Manager, Reference, Popper } from 'react-popper';
+import Popover from 'react-bootstrap/Popover'
 
 let query = Firebase.database().ref("Site_Power").orderByChild("island");
 
@@ -42,7 +44,7 @@ class Charger_Status extends Component {
         this._isMounted = false;
     }
 
-    generateRandomNumber = (min, max) => { 
+    generateRandomNumber = (min, max) => {
         const random = (Math.floor(Math.random() * (max - min + 1)) + min)
         this.setState({
           chargerUsage: random
@@ -52,7 +54,21 @@ class Charger_Status extends Component {
     render() {
 
         setTimeout(this.generateRandomNumber.bind(this, 60, 75), 5000)
-
+    const popover = (
+        <Popover id="popover-basic">
+          <Popover.Title as="h3">Popover right</Popover.Title>
+            <Popover.Content>
+          And here's some <strong>amazing</strong> content. It's very engaging.
+          right?
+        </Popover.Content>
+        </Popover>
+);
+    const Example = () => (
+        <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+          <Button variant="success">Click me to see</Button>
+        </OverlayTrigger>
+);
+    
         const rows = this.state.chargers.map(charger =>
             <tr>
                 <th scope="row">{charger.name}</th>
@@ -70,15 +86,17 @@ class Charger_Status extends Component {
                 <td></td>
                 <td>
                     <div>
-                    <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-warning h5 m-0"></i></Link>
+                      <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+                        <Button variant="success">Click me to see</Button>
+                       </OverlayTrigger>
                     </div>
                 </td>
             </tr>
         )
 
-        let onlineChargers = 0;
-        
-        this.state.chargers.forEach(charger => 
+  let onlineChargers = 0;
+
+        this.state.chargers.forEach(charger =>
             charger.status == "Online" ? onlineChargers++ : onlineChargers = onlineChargers)
 
         return (
@@ -178,7 +196,7 @@ class Charger_Status extends Component {
                                                         <th scope="col">Average Usage (1 Week)</th>
                                                         <th></th>
                                                         <th scope="col">Map</th>
-                                                        <th scope="col"></th>
+                                                        <th scope="col">PopOver</th>
                                                         <th></th>
                                                     </tr>
                                                 </thead>
@@ -211,6 +229,7 @@ class Charger_Status extends Component {
 
                     </div>
                 </div>
+
             </React.Fragment>
         );
     }
