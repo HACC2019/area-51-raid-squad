@@ -8,6 +8,12 @@ import Settingmenu from '../Subpages/Settingmenu';
 import LightData from './LightData';
 import Firebase from 'firebase';
 import * as Bootstrap from 'react-bootstrap';
+import { css } from '@emotion/core';
+// First way to import
+import { ClipLoader } from 'react-spinners';
+// Another way to import. This is recommended to reduce bundle size
+import ClipLoader from 'react-spinners/ClipLoader';
+
 
 let Site_Power_query = Firebase.database().ref("Site_Power").orderByChild("island");
 
