@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import ButtonDD from '../Subpages/ButtonDD_Stations';
 
 const data =  require('./../../../fullworking1.json');
 
@@ -80,6 +81,9 @@ class Apexarea extends Component {
 
     return (
         <React.Fragment>
+          <div className="float-right d-none d-md-block">
+            <ButtonDD/>
+          </div>
           <ReactApexChart
               options={this.state.options}
               series={apexChartData}
