@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
+const data = require('./../../../fullworking1.json');
+
 class Apexarea extends Component {
 
     constructor(props) {

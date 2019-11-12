@@ -1,107 +1,77 @@
 import React, { Component } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import { Button } from 'reactstrap';
 
-const data = require('./../../../Data_HACC.json');
+let data = [];
+data =  require('./../../../fullworking1.json');
 
-class Apexbar extends Component {
+class Apexarea extends Component {
 
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            data_mode: 'energy',
-            apexBarChartOpt: {
-                chart: {
-                    type: 'bar',
-                    foreColor: '#000000',
-                    toolbar: {
-                      show: false,
-                    }
-                  },
-                  plotOptions: {
-                    bar: {
-                      columnWidth: '70%',
-                      endingShape: 'flat'
-                    }
-                  },
-                  dataLabels: {
-                    enabled: false
-                  },grid: {
-                    yaxis: {
-                      lines: {
-                        show: false,
-                      }
-                    }
-                  },
-                  xaxis: {
-                    labels: {
-                      rotate: -90
-                    },
-                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug','Sep', 'Oct', 'Nov', 'Dec'],
-                  },
-                  colors: ['#e74c5e'],
-                
-                  fill: {
-                    type: 'gradient',
-                    gradient: {
-                      shade: 'dark',
-                      type: "vertical",
-                      shadeIntensity: 1,
-                      gradientToColors: [ '#4090cb'],
-                      inverseColors: true,
-                      opacityFrom: 0.85,
-                      opacityTo: 0.85,
-                      stops: [0, 100, 100, 100]
-                    },
-                  },
+    this.state = {
+      options: {
+        chart: {
+          type: 'area',
+          foreColor: '#000000', // adjusts the text of the charts
+          toolbar: {
+            show: false,
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'smooth',
+          width: 2
+        },
+        colors: ['#4090cb'],
+        xaxis: {
+          categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'],
+        },
+        grid: {
+          yaxis: {
+            lines: {
+              show: false,
             }
-        }
+          }
+        },
+      },
+      series : [{
+        name: 'Power',
+        data: [22, 54, 42, 84, 48, 38, 23, 21, 95, 42, 65, 45, 35, 68, 34, 13, 10, 12, 34, 97, 23, 22, 23]
+      }]
     }
+  }
 
-    onEnergyPress = () => {
-      this.setState({
-        data_mode: 'energy'
-      });
-    }
+  render() {
 
-    onMoneyPress = () => {
-      this.setState({
-        data_mode: 'money'
-      });
-    }
+    let powerData = [];
 
-    render() {
+    data.forEach(function(item) {
+      // energy_manifold.push(item.energy);
+      // moneyfold.push(parseFloat(item.amount.slice(1)));
+      if (item.start.substring(0, 3) === "9/1") {
+        powerData.push(item.power);
+      }
+    })
 
-        // Initialize data stores
-        let energy_manifold = [];
-        let moneyfold = [];
+    this.state.series = powerData;
+    // const apexBarChartData = [{
+    //   power: powerData,
+    // }];
 
-        data.forEach(function(item) {
-          energy_manifold.push(item.energy);
-          moneyfold.push(parseFloat(item.amount.slice(1)));
-        })
-
-        let toshow = (this.state.data_mode === 'energy' ? energy_manifold : moneyfold);
-       
-
-        const apexBarChartData = [{
-            name: this.state.data_mode,
-            data: toshow.slice(50, 71),
-          }];
-
-        return (
-            <React.Fragment>
-              <div className="btn-group" data-toggle="buttons" role="group" aria-label="Data View">
-              <Button color="secondary" onClick={this.onEnergyPress}>Energy</Button>{' '}
-              <Button color="secondary" onClick={this.onMoneyPress}>Revenue</Button>{' '}
-              </div>
-
-
-                <ReactApexChart options={this.state.apexBarChartOpt} series={apexBarChartData}  width="100%" height="265"  type="bar"  />
-            </React.Fragment>
-        );
-    }
+    return (
+        <React.Fragment>
+          <ReactApexChart
+              options={this.state.options}
+              series={this.state.series}
+              type="area"
+              width="100%"
+              height="300" />
+        </React.Fragment>
+    );
+  }
 }
 
-export default Apexbar;   
+export default Apexarea;

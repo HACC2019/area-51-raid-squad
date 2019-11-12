@@ -10,8 +10,7 @@ import ButtonDD from '../Subpages/ButtonDD_Stations';
 
 import Rightsidebar from '../../../components/RightSidebar';
 //Charts
-import Apexarea from '../../../containers/charts/apex/apexarea';
-import Apexbar from '../../../containers/charts/apex/apexbar';
+import Apexarea from '../energy_charts/chart1';
 
 import Firebase from 'firebase';
 
@@ -87,50 +86,50 @@ class Dashboard extends Component {
                             </div>
                         </div>
 
-                        <Row>
-                            <Col lg="4">
-                                <Card className="mini-stat bg-pattern">
-                                    <CardBody className="mini-stat-img">
-                                        <div className="mini-stat-icon">
-                                            <i className="dripicons-direction bg-soft-primary text-primary float-right h4"></i>
-                                        </div>
-                                        <h6 className="text-uppercase mb-3 mt-0">Amount Made</h6>
-                                        <h5 className="mb-3">$1,687</h5>
-                                        <p className="text-muted mb-0"><span className="text-success mr-2"> 12% <i className="mdi mdi-arrow-up"></i> </span> From previous period</p>
-                                    </CardBody>
-                                </Card>
-                            </Col>
-                            <Col lg="4">
-                                <Card className="mini-stat bg-pattern">
-                                    <CardBody className="mini-stat-img">
-                                        <div className="mini-stat-icon">
-                                            <i className="dripicons-graph-line bg-soft-primary text-primary float-right h4"></i>
-                                        </div>
-                                        <h6 className="text-uppercase mb-3 mt-0">Total Revenue Generated</h6>
-                                        <h5 className="mb-3">$48,265</h5>
-                                        <p className="text-muted mb-0"><span className="text-danger mr-2"> -26% <i className="mdi mdi-arrow-down"></i> </span> From previous period</p>
-                                    </CardBody>
-                                </Card>
-                            </Col>
-                            <Col lg="4">
-                                <Card className="mini-stat bg-pattern">
-                                    <CardBody className="mini-stat-img">
-                                        <div className="mini-stat-icon">
-                                            <i className="dripicons-stopwatch bg-soft-primary text-primary float-right h4"></i>
-                                        </div>
-                                        <h6 className="text-uppercase mb-3 mt-0">Average Charge Duration</h6>
-                                        <h5 className="mb-3">00:10:20</h5>
-                                        <p className="text-muted mb-0"><span className="text-danger mr-2"> -26% <i className="mdi mdi-arrow-down"></i> </span> From previous period</p>
-                                    </CardBody>
-                                </Card>
-                            </Col>
-                        </Row>
+                        {/*<Row>*/}
+                        {/*    <Col lg="4">*/}
+                        {/*        <Card className="mini-stat bg-pattern">*/}
+                        {/*            <CardBody className="mini-stat-img">*/}
+                        {/*                <div className="mini-stat-icon">*/}
+                        {/*                    <i className="dripicons-direction bg-soft-primary text-primary float-right h4"></i>*/}
+                        {/*                </div>*/}
+                        {/*                <h6 className="text-uppercase mb-3 mt-0">Amount Made</h6>*/}
+                        {/*                <h5 className="mb-3">$1,687</h5>*/}
+                        {/*                <p className="text-muted mb-0"><span className="text-success mr-2"> 12% <i className="mdi mdi-arrow-up"></i> </span> From previous period</p>*/}
+                        {/*            </CardBody>*/}
+                        {/*        </Card>*/}
+                        {/*    </Col>*/}
+                        {/*    <Col lg="4">*/}
+                        {/*        <Card className="mini-stat bg-pattern">*/}
+                        {/*            <CardBody className="mini-stat-img">*/}
+                        {/*                <div className="mini-stat-icon">*/}
+                        {/*                    <i className="dripicons-graph-line bg-soft-primary text-primary float-right h4"></i>*/}
+                        {/*                </div>*/}
+                        {/*                <h6 className="text-uppercase mb-3 mt-0">Total Revenue Generated</h6>*/}
+                        {/*                <h5 className="mb-3">$48,265</h5>*/}
+                        {/*                <p className="text-muted mb-0"><span className="text-danger mr-2"> -26% <i className="mdi mdi-arrow-down"></i> </span> From previous period</p>*/}
+                        {/*            </CardBody>*/}
+                        {/*        </Card>*/}
+                        {/*    </Col>*/}
+                        {/*    <Col lg="4">*/}
+                        {/*        <Card className="mini-stat bg-pattern">*/}
+                        {/*            <CardBody className="mini-stat-img">*/}
+                        {/*                <div className="mini-stat-icon">*/}
+                        {/*                    <i className="dripicons-stopwatch bg-soft-primary text-primary float-right h4"></i>*/}
+                        {/*                </div>*/}
+                        {/*                <h6 className="text-uppercase mb-3 mt-0">Average Charge Duration</h6>*/}
+                        {/*                <h5 className="mb-3">00:10:20</h5>*/}
+                        {/*                <p className="text-muted mb-0"><span className="text-danger mr-2"> -26% <i className="mdi mdi-arrow-down"></i> </span> From previous period</p>*/}
+                        {/*            </CardBody>*/}
+                        {/*        </Card>*/}
+                        {/*    </Col>*/}
+                        {/*</Row>*/}
 
                         <Row>
-                            <Col xl="4">
+                            <Col xl="10">
                                 <Card>
                                     <CardBody>
-                                        <h4 className="mt-0 header-title mb-4">Weekly Sales</h4>
+                                        <h4 className="mt-0 header-title mb-4">Full Week Day 1</h4>
                                         <div id="area-chart">
                                             <Apexarea />
                                         </div>
@@ -138,16 +137,16 @@ class Dashboard extends Component {
                                 </Card>
                             </Col>
 
-                            <Col xl="8">
-                                <Card>
-                                    <CardBody>
-                                        <h4 className="mt-0 header-title mb-4">Kenneth's Test Area</h4>
-                                        <div id="column-chart" dir="ltr">
-                                            <Apexbar />
-                                        </div>
-                                    </CardBody>
-                                </Card>
-                            </Col>
+                            {/*<Col xl="8">*/}
+                            {/*    <Card>*/}
+                            {/*        <CardBody>*/}
+                            {/*            <h4 className="mt-0 header-title mb-4">Ken Test Data</h4>*/}
+                            {/*            <div id="column-chart" dir="ltr">*/}
+                            {/*                <Apexbar />*/}
+                            {/*            </div>*/}
+                            {/*        </CardBody>*/}
+                            {/*    </Card>*/}
+                            {/*</Col>*/}
                         </Row>
 
                         <Row>
