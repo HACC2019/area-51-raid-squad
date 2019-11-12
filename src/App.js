@@ -32,21 +32,21 @@ function withLayout(WrappedComponent) {
 class App extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {}
   }
 
   render() {
 
     const PrivateRoute = ({ component: Component, ...rest }) => (
-      <Route {...rest} path='/dashboard' render={(props) => ( isUserAuthenticated() === true ? <Component {...props} /> : <Redirect to='/dashboard' />)} /> 
+      <Route {...rest} path='/dashboard' render={(props) => ( isUserAuthenticated() === true ? <Component {...props} /> : <Redirect to='/dashboard' />)} />
     )
 
     return (
       <React.Fragment>
         <Router>
           <Switch>
-            {routes.map((route, idx) => 
+            {routes.map((route, idx) =>
               route.ispublic ?
                 <Route path={route.path} component={withLayout(route.component)} key={idx} />
                 :

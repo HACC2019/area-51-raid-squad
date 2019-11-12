@@ -47,6 +47,13 @@ const SideNav = () => { return <div id="sidebar-menu">
                             {/*    <Link to="projects" className="waves-effect waves-light"><i className="ion ion-md-clipboard"></i><span> Projects </span></Link>*/}
                             {/*</li>*/}
 
+                            <li>
+                                <Link to="/#" className="waves-effect"><i className="ion ion-md-pin"></i><span> Maps <span className="float-right menu-arrow"><i className="mdi mdi-chevron-right"></i></span> </span></Link>
+                                <ul className="submenu">
+                                    <li><Link to="maps-google"> Google Map</Link></li>
+                                    <li><Link to="maps-vector"> Vector Map</Link></li>
+                                </ul>
+                            </li>
                             {/* <li className="menu-title">Pages</li>
 
                             <li>
@@ -127,7 +134,7 @@ const SideNav = () => { return <div id="sidebar-menu">
                             {/*        <li><Link to="ui-typography">Typography</Link></li>*/}
                             {/*    </ul>*/}
                             {/*</li>*/}
-                            
+
                             {/*<li>*/}
                             {/*    <Link to="/#" className="waves-effect"><i className="ion ion-md-paper"></i><span> Forms <span className="badge badge-pill badge-info float-right">8</span> </span></Link>*/}
                             {/*    <ul className="submenu">*/}
@@ -174,7 +181,7 @@ const SideNav = () => { return <div id="sidebar-menu">
                             {/*        <li><Link to="icons-dripicons">Dripicons</Link></li>*/}
                             {/*    </ul>*/}
                             {/*</li>*/}
-                            
+
                             {/*<li>*/}
                             {/*    <Link to="/#" className="waves-effect"><i className="ion ion-md-funnel"></i><span> Multi Level <span className="float-right menu-arrow"><i className="mdi mdi-chevron-right"></i></span> </span></Link>*/}
                             {/*    <ul className="submenu">*/}
@@ -196,7 +203,7 @@ class Sidebar extends Component {
 
     componentDidMount() {
        new MetisMenu("#side-menu");
-       
+
         var matchingMenuItem = null;
         var ul = document.getElementById("side-menu");
         var items = ul.getElementsByTagName("a");
@@ -217,12 +224,12 @@ class Sidebar extends Component {
         const parent = item.parentElement;
 
         if (parent) {
-            parent.classList.add('mm-active'); // li 
+            parent.classList.add('mm-active'); // li
             const parent2 = parent.parentElement;
 
             if (parent2) {
                 parent2.classList.add("mm-show");
-              
+
                 const parent3 = parent2.parentElement;
 
                 if (parent3) {
@@ -243,7 +250,7 @@ class Sidebar extends Component {
         return (
             <React.Fragment>
                 <div className="left side-menu">
-                    {this.props.is_toggle ? 
+                    {this.props.is_toggle ?
                         <PerfectScrollbar>
                              <SideNav />
                         </PerfectScrollbar>

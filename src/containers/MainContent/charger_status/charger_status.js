@@ -9,7 +9,8 @@ import { Dropdown, DropdownButton } from 'react-bootstrap';
 
 // just read access prototype; let the api keys free!
 
-let firebase = Firebase.initializeApp({
+if (!Firebase.apps.length) {
+  Firebase.initializeApp({
     apiKey: "AIzaSyC7B4lfv4_ls8_0JSEPsPvK5sLEnfmcuQs",
     authDomain: "area-51-rs.firebaseapp.com",
     databaseURL: "https://area-51-rs.firebaseio.com",
@@ -17,9 +18,9 @@ let firebase = Firebase.initializeApp({
     storageBucket: "area-51-rs.appspot.com",
     messagingSenderId: "805985707758",
     appId: "1:805985707758:web:25c29503f7d055fd17f5ff"
-  });
+  })};
 
-let query = firebase.database().ref("Site_Power").orderByChild("island");
+let query = Firebase.database().ref("Site_Power").orderByChild("island");
 
 class Charger_Status extends Component {
     _isMounted = false
@@ -54,7 +55,7 @@ class Charger_Status extends Component {
         this._isMounted = false;
     }
 
-    generateRandomNumber = (min, max) => { 
+    generateRandomNumber = (min, max) => {
         const random = (Math.floor(Math.random() * (max - min + 1)) + min)
         this.setState({
           chargerUsage: random
@@ -83,8 +84,8 @@ class Charger_Status extends Component {
         )
 
         let onlineChargers = 0;
-        
-        this.state.chargers.forEach(charger => 
+
+        this.state.chargers.forEach(charger =>
             charger.status == "Online" ? onlineChargers++ : onlineChargers = onlineChargers)
 
         return (
