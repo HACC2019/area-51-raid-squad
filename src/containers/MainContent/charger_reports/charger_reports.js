@@ -50,30 +50,6 @@ class Charger_Reports extends Component {
     }
 
     render() {
-        setTimeout(this.generateRandomNumber.bind(this, 60, 75), 5000)
-
-        // const rows = this.state.chargers.map(charger =>
-        //     <tr>
-        //         <th scope="row">{charger.name}</th>
-        //         <td><span style={charger.status == "Offline" ? {color: '#de4040', backgroundColor: 'rgba(222, 64, 64, 0.2)'} : {color: '#47bd9a'}} className="badge badge-soft-success badge-pill"><i className="mdi mdi-checkbox-blank-circle mr-1"></i>{charger.status}</span></td>
-        //         <td>{charger.island}</td>
-        //         <td><p className="float-right mb-0 ml-3">{charger.status == "Online" ? this.state.chargerUsage : 0}</p>
-        //         <Progress className="mt-2" style={{ height: '5px' }} color="success" value={charger.status == "Online" ? this.state.chargerUsage : 0} /></td>
-
-        //         <td></td>
-        //         <td>
-        //             <div>
-        //             <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-map h5 m-0"></i></Link>
-        //             </div>
-        //         </td>
-        //         <td></td>
-        //         <td>
-        //             <div>
-        //             <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-warning h5 m-0"></i></Link>
-        //             </div>
-        //         </td>
-        //     </tr>
-        // )
 
         const rows = this.state.chargers.map(charger =>
                 <div>
@@ -96,7 +72,7 @@ class Charger_Reports extends Component {
         let onlineChargers = 0;
         
         this.state.chargers.forEach(charger => 
-            charger.status == "Online" ? onlineChargers++ : onlineChargers = onlineChargers)
+            charger.status === "Online" ? onlineChargers++ : onlineChargers = onlineChargers)
 
         return (
             <React.Fragment>

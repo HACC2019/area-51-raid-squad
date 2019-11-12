@@ -90,7 +90,7 @@ class Apexbar extends Component {
             data: toshow.slice(50, 71),
           }];
 
-        return (
+        return (1
             <React.Fragment>
               <div className="btn-group" data-toggle="buttons" role="group" aria-label="Data View">
               <Button color="secondary" onClick={this.onEnergyPress}>Energy</Button>{' '}

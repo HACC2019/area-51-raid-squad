@@ -16,6 +16,7 @@ class Charger_Status extends Component {
         super(props);
         this.generateGaussianPoint = this.generateGaussianPoint.bind(this);
         this.generateDataSet = this.generateDataSet.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         this.randData = [];
 
         for(let item = 0; item < 16; item++) {
@@ -61,18 +62,23 @@ class Charger_Status extends Component {
 
         return dataSet;
     } 
-
+    
     componentDidMount() {
         this._isMounted = true;
         this.props.activateAuthLayout();
 
         query.on('value', snapshot => {
             if (this._isMounted) {
-                let chargersTemp = []
+                let chargersTemp = [];
 
+                let id = 0;
                 snapshot.forEach(function(childSnapshot) {
-                    chargersTemp.push(childSnapshot.val());
-                })
+                    let chargerData = childSnapshot.val();
+                    chargerData['id'] = id;
+                    
+                    chargersTemp.push(chargerData);
+                    id++;
+                });
 
                 this.setState({chargers: chargersTemp})
             }})            
