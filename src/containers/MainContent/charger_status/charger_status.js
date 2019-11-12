@@ -7,7 +7,9 @@ import Settingmenu from '../Subpages/Settingmenu';
 import Firebase from 'firebase';
 import { Dropdown, Button, OverlayTrigger } from 'react-bootstrap';
 import { Manager, Reference, Popper } from 'react-popper';
-import Popover from 'react-bootstrap/Popover'
+import Popover from 'react-bootstrap/Popover';
+import { css } from '@emotion/core';
+import PropagateLoader from 'react-spinners/PropagateLoader';
 
 let query = Firebase.database().ref("Site_Power").orderByChild("island");
 
