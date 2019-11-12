@@ -17,6 +17,8 @@ import Firebase from 'firebase';
 
 import DashboardRightSidebar from './rightbar';
 
+const siteAData = require('./../../../siteA.json');
+
 // Initialize firebase
 // open API key because this is prototype
 // you cant write to it anyways hehe xd
@@ -63,6 +65,8 @@ class Dashboard extends Component {
     }
 
     render() {
+
+
 
         return (
             <React.Fragment>
