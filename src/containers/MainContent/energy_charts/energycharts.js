@@ -1,285 +1,222 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, CardBody } from 'reactstrap';
+import { Row, Col, Card, CardBody, Progress, Tooltip } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import { activateAuthLayout } from '../../../store/actions';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Settingmenu from '../Subpages/Settingmenu';
-import ButtonDD from '../Subpages/ButtonDD_Stations';
-// import { Link } from 'react-router-dom';
-// import classnames from 'classnames';
-
-import Rightsidebar from '../../../components/RightSidebar';
-//Charts
-import Apexarea from '../../../containers/charts/apex/apexarea';
-import Apexbar from './chart1';
-
 import Firebase from 'firebase';
+import { Dropdown } from 'react-bootstrap';
 
-import EnergychartRightSidebar from './rightbar';
+let query = Firebase.database().ref("Site_Power").orderByChild("island");
 
-// Initialize firebase
-// open API key because this is prototype
-// you cant write to it anyways hehe xd
+class Energy_charts extends Component {
+  _isMounted = false
 
-Firebase.initializeApp({
-    apiKey: "AIzaSyC7B4lfv4_ls8_0JSEPsPvK5sLEnfmcuQs",
-    authDomain: "area-51-rs.firebaseapp.com",
-    databaseURL: "https://area-51-rs.firebaseio.com",
-    projectId: "area-51-rs",
-    storageBucket: "area-51-rs.appspot.com",
-    messagingSenderId: "805985707758",
-    appId: "1:805985707758:web:25c29503f7d055fd17f5ff"
-  });
+  constructor(props) {
+    super(props);
 
-
-
-class Energychart extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = { activeTab: '1', activeother: '1', startDate: new Date() }
-        this.toggleStock = this.toggleStock.bind(this);
-        this.toggleMessages = this.toggleMessages.bind(this);
+    this.state = {
+      chargers: [],
+      chargerUsage: 0
     }
+  }
 
-    componentDidMount() {
-        this.props.activateAuthLayout();
-    }
+  componentDidMount() {
+    this._isMounted = true;
+    this.props.activateAuthLayout();
 
-    toggleStock(tab) {
-        if (this.state.activeTab !== tab) {
-            this.setState({
-                activeTab: tab
-            });
-        }
-    }
+    query.on('value', snapshot => {
+      if (this._isMounted) {
+        let chargersTemp = []
 
-    toggleMessages(tab) {
-        if (this.state.activeother !== tab) {
-            this.setState({
-                activeother: tab
-            });
-        }
-    }
+        snapshot.forEach(function(childSnapshot) {
+          chargersTemp.push(childSnapshot.val());
+        })
 
-    render() {
+        this.setState({chargers: chargersTemp})
+      }})
 
-        return (
-            <React.Fragment>
-                <div className="content dasboard-content">
-                    <div className="container-fluid">
-                        <div className="page-title-box">
-                            <div className="row align-items-center">
-                                <div className="col-sm-6">
-                                    <h4 className="page-title">Station Information</h4>
-                                    <ol className="breadcrumb">
-                                        <li className="breadcrumb-item active"></li>
-                                    </ol>
-                                </div>
-                                <div className="col-sm-6">
-                                    <div className="float-right d-none d-md-block">
-                                         <Settingmenu/>
-                                    </div>
-                                  <div className="float-right d-none d-md-block">
-                                    <ButtonDD/>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
+  }
 
-                        {/*<Row>*/}
-                        {/*    <Col lg="4">*/}
-                        {/*        <Card className="mini-stat bg-pattern">*/}
-                        {/*            <CardBody className="mini-stat-img">*/}
-                        {/*                <div className="mini-stat-icon">*/}
-                        {/*                    <i className="dripicons-direction bg-soft-primary text-primary float-right h4"></i>*/}
-                        {/*                </div>*/}
-                        {/*                <h6 className="text-uppercase mb-3 mt-0">Amount Made</h6>*/}
-                        {/*                <h5 className="mb-3">$1,687</h5>*/}
-                        {/*                <p className="text-muted mb-0"><span className="text-success mr-2"> 12% <i className="mdi mdi-arrow-up"></i> </span> From previous period</p>*/}
-                        {/*            </CardBody>*/}
-                        {/*        </Card>*/}
-                        {/*    </Col>*/}
-                        {/*    <Col lg="4">*/}
-                        {/*        <Card className="mini-stat bg-pattern">*/}
-                        {/*            <CardBody className="mini-stat-img">*/}
-                        {/*                <div className="mini-stat-icon">*/}
-                        {/*                    <i className="dripicons-graph-line bg-soft-primary text-primary float-right h4"></i>*/}
-                        {/*                </div>*/}
-                        {/*                <h6 className="text-uppercase mb-3 mt-0">Total Revenue Generated</h6>*/}
-                        {/*                <h5 className="mb-3">$48,265</h5>*/}
-                        {/*                <p className="text-muted mb-0"><span className="text-danger mr-2"> -26% <i className="mdi mdi-arrow-down"></i> </span> From previous period</p>*/}
-                        {/*            </CardBody>*/}
-                        {/*        </Card>*/}
-                        {/*    </Col>*/}
-                        {/*    <Col lg="4">*/}
-                        {/*        <Card className="mini-stat bg-pattern">*/}
-                        {/*            <CardBody className="mini-stat-img">*/}
-                        {/*                <div className="mini-stat-icon">*/}
-                        {/*                    <i className="dripicons-stopwatch bg-soft-primary text-primary float-right h4"></i>*/}
-                        {/*                </div>*/}
-                        {/*                <h6 className="text-uppercase mb-3 mt-0">Average Charge Duration</h6>*/}
-                        {/*                <h5 className="mb-3">00:10:20</h5>*/}
-                        {/*                <p className="text-muted mb-0"><span className="text-danger mr-2"> -26% <i className="mdi mdi-arrow-down"></i> </span> From previous period</p>*/}
-                        {/*            </CardBody>*/}
-                        {/*        </Card>*/}
-                        {/*    </Col>*/}
-                        {/*</Row>*/}
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
 
-                        <Row>
-                            <Col xl="4">
-                                <Card>
-                                    <CardBody>
-                                        <h4 className="mt-0 header-title mb-4">Weekly Sales</h4>
-                                        <div id="area-chart">
-                                            <Apexarea />
-                                        </div>
-                                    </CardBody>
-                                </Card>
-                            </Col>
+  generateRandomNumber = (min, max) => {
+    const random = (Math.floor(Math.random() * (max - min + 1)) + min)
+    this.setState({
+      chargerUsage: random
+    })
+  }
 
-                            <Col xl="8">
-                                <Card>
-                                    <CardBody>
-                                        <h4 className="mt-0 header-title mb-4">Full Working Day 1</h4>
-                                        <div id="column-chart" dir="ltr">
-                                            <Apexbar />
-                                        </div>
-                                    </CardBody>
-                                </Card>
-                            </Col>
-                        </Row>
+  render() {
 
-                        <Row>
-                            {/*<Col xl="4">*/}
-                            {/*    <Card>*/}
-                            {/*        <CardBody>*/}
-                            {/*            <h4 className="mt-0 header-title">Earning</h4>*/}
-                            {/*            <div>*/}
-                            {/*                <div className="wid-earning">*/}
-                            {/*                    <div className="row">*/}
-                            {/*                        <div className="col-md-6">*/}
-                            {/*                            <div>*/}
-                            {/*                                <h5 className="mt-0">$1,452</h5>*/}
-                            {/*                                <p className="text-muted mb-md-0">Weekly</p>*/}
-                            {/*                            </div>*/}
-                            {/*                        </div>*/}
-                            {/*                        <div className="col-md-5">*/}
-                            {/*                            <div id="chart1">*/}
-                            {/*                                <Apexchart1 />*/}
-                            {/*                            </div>*/}
-                            {/*                        </div>*/}
-                            {/*                    </div>*/}
-                            {/*                </div>*/}
-                            {/*                <div className="wid-earning">*/}
-                            {/*                    <div className="row">*/}
-                            {/*                        <div className="col-md-6">*/}
-                            {/*                            <div>*/}
-                            {/*                                <h5 className="mt-0">$4,150</h5>*/}
-                            {/*                                <p className="text-muted mb-md-0">Monthly</p>*/}
-                            {/*                            </div>*/}
-                            {/*                        </div>*/}
-                            {/*                        <div className="col-md-5">*/}
-                            {/*                            <div id="chart2">*/}
-                            {/*                                <Apexchart2 />*/}
-                            {/*                            </div>*/}
-                            {/*                        </div>*/}
-                            {/*                    </div>*/}
-                            {/*                </div>*/}
-                            {/*                <div className="wid-earning">*/}
-                            {/*                    <div className="row">*/}
-                            {/*                        <div className="col-md-6">*/}
-                            {/*                            <div>*/}
-                            {/*                                <h5 className="mt-0">$38,759</h5>*/}
-                            {/*                                <p className="text-muted mb-md-0">Yearly</p>*/}
+    setTimeout(this.generateRandomNumber.bind(this, 60, 75), 5000)
 
-                            {/*                            </div>*/}
-                            {/*                        </div>*/}
-                            {/*                        <div className="col-md-5">*/}
-                            {/*                            <div id="chart3">*/}
-                            {/*                                <Apexchart3 />*/}
-                            {/*                            </div>*/}
-                            {/*                        </div>*/}
-                            {/*                    </div>*/}
-                            {/*                </div>*/}
-                            {/*            </div>*/}
-                            {/*        </CardBody>*/}
-                            {/*    </Card>*/}
-                            {/*</Col>*/}
+    const rows = this.state.chargers.map(charger =>
+        <tr>
+          <th scope="row">{charger.name}</th>
+          <td><span style={charger.status == "Offline" ? {color: '#de4040', backgroundColor: 'rgba(222, 64, 64, 0.2)'} : {color: '#47bd9a'}} className="badge badge-soft-success badge-pill"><i className="mdi mdi-checkbox-blank-circle mr-1"></i>{charger.status}</span></td>
+          <td>{charger.island}</td>
+          <td><p className="float-right mb-0 ml-3">{charger.status == "Online" ? this.state.chargerUsage : 0}</p>
+            <Progress className="mt-2" style={{ height: '5px' }} color="success" value={charger.status == "Online" ? this.state.chargerUsage : 0} /></td>
 
+          <td></td>
+          <td>
+            <div>
+              <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-map h5 m-0"></i></Link>
+            </div>
+          </td>
+          <td></td>
+          <td>
+            <div>
+              <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-warning h5 m-0"></i></Link>
+            </div>
+          </td>
+        </tr>
+    )
 
-                            {/*<Col xl="4">*/}
-                            {/*    <Card className="messages recent-stock">*/}
-                            {/*        <CardBody>*/}
-                            {/*            <h4 className="mt-0 header-title">Station Specifics</h4>*/}
+    let onlineChargers = 0;
 
-                            {/*            <Nav tabs className="tab-wid recent-stock-widget nav-justified">*/}
-                            {/*                <NavItem>*/}
-                            {/*                    <NavLink*/}
-                            {/*                        className={classnames({ active: this.state.activeTab === '1' })}*/}
-                            {/*                        onClick={() => { this.toggleStock('1'); }}*/}
-                            {/*                    >*/}
-                            {/*                        <i className="dripicons-device-desktop h4 product-icon"></i>*/}
-                            {/*                        <p className="text-muted mb-0">Station A</p>*/}
-                            {/*                    </NavLink>*/}
-                            {/*                </NavItem>*/}
-                            {/*                <NavItem>*/}
-                            {/*                    <NavLink*/}
-                            {/*                        className={classnames({ active: this.state.activeTab === '2' })}*/}
-                            {/*                        onClick={() => { this.toggleStock('2'); }} >*/}
-                            {/*                        <i className="dripicons-monitor h4 product-icon"></i>*/}
-                            {/*                        <p className="text-muted mb-0">Station B</p>*/}
-                            {/*                    </NavLink>*/}
-                            {/*                </NavItem>*/}
-                            {/*            </Nav>*/}
+    this.state.chargers.forEach(charger =>
+        charger.status == "Online" ? onlineChargers++ : onlineChargers = onlineChargers)
 
-
-                            {/*            <TabContent activeTab={this.state.activeTab}>*/}
-                            {/*                <TabPane tabId="1">*/}
-                            {/*                    <div className="text-center">*/}
-                            {/*                        <div id="radial-chart">*/}
-                            {/*                            <Apexradial />*/}
-                            {/*                        </div>*/}
-                            {/*                        <h5 className="font-18">Computer</h5>*/}
-                            {/*                        <p className="text-muted mb-0">Neque porro quisquam est</p>*/}
-                            {/*                    </div>*/}
-                            {/*                </TabPane>*/}
-                            {/*                <TabPane tabId="2">*/}
-                            {/*                    <div className="text-center">*/}
-                            {/*                        <div id="radial-chart-2">*/}
-                            {/*                            <Apexradial2 />*/}
-
-                            {/*                        </div>*/}
-                            {/*                        <h5 className="font-18">Laptop</h5>*/}
-                            {/*                        <p className="text-muted mb-0">Ut enim ad veniam quis</p>*/}
-                            {/*                    </div>*/}
-                            {/*                </TabPane>*/}
-                            {/*            </TabContent>*/}
-                            {/*        </CardBody>*/}
-                            {/*    </Card>*/}
-                            {/*</Col>*/}
-                            {/*<Col xl="4">*/}
-                            {/*    <Card>*/}
-                            {/*        <CardBody>*/}
-                            {/*            <h4 className="mt-0 header-title">Port Usages</h4>*/}
-                            {/*            <div id="multiple-radial-chart" className="social-source" dir="ltr">*/}
-                            {/*                <Apexsocial />*/}
-                            {/*            </div>*/}
-                            {/*        </CardBody>*/}
-                            {/*    </Card>*/}
-                            {/*</Col>*/}
-                        </Row>
+    return (
+        <React.Fragment>
+          <div className="content">
+            <div className="container-fluid">
+              <div className="page-title-box">
+                <Row className="align-items-center">
+                  <Col sm="6">
+                    <h4 className="page-title">Charger Status</h4>
+                    <ol className="breadcrumb">
+                      <li className="breadcrumb-item"><Link to="#"><i className="mdi mdi-home-outline"></i></Link></li>
+                      <li className="breadcrumb-item active">Charger Status</li>
+                    </ol>
+                  </Col>
+                  <Col sm="6">
+                    <div className="float-right d-none d-md-block">
+                      <Settingmenu />
                     </div>
-                </div>
+                  </Col>
+                </Row>
+              </div>
 
-                <Rightsidebar>
-                    <EnergychartRightSidebar />
-                </Rightsidebar>
-            </React.Fragment>
-        );
-    }
+
+              <Row>
+                <Col xl="3" md="6">
+                  <Card className="bg-pattern-blue">
+                    <CardBody>
+                      <div className="float-right">
+                        <i className="dripicons-graph-bar text-primary h4 ml-3"></i>
+                      </div>
+
+                      <h5 className="font-20 mt-0 pt-1">{this.state.chargers.length}</h5>
+                      <p className="text-muted mb-0">Total Chargers</p>
+                    </CardBody>
+                  </Card>
+                </Col>
+                <Col xl="3" md="6">
+                  <Card className="bg-pattern">
+                    <CardBody>
+                      <div className="float-right">
+                        <i className="dripicons-power text-primary h4 ml-3"></i>
+                      </div>
+                      <h5 className="font-20 mt-0 pt-1">{onlineChargers}</h5>
+                      <p className="text-muted mb-0">Chargers Online</p>
+                    </CardBody>
+                  </Card>
+                </Col>
+                <Col xl="3" md="6">
+                  <Card className="bg-pattern-red">
+                    <CardBody>
+                      <div className="float-right">
+                        <i className="dripicons-hourglass text-primary h4 ml-3"></i>
+                      </div>
+                      <h5 className="font-20 mt-0 pt-1">{this.state.chargers.length - onlineChargers}</h5>
+                      <p className="text-muted mb-0">Chargers Offline</p>
+                    </CardBody>
+                  </Card>
+                </Col>
+                <Col xl="3" md="6">
+                  <Card>
+                    <CardBody>
+                      <form>
+                        <div className="form-group mb-0">
+                          <label>Filter</label>
+                          <i className="dripicons-experiment text-primary h4 ml-3"></i>
+                          <Dropdown>
+                            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                              Island
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                              <Dropdown.Item href="#/action-1">Oahu</Dropdown.Item>
+                              <Dropdown.Item href="#/action-1">Maui</Dropdown.Item>
+                              <Dropdown.Item href="#/action-1">Molokai</Dropdown.Item>
+                              <Dropdown.Item href="#/action-1">Hawaii</Dropdown.Item>
+                            </Dropdown.Menu>
+                          </Dropdown>
+                        </div>
+                      </form>
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col lg="12">
+                  <Card>
+                    <CardBody>
+                      <div className="table-responsive project-list">
+                        <table className="table project-table">
+                          <thead>
+                          <tr>
+                            <th scope="col">Charger Name</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Island</th>
+                            <th scope="col">Average Usage (1 Week)</th>
+                            <th></th>
+                            <th scope="col">Map</th>
+                            <th scope="col"></th>
+                            <th></th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          {rows}
+                          </tbody>
+                        </table>
+                      </div>
+
+
+                      <div className="pt-3">
+                        <ul className="pagination justify-content-end mb-0">
+                          <li className="page-item disabled">
+                            <Link className="page-link" to="#" tabIndex="-1" aria-disabled="true">Previous</Link>
+                          </li>
+                          <li className="page-item"><Link className="page-link" to="#">1</Link></li>
+                          <li className="page-item active"><Link className="page-link" to="#">2</Link></li>
+                          <li className="page-item"><Link className="page-link" to="#">3</Link></li>
+                          <li className="page-item">
+                            <Link className="page-link" to="#">Next</Link>
+                          </li>
+                        </ul>
+                      </div>
+
+
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+
+            </div>
+          </div>
+        </React.Fragment>
+    );
+  }
 }
 
-export default withRouter(connect(null, { activateAuthLayout })(Energychart));
+
+export default connect(null, { activateAuthLayout })(Energy_charts);
 
 
