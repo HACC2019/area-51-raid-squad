@@ -66,6 +66,7 @@
     "react-scrollbar": "^0.5.6",
     "react-select": "^2.4.4",
     "react-sparklines": "^1.7.0",
+    "react-spinners": "^0.6.1",
     "react-switch": "^4.1.0",
     "react-toggle": "^4.0.2",
     "react-toggle-switch": "^3.0.4",
