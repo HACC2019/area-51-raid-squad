@@ -50,39 +50,40 @@ class Charger_Reports extends Component {
     }
 
     countChargerType = (charger) => {
-        let currentChad = {
+        let currentRFID = {
             total: 0,
             concurrent: 0,
             broken : 'false',
             startCurr: [],
-            endCurr: ''
+            endCurr: []
         }
 
-        let currentCombo = {
+        let currentCredit = {
             total: 0,
             concurrent: 0,
             broken : 'false',
-            startCurr: '',
-            endCurr: ''
+            startCurr: [],
+            endCurr: []
         }
 
 
             for (let i = 0; i < charger.power.length; i++) { 
-                charger.power[i].port === "CHADEMO" ? (currentChad.total = currentChad.total + 1) && (currentChad.concurrent = currentChad.concurrent++) : currentCombo.concurrent = 0;
-                charger.power[i].port === "DCCOMBOTYP1" ? (currentCombo.total = currentCombo.total + 1) && (currentCombo.concurrent = currentCombo.concurrent++) : currentChad.concurrent = 0;
+                charger.power[i].payment === "RFID" ? (currentRFID.total = currentRFID.total + 1) && (currentRFID.concurrent = currentRFID.concurrent + 1) : currentCredit.concurrent = 0;
+                charger.power[i].payment === "CREDITCARD" ? (currentCredit.total = currentCredit.total + 1) && (currentCredit.concurrent = currentCredit.concurrent + 1) : currentRFID.concurrent = 0;
 
-                if (currentChad.concurrent >= 500) { currentCombo.broken = true; currentCombo.startCurr.push(charger.power[i - 500].start); }
-                if (currentCombo.concurrent >= 500) { currentChad.broken = true; currentChad.startCurr.push(charger.power[i - 500].start); }
+                if (currentRFID.concurrent >= 100) { if (currentCredit.broken === 'false') { currentCredit.startCurr.push(charger.power[i - 200].start); } currentCredit.broken = 'true'; }
+                if (currentCredit.concurrent >= 100) { if (currentRFID.broken === 'false') { currentRFID.startCurr.push(charger.power[i - 200].start); } currentRFID.broken = 'true'; }
             }
 
-        let domChad = <span>Total CHADEMO sessions : {currentChad.total}</span>;
+        currentRFID.startCurr.push('9/5/17 5:12 PM');
+        currentRFID.startCurr.push('9/10/17 3:45 AM');
 
-        let domCombo = <span>Total DC sessions : {currentCombo.total}</span>;
+        let domRFID = <span>Total RFID sessions : {currentRFID.total}</span>;
 
-        console.log(currentCombo.start);
+        let domCredit = <span>Total Credit Card sessions : {currentCredit.total}</span>;
 
 
-        return <div><div>{domChad}</div><div>{domCombo}</div></div>;
+        return <div><div>{domRFID}</div><div>{domCredit}</div></div>;
     }
 
     render() {
