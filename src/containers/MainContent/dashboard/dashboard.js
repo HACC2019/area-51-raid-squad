@@ -13,6 +13,8 @@ import Rightsidebar from '../../../components/RightSidebar';
 import Apexarea from '../energy_charts/chart1';
 import Apexarea2 from '../../charts/apex/apexarea';
 
+import donut_chart_port from '../../charts/apex/donut_chart_port';
+
 import Firebase from 'firebase';
 
 import DashboardRightSidebar from './rightbar';
@@ -66,7 +68,7 @@ class Dashboard extends Component {
 
     render() {
 
-
+        let totalRevenue = siteAData
 
         return (
             <React.Fragment>
@@ -93,16 +95,24 @@ class Dashboard extends Component {
 
                         <Row>
                             <Col lg="4">
-                                <Card className="mini-stat bg-pattern">
-                                    <CardBody className="mini-stat-img">
-                                        <div className="mini-stat-icon">
-                                            <i className="dripicons-direction bg-soft-primary text-primary float-right h4"></i>
-                                        </div>
-                                        <h6 className="text-uppercase mb-3 mt-0">Amount Made</h6>
-                                        <h5 className="mb-3">$1,687</h5>
-                                        <p className="text-muted mb-0"><span className="text-success mr-2"> 12% <i className="mdi mdi-arrow-up"></i> </span> From previous period</p>
-                                    </CardBody>
-                                </Card>
+                                {/*<Card className="mini-stat bg-pattern">*/}
+                                {/*    <CardBody className="mini-stat-img">*/}
+                                {/*        <div className="mini-stat-icon">*/}
+                                {/*            <i className="dripicons-direction bg-soft-primary text-primary float-right h4"></i>*/}
+                                {/*        </div>*/}
+                                {/*        <h6 className="text-uppercase mb-3 mt-0">Amount Made</h6>*/}
+                                {/*        <h5 className="mb-3">$1,687</h5>*/}
+                                {/*        <p className="text-muted mb-0"><span className="text-success mr-2"> 12% <i className="mdi mdi-arrow-up"></i> </span> From previous period</p>*/}
+                                {/*    </CardBody>*/}
+                                {/*</Card>*/}
+                              <Card>
+                                <CardBody>
+                                  <h4 className="mt-0 header-title mb-4">Weekly Sales</h4>
+                                  <div id="donut-chart">
+                                    <donut_chart_port />
+                                  </div>
+                                </CardBody>
+                              </Card>
                             </Col>
                             <Col lg="4">
                                 <Card className="mini-stat bg-pattern">
