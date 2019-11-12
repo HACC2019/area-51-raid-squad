@@ -29,7 +29,11 @@ class Charger_Status extends Component {
         this.state = {
             dataIndex: 0,
             chargers: [],
-            chargerUsage: 0
+            chargerUsage: 0,
+            loading: true,
+            nameReverse: false,
+            statusReverse: false,
+            islandReverse: false
         }
     }
 
@@ -96,31 +100,35 @@ class Charger_Status extends Component {
     }
 
     onclickName = (chargers) => {
-        console.log(this.state.chargers);
-        console.log(chargers);
-        chargers.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
-        console.log(this.state.chargers);
-        console.log(chargers);
+        this.state.loading = true;
+        this.state.islandReverse = false;
+        this.state.statusReverse = false;
+        if (!this.state.nameReverse) { chargers.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0)); this.state.nameReverse = true;} else { chargers.sort((a,b) => (a.name < b.name) ? 1 : ((b.name < a.name) ? -1 : 0)); this.state.nameReverse = false; };
+    }
+
+    onclickStatus = (chargers) => {
+        this.state.loading = true;
+        this.state.islandReverse = false;
+        this.state.nameReverse = false;
+        if (!this.state.statusReverse) { chargers.sort((a,b) => (a.status > b.status) ? 1 : ((b.status > a.status) ? -1 : 0)); this.state.statusReverse = true; } else { chargers.sort((a,b) => (a.status < b.status) ? 1 : ((b.status < a.status) ? -1 : 0)); this.state.statusReverse = false; }
+    }
+
+    onclickIsland = (chargers) => {
+        this.state.loading = true;
+        this.state.nameReverse = false;
+        this.state.statusReverse = false;
+        if (!this.state.islandReverse) { chargers.sort((a,b) => (a.island > b.island) ? 1 : ((b.island > a.island) ? -1 : 0)); this.state.islandReverse = true; } else { chargers.sort((a,b) => (a.island < b.island) ? 1 : ((b.island < a.island) ? -1 : 0)); this.state.islandReverse = false; }
+    }
+
+    sneak() {
+        this.state.loading = false;
+
+        return <span/>
     }
 
 
     render() {
         setTimeout(this.iterateRotatingIndex.bind(this), 5000);
-
-        const popover = (
-            <Popover id="popover-basic">
-              <Popover.Title as="h3">Popover right</Popover.Title>
-              <Popover.Content>
-                And here's some <strong>amazing</strong> content. It's very engaging.
-                right?
-              </Popover.Content>
-            </Popover>
-        );
-        const Example = () => (
-            <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-              <Button variant="success">Click me to see</Button>
-            </OverlayTrigger>
-        );
 
         const rows = this.state.chargers.map((charger, cIndex) =>
             <tr>
@@ -146,8 +154,14 @@ class Charger_Status extends Component {
                 <td>
                     <div>
                     <Link to="#" id="t1" className="text-success mr-4">
-                      <OverlayTrigger trigger="click" placement="left" overlay={popover}>
-                        <i className="dripicons-warning h5 m-0" style={charger.status === "Offline" ? {color: 'rgb(255,50,50)'} : {color : 'rgb(71, 189, 154)'}}></i>
+                      <OverlayTrigger trigger="click" placement="left" overlay={
+                            <Popover id="popover-basic">
+                                <Popover.Title>{charger.name === "Kapolei Commons" ? "Charger Offline!" : "Report Available"}</Popover.Title>
+                                <Popover.Content>
+                                    {charger.name === "Kapolei Commons" ? "This charger is offline. Please send a maintenance crew to check out this site." : charger.name === "Hawaii Electric Ward Office" ? "There has been an average of over 70% charger usage over the last week, this may be a good indication this location may need more charging stations." : charger.name === "Iwilei Costco Parking Lot" ? "There has been a 45% drop in RFID readings in the past week. Please send a crew out to check the RFID reader." : charger.name === "Hawaii Electric Light Hilo Office" ? "There has been a 23% drop in CHADEMO charge sessions. Please send out a crew to check out the CHADEMO charging ports." : ""}
+                                </Popover.Content>
+                            </Popover>}>
+                        {charger.name === "Hawaiian Electric Ward Office" || charger.name === "Kapolei Commons" ||  charger.name === "Iwilei Costco Parking Lot" || charger.name === "Hawaii Electric Light Hilo Office" ? <i className="dripicons-warning h5 m-0" style={charger.status === "Offline" ? {color: 'rgb(255,50,50)'} : {color : 'rgb(71, 189, 154)'}}></i> : <span/>}
                       </OverlayTrigger>
                     </Link>
                     </div>
@@ -235,9 +249,9 @@ class Charger_Status extends Component {
                                             <table className="table project-table">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col" onClick={this.onclickName.bind(this, this.state.chargers)}>Charger Name <i className="dripicons-chevron-down ml-1"></i></th>
-                                                        <th scope="col">Status</th>
-                                                        <th scope="col">Island</th>
+                                                        <th scope="col" onClick={this.onclickName.bind(this, this.state.chargers)}>Charger Name <i className={!this.state.nameReverse ? "dripicons-chevron-down ml-1" :  "dripicons-chevron-up ml-1"}></i></th>
+                                                        <th scope="col" onClick={this.onclickStatus.bind(this, this.state.chargers)}>Status <i className={!this.state.statusReverse ? "dripicons-chevron-down ml-1" :  "dripicons-chevron-up ml-1"}></i></th>
+                                                        <th scope="col" onClick={this.onclickIsland.bind(this, this.state.chargers)}>Island <i className={!this.state.islandReverse ? "dripicons-chevron-down ml-1" :  "dripicons-chevron-up ml-1"}></i></th>
                                                         <th scope="col">Average Usage (1 Week)</th>
                                                         <th></th>
                                                         <th scope="col">Map</th>
@@ -245,10 +259,12 @@ class Charger_Status extends Component {
                                                         <th></th>
                                                     </tr>
                                                 </thead>
+                                                {this.sneak()}
                                                 <tbody>
                                                     {rows}
                                                 </tbody>
                                             </table>
+                                            {this.sneak()}
                                         </div>
                                     </CardBody>
                                 </Card>
