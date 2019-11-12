@@ -5,7 +5,9 @@ import { activateAuthLayout } from '../../../store/actions';
 import { connect } from 'react-redux';
 import Settingmenu from '../Subpages/Settingmenu';
 import Firebase from 'firebase';
-import { Dropdown } from 'react-bootstrap';
+import { Dropdown, Button, OverlayTrigger } from 'react-bootstrap';
+import { Manager, Reference, Popper } from 'react-popper';
+import Popover from 'react-bootstrap/Popover'
 
 let query = Firebase.database().ref("Site_Power").orderByChild("island");
 
@@ -93,12 +95,24 @@ class Charger_Status extends Component {
 
 
     render() {
-
-
         setTimeout(this.iterateRotatingIndex.bind(this), 5000);
 
+        const popover = (
+            <Popover id="popover-basic">
+              <Popover.Title as="h3">Popover right</Popover.Title>
+              <Popover.Content>
+                And here's some <strong>amazing</strong> content. It's very engaging.
+                right?
+              </Popover.Content>
+            </Popover>
+        );
+        const Example = () => (
+            <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+              <Button variant="success">Click me to see</Button>
+            </OverlayTrigger>
+        );
 
-        const rows = this.state.chargers.map((charger, cIndex) =>
+        const rows = this.state.chargers.map(charger =>
             <tr>
                 <th scope="row">{charger.name}</th>
                 <td>
@@ -119,10 +133,13 @@ class Charger_Status extends Component {
                     <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-map h5 m-0"></i></Link>
                     </div>
                 </td>
-                <td></td>
                 <td>
                     <div>
-                    <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-warning h5 m-0"></i></Link>
+                    <Link to="#" id="t1" className="text-success mr-4">
+                      <OverlayTrigger trigger="click" placement="left" overlay={popover}>
+                      <i className="dripicons-warning h5 m-0"></i>
+                      </OverlayTrigger>
+                    </Link>
                     </div>
                 </td>
             </tr>
@@ -132,6 +149,7 @@ class Charger_Status extends Component {
 
         this.state.chargers.forEach(charger =>
             charger.status === "Online" ? onlineChargers++ : onlineChargers = onlineChargers)
+
 
         return (
             <React.Fragment>
@@ -230,7 +248,7 @@ class Charger_Status extends Component {
                                                         <th scope="col">Average Usage (1 Week)</th>
                                                         <th></th>
                                                         <th scope="col">Map</th>
-                                                        <th scope="col"></th>
+                                                        <th scope="col">Alerts</th>
                                                         <th></th>
                                                     </tr>
                                                 </thead>
@@ -263,6 +281,7 @@ class Charger_Status extends Component {
 
                     </div>
                 </div>
+
             </React.Fragment>
         );
     }
