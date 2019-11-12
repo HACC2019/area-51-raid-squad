@@ -9,7 +9,6 @@ import LightData from './LightData';
 import Firebase from 'firebase';
 import * as Bootstrap from 'react-bootstrap';
 import { css } from '@emotion/core';
-// Another way to import. This is recommended to reduce bundle size
 import PropagateLoader from 'react-spinners/PropagateLoader';
 
 
