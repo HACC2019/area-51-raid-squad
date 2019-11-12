@@ -16,7 +16,6 @@ class Charger_Status extends Component {
         super(props);
         this.generateGaussianPoint = this.generateGaussianPoint.bind(this);
         this.generateDataSet = this.generateDataSet.bind(this);
-        this.handleClick = this.handleClick.bind(this);
         this.randData = [];
 
         for(let item = 0; item < 16; item++) {
@@ -62,7 +61,7 @@ class Charger_Status extends Component {
 
         return dataSet;
     } 
-    
+
     componentDidMount() {
         this._isMounted = true;
         this.props.activateAuthLayout();
@@ -98,7 +97,6 @@ class Charger_Status extends Component {
 
         setTimeout(this.iterateRotatingIndex.bind(this), 5000);
 
-        console.log(this.state.dataIndex);
 
         const rows = this.state.chargers.map((charger, cIndex) =>
             <tr>
