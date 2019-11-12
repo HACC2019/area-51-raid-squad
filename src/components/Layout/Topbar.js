@@ -70,14 +70,6 @@ class Topbar extends Component {
 
                     <nav className="navbar-custom">
                         <ul className="navbar-right list-inline float-right mb-0">
-                            <li className="dropdown notification-list list-inline-item d-none d-md-inline-block mr-1">
-                                <form role="search" className="app-search">
-                                    <div className="form-group mb-0">
-                                        <input type="text" className="form-control" placeholder="Search.." />
-                                        <button type="submit"><i className="fa fa-search"></i></button>
-                                    </div>
-                                </form>
-                            </li>
 
                             {/*<LanguageMenu />*/}
 
@@ -87,8 +79,6 @@ class Topbar extends Component {
                                 </Link>
                             </li>
 
-                            <NotificationMenu />
-                            <ProfileMenu />
                         </ul>
 
                         <ul className="list-inline menu-left mb-0">
