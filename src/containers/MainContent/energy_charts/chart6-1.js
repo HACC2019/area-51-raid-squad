@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
-const data =  require('./../../../fullworking1.json');
+const data =  require('./../../../fullworking2.json');
 
 class Apexarea extends Component {
 
@@ -62,10 +62,10 @@ class Apexarea extends Component {
       segmentedData[day][hour].push(item.power);
     });
 
-    for (let i = 0; i < segmentedData[3].length; i++) {
+    for (let i = 0; i < segmentedData[5].length; i++) {
       let total = 0;
-      for (let j = 0; j < segmentedData[3][i].length; j++) {
-        total += segmentedData[3][i][j];
+      for (let j = 0; j < segmentedData[5][i].length; j++) {
+        total += segmentedData[5][i][j];
       }
       let average = Math.round(((total / 60) * 100)) / 100;
       dayData.push(average);
