@@ -93,6 +93,14 @@ class Charger_Status extends Component {
         this.state.dataIndex === 99 ? this.setState({dataIndex: 0 }) : this.setState({dataIndex: this.state.dataIndex + 1});
     }
 
+    onclickName = (chargers) => {
+        console.log(this.state.chargers);
+        console.log(chargers);
+        chargers.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+        console.log(this.state.chargers);
+        console.log(chargers);
+    }
+
 
     render() {
         setTimeout(this.iterateRotatingIndex.bind(this), 5000);
@@ -137,7 +145,7 @@ class Charger_Status extends Component {
                     <div>
                     <Link to="#" id="t1" className="text-success mr-4">
                       <OverlayTrigger trigger="click" placement="left" overlay={popover}>
-                      <i className="dripicons-warning h5 m-0"></i>
+                        <i className="dripicons-warning h5 m-0" style={charger.status === "Offline" ? {color: 'rgb(255,50,50)'} : {color : 'rgb(71, 189, 154)'}}></i>
                       </OverlayTrigger>
                     </Link>
                     </div>
@@ -155,6 +163,13 @@ class Charger_Status extends Component {
             <React.Fragment>
                 <div className="content">
                     <div className="container-fluid">
+                        <PropagateLoader
+                            css={"position: absolute; z-index: 1; left: 50%; top: 45%; transform: translate(-50%, -50%); border-color: black"}
+                            sizeUnit={"px"}
+                            size={20}
+                            color={'#553c8b'}
+                            loading={this.state.loading}
+                        />
                         <div className="page-title-box">
                             <Row className="align-items-center">
                                 <Col sm="6">
@@ -218,7 +233,7 @@ class Charger_Status extends Component {
                                             <table className="table project-table">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">Charger Name</th>
+                                                        <th scope="col" onClick={this.onclickName.bind(this, this.state.chargers)}>Charger Name <i className="dripicons-chevron-down ml-1"></i></th>
                                                         <th scope="col">Status</th>
                                                         <th scope="col">Island</th>
                                                         <th scope="col">Average Usage (1 Week)</th>
