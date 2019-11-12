@@ -52,7 +52,7 @@ class Charger_Status extends Component {
     }
 
     render() {
-
+      
         setTimeout(this.generateRandomNumber.bind(this, 60, 75), 5000)
     const popover = (
         <Popover id="popover-basic">
@@ -68,8 +68,9 @@ class Charger_Status extends Component {
           <Button variant="success">Click me to see</Button>
         </OverlayTrigger>
 );
-    
+
         const rows = this.state.chargers.map(charger =>
+
             <tr>
                 <th scope="row">{charger.name}</th>
                 <td><span style={charger.status == "Offline" ? {color: '#de4040', backgroundColor: 'rgba(222, 64, 64, 0.2)'} : {color: '#47bd9a'}} className="badge badge-soft-success badge-pill"><i className="mdi mdi-checkbox-blank-circle mr-1"></i>{charger.status}</span></td>
@@ -83,12 +84,13 @@ class Charger_Status extends Component {
                     <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-map h5 m-0"></i></Link>
                     </div>
                 </td>
-                <td></td>
                 <td>
                     <div>
-                      <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-                        <Button variant="success">Click me to see</Button>
-                       </OverlayTrigger>
+                    <Link to="#" id="t1" className="text-success mr-4">
+                      <OverlayTrigger trigger="click" placement="left" overlay={popover}>
+                      <i className="dripicons-warning h5 m-0"></i>
+                      </OverlayTrigger>
+                    </Link>
                     </div>
                 </td>
             </tr>
@@ -196,7 +198,7 @@ class Charger_Status extends Component {
                                                         <th scope="col">Average Usage (1 Week)</th>
                                                         <th></th>
                                                         <th scope="col">Map</th>
-                                                        <th scope="col">PopOver</th>
+                                                        <th scope="col">Alerts</th>
                                                         <th></th>
                                                     </tr>
                                                 </thead>
