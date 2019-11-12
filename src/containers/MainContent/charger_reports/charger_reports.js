@@ -49,20 +49,44 @@ class Charger_Reports extends Component {
         })
     }
 
-    countChargerType = (chargerPowerData) => {
-        let chad = 0;
-
-        for (let data in chargerPowerData) {
-            data.port = "CHADEMO" ? chad++ : chad = chad + 0;
+    countChargerType = (charger) => {
+        let currentChad = {
+            total: 0,
+            concurrent: 0,
+            broken : 'false',
+            startCurr: [],
+            endCurr: ''
         }
 
-        return chad;
+        let currentCombo = {
+            total: 0,
+            concurrent: 0,
+            broken : 'false',
+            startCurr: '',
+            endCurr: ''
+        }
+
+
+            for (let i = 0; i < charger.power.length; i++) { 
+                charger.power[i].port === "CHADEMO" ? (currentChad.total = currentChad.total + 1) && (currentChad.concurrent = currentChad.concurrent++) : currentCombo.concurrent = 0;
+                charger.power[i].port === "DCCOMBOTYP1" ? (currentCombo.total = currentCombo.total + 1) && (currentCombo.concurrent = currentCombo.concurrent++) : currentChad.concurrent = 0;
+
+                if (currentChad.concurrent >= 500) { currentCombo.broken = true; currentCombo.startCurr.push(charger.power[i - 500].start); }
+                if (currentCombo.concurrent >= 500) { currentChad.broken = true; currentChad.startCurr.push(charger.power[i - 500].start); }
+            }
+
+        let domChad = <span>Total CHADEMO sessions : {currentChad.total}</span>;
+
+        let domCombo = <span>Total DC sessions : {currentCombo.total}</span>;
+
+        console.log(currentCombo.start);
+
+
+        return <div><div>{domChad}</div><div>{domCombo}</div></div>;
     }
 
     render() {
         setTimeout(this.generateRandomNumber.bind(this, 60, 75), 5000);
-
-        console.log(this.state.chargers[8]);
 
         let rows;
 
@@ -78,7 +102,7 @@ class Charger_Reports extends Component {
                                 <Bootstrap.Card.Body>
                                     <span>For station : {charger.name} the system has dected voltage output of 0.00 between 9/1/17 8:37 AM and 9/3/17 9:30 AM.</span>
                                     <br/>
-                                    <span>{charger.name === "Hawaiian Electric Ward Office" ? this.countChargerType.bind(charger.power) : 0}</span>
+                                    {this.countChargerType(charger)}
                                 </Bootstrap.Card.Body>
                             </Bootstrap.Accordion.Collapse>
                         </Bootstrap.Card>
