@@ -43,6 +43,18 @@ class Apexarea extends Component {
     }
   }
 
+  onSiteAPress = () => {
+    this.setState({
+      data_mode: 'energy'
+    });
+  }
+
+  onSiteBPress = () => {
+    this.setState({
+      data_mode: 'money'
+    });
+  }
+
   render() {
 
     let dayData = [];

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import ButtonDD from '../Subpages/ButtonDD_Stations';
+import ButtonDD from '../Subpages/GraphDD';
+import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
 
 const data =  require('./../../../fullworking1.json');
+const data2 = require('./../../../fullworking2.json');
 
 class Apexarea extends Component {
 
@@ -32,10 +34,22 @@ class Apexarea extends Component {
         grid: {
           yaxis: {
             lines: {
-              show: false,
+              show: true,
             }
           }
         },
+        yaxis: {
+          show: true,
+          title: {
+            text: "Power (kWh)",
+          }
+        },
+        xaxis: {
+          show: true,
+          title: {
+            text: "Time (Hours)",
+          }
+        }
       },
       series : [{
         name: 'Power',
@@ -81,9 +95,15 @@ class Apexarea extends Component {
 
     return (
         <React.Fragment>
-          <div className="float-right d-none d-md-block">
-            <ButtonDD/>
-          </div>
+            <Dropdown isOpen={this.state.setting_menu} toggle={() => this.setState({ setting_menu: !this.state.setting_menu })}>
+              <DropdownToggle color="primary" className="arrow-none waves-effect waves-light">
+                <i className="mdi mdi-settings mr-2"></i>All Stations
+              </DropdownToggle>
+              <DropdownMenu className="language-switch" right>
+                <DropdownItem tag="a" href="#">Station A</DropdownItem>
+                <DropdownItem tag="a" href="#">Station B</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           <ReactApexChart
               options={this.state.options}
               series={apexChartData}
