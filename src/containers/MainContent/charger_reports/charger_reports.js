@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import {groupBy, forEach} from "lodash"
-import { Row, Col, Card, CardBody, Collapse } from 'reactstrap';
+import { Row, Col, Card, CardHeader, CardBody, Collapse } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { activateAuthLayout } from '../../../store/actions';
 import { connect } from 'react-redux';
@@ -15,10 +14,11 @@ class Charger_Reports extends Component {
 
     constructor(props) {
         super(props);
-
+        this.toggle = this.toggle.bind(this);
         this.state = {
             chargers: [],
-            chargerUsage: 0
+            chargerUsage: 0,
+            collapseBanner: ""
         }
     }
 
@@ -50,6 +50,17 @@ class Charger_Reports extends Component {
         })
     }
 
+    toggle(e) {
+        let event = e.target.dataset.event;
+        let key = e.target.dataset.type;
+        switch(key) {
+            case "collapseBanner": {
+                this.setState({ collapseBanner: event});
+                break;
+            }
+            default: break;
+        }
+    }
     countChargerType = (charger) => {
         let currentRFID = {
             total: 0,
@@ -91,21 +102,16 @@ class Charger_Reports extends Component {
 
         const rows = this.state.chargers.map(charger =>
                 <div>
-                    <Bootstrap.Accordion defaultActiveKey="1">
-                        <Bootstrap.Card>
-                            <Bootstrap.Accordion.Toggle as={Card.Header} eventKey="0">
-                                {charger.name}
-                                <i className="dripicons-chevron-down text-primary h4 ml-3"></i>
-                            </Bootstrap.Accordion.Toggle>
-                            <Bootstrap.Accordion.Collapse eventKey="0">
-                                <Bootstrap.Card.Body>
-                                    <span>For station : {charger.name} the system has dected voltage output of 0.00 between 9/1/17 8:37 AM and 9/3/17 9:30 AM.</span>
-                                    <br/>
-                                    {this.countChargerType(charger)}
-                                </Bootstrap.Card.Body>
-                            </Bootstrap.Accordion.Collapse>
-                        </Bootstrap.Card>
-                    </Bootstrap.Accordion>
+                    <Card style={{ marginBotttom: '1rem'}} key={charger.name}>
+                        <CardHeader onClick={this.toggle} data-event={charger.name} data-type='collapseBanner'>{charger.name}</CardHeader>
+                        <Collapse isOpen={this.state.collapseBanner === charger.name}>
+                            <CardBody>
+                                <span>For station : {charger.name} the system has dected voltage output of 0.00 between 9/1/17 8:37 AM and 9/3/17 9:30 AM.</span>
+                                <br/>
+                                {this.countChargerType(charger)}
+                            </CardBody>
+                        </Collapse>
+                    </Card>
                 </div>
             );
 
@@ -138,7 +144,7 @@ class Charger_Reports extends Component {
 
                         <Row>
                             <Col xl="3" md="6">
-                                <Card className="bg-pattern">
+                                <Card className="bg-pattern-blue">
                                     <CardBody>
                                         <div className="float-right">
                                             <i className="dripicons-graph-bar text-primary h4 ml-3"></i>
@@ -161,7 +167,7 @@ class Charger_Reports extends Component {
                                 </Card>
                             </Col>
                             <Col xl="3" md="6">
-                                <Card className="bg-pattern">
+                                <Card className="bg-pattern-red">
                                     <CardBody>
                                         <div className="float-right">
                                             <i className="dripicons-warning text-primary h4 ml-3"></i>
@@ -172,7 +178,7 @@ class Charger_Reports extends Component {
                                 </Card>
                             </Col>
                             <Col xl="3" md="6">
-                                <Card className="bg-pattern">
+                                <Card className="bg-pattern-red">
                                     <CardBody>
                                         <div className="float-right">
                                             <i className="dripicons-warning text-primary h4 ml-3"></i>
