@@ -10,15 +10,27 @@ import ButtonDD from '../Subpages/ButtonDD_Stations';
 
 import Rightsidebar from '../../../components/RightSidebar';
 //Charts
-import Apexarea from '../energy_charts/chart1';
-import Apexarea2 from '../energy_charts/chart2';
-import Apexarea3 from '../energy_charts/chart3';
-import Apexarea4 from '../energy_charts/chart4';
-import Apexarea5 from '../energy_charts/chart5';
-import Apexarea6 from '../energy_charts/chart6';
-import Apexarea7 from '../energy_charts/chart7';
-import Apexarea8 from '../energy_charts/chart8';
-import Apexarea9 from '../energy_charts/chart9';
+// fullworking1
+import Apexarea from '../energy_charts/chart1'; // 9-1
+import Apexarea2 from '../energy_charts/chart2'; // 9-2
+import Apexarea3 from '../energy_charts/chart3'; // 9-3
+import Apexarea4 from '../energy_charts/chart4'; // 9-4
+import Apexarea5 from '../energy_charts/chart5'; // 9-5
+import Apexarea6 from '../energy_charts/chart6'; // 9-6
+import Apexarea7 from '../energy_charts/chart7'; // 9-7
+import Apexarea8 from '../energy_charts/chart8'; // week
+import Apexarea9 from '../energy_charts/chart9'; // month
+
+//fullworking2
+import Apexarea10 from '../energy_charts/chart1-1'; // 9-1
+import Apexarea11 from '../energy_charts/chart2-1'; // 9-2
+import Apexarea12 from '../energy_charts/chart3-1'; // 9-3
+import Apexarea13 from '../energy_charts/chart4-1'; // 9-4
+import Apexarea14 from '../energy_charts/chart5-1'; // 9-5
+import Apexarea15 from '../energy_charts/chart6-1'; // 9-6
+import Apexarea16 from '../energy_charts/chart7-1'; // 9-7
+import Apexarea17 from '../energy_charts/chart8-1'; // week
+import Apexarea18 from '../energy_charts/chart9-1'; // month
 
 import Firebase from 'firebase';
 
@@ -94,6 +106,8 @@ class Dashboard extends Component {
                             </div>
                         </div>
 
+                      <Row>
+
                             <Col xl="10">
                                 <Card>
                                     <CardBody>
@@ -108,6 +122,21 @@ class Dashboard extends Component {
                         <Col xl="10">
                           <Card>
                             <CardBody>
+                              <h4 className="mt-0 header-title mb-4">fullworkingweek2 - 9-1</h4>
+                              <div id="area-chart">
+                                <Apexarea10 />
+                              </div>
+                            </CardBody>
+                          </Card>
+                        </Col>
+
+                      </Row>
+
+                      <Row>
+
+                        <Col xl="10">
+                          <Card>
+                            <CardBody>
                               <h4 className="mt-0 header-title mb-4">fullworkingweek1 - 9/2</h4>
                               <div id="area-chart">
                                 <Apexarea2 />
@@ -115,6 +144,21 @@ class Dashboard extends Component {
                             </CardBody>
                           </Card>
                         </Col>
+
+                        <Col xl="10">
+                          <Card>
+                            <CardBody>
+                              <h4 className="mt-0 header-title mb-4">fullworkingweek2 - 9-2</h4>
+                              <div id="area-chart">
+                                <Apexarea11 />
+                              </div>
+                            </CardBody>
+                          </Card>
+                        </Col>
+
+                      </Row>
+
+                      <Row>
 
                       <Col xl="10">
                         <Card>
@@ -127,6 +171,21 @@ class Dashboard extends Component {
                         </Card>
                       </Col>
 
+                        <Col xl="10">
+                          <Card>
+                            <CardBody>
+                              <h4 className="mt-0 header-title mb-4">fullworkingweek2 - 9/3</h4>
+                              <div id="area-chart">
+                                <Apexarea12 />
+                              </div>
+                            </CardBody>
+                          </Card>
+                        </Col>
+
+                      </Row>
+
+                      <Row>
+
                       <Col xl="10">
                         <Card>
                           <CardBody>
@@ -137,6 +196,21 @@ class Dashboard extends Component {
                           </CardBody>
                         </Card>
                       </Col>
+
+                        <Col xl="10">
+                          <Card>
+                            <CardBody>
+                              <h4 className="mt-0 header-title mb-4">fullworkingweek2 - 9/4</h4>
+                              <div id="area-chart">
+                                <Apexarea13 />
+                              </div>
+                            </CardBody>
+                          </Card>
+                        </Col>
+
+                      </Row>
+
+                      <Row>
 
                       <Col xl="10">
                         <Card>
@@ -149,6 +223,21 @@ class Dashboard extends Component {
                         </Card>
                       </Col>
 
+                        <Col xl="10">
+                          <Card>
+                            <CardBody>
+                              <h4 className="mt-0 header-title mb-4">fullworkingweek2 - 9/5</h4>
+                              <div id="area-chart">
+                                <Apexarea14 />
+                              </div>
+                            </CardBody>
+                          </Card>
+                        </Col>
+
+                      </Row>
+
+                      <Row>
+
                       <Col xl="10">
                         <Card>
                           <CardBody>
@@ -159,6 +248,21 @@ class Dashboard extends Component {
                           </CardBody>
                         </Card>
                       </Col>
+
+                        <Col xl="10">
+                          <Card>
+                            <CardBody>
+                              <h4 className="mt-0 header-title mb-4">fullworkingweek2 - 9/6</h4>
+                              <div id="area-chart">
+                                <Apexarea15 />
+                              </div>
+                            </CardBody>
+                          </Card>
+                        </Col>
+
+                      </Row>
+
+                      <Row>
 
                       <Col xl="10">
                         <Card>
@@ -171,6 +275,21 @@ class Dashboard extends Component {
                         </Card>
                       </Col>
 
+                        <Col xl="10">
+                          <Card>
+                            <CardBody>
+                              <h4 className="mt-0 header-title mb-4">fullworkingweek2 - 9/7</h4>
+                              <div id="area-chart">
+                                <Apexarea16 />
+                              </div>
+                            </CardBody>
+                          </Card>
+                        </Col>
+
+                      </Row>
+
+                      <Row>
+
                       <Col xl="10">
                         <Card>
                           <CardBody>
@@ -182,6 +301,21 @@ class Dashboard extends Component {
                         </Card>
                       </Col>
 
+                        <Col xl="10">
+                          <Card>
+                            <CardBody>
+                              <h4 className="mt-0 header-title mb-4">fullworkingweek2 - whole week</h4>
+                              <div id="area-chart">
+                                <Apexarea17 />
+                              </div>
+                            </CardBody>
+                          </Card>
+                        </Col>
+
+                      </Row>
+
+                      <Row>
+
                       <Col xl="10">
                         <Card>
                           <CardBody>
@@ -192,6 +326,20 @@ class Dashboard extends Component {
                           </CardBody>
                         </Card>
                       </Col>
+
+                        <Col xl="10">
+                          <Card>
+                            <CardBody>
+                              <h4 className="mt-0 header-title mb-4">fullworkingweek2 - whole month</h4>
+                              <div id="area-chart">
+                                <Apexarea18 />
+                              </div>
+                            </CardBody>
+                          </Card>
+                        </Col>
+
+
+                      </Row>
 
                     </div>
                 </div>
