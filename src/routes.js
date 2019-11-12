@@ -165,7 +165,7 @@ const routes = [
     { path: '/icons-themify', component: Iconsthemify },
     { path: '/icons-dripicons', component: Iconsdripicons },
 
-    { path: '/maps-google', component: Mapsgoogle },
+    { path: '/maps', component: Mapsgoogle },
     { path: '/maps-vector', component: Mapsvector },
 
     { path: '/layout-collapsed-sidebar', component: Dashboard },
