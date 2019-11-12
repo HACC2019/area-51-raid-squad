@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
-const data =  require('./../../../fullworking1.json');
-const data2 =  require('./../../../fullworking2.json');
+const data = require('./../../../fullworking1.json');
+const data2 = require('./../../../fullworking2.json');
 
 class Apexarea extends Component {
 
@@ -126,7 +126,7 @@ class Apexarea extends Component {
               series={apexChartData}
               type="area"
               width="100%"
-              height="300" />
+              height="350" />
         </React.Fragment>
     );
   }
