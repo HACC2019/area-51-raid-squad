@@ -11,6 +11,7 @@ import Popover from 'react-bootstrap/Popover';
 import { css } from '@emotion/core';
 import PropagateLoader from 'react-spinners/PropagateLoader';
 
+
 let query = Firebase.database().ref("Site_Power").orderByChild("island");
 
 class Charger_Status extends Component {
@@ -125,7 +126,6 @@ class Charger_Status extends Component {
 
         return <span/>
     }
-
 
     render() {
         setTimeout(this.iterateRotatingIndex.bind(this), 5000);
