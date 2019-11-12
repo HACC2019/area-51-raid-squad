@@ -7,7 +7,7 @@ import Settingmenu from '../Subpages/Settingmenu';
 import Firebase from 'firebase';
 import * as Bootstrap from 'react-bootstrap';
 
-let query = Firebase.database().ref("Site_Power").orderByChild("island");
+let Site_Power_query = Firebase.database().ref("Site_Power").orderByChild("island");
 
 class Charger_Reports extends Component {
     _isMounted = false;
@@ -25,7 +25,7 @@ class Charger_Reports extends Component {
         this._isMounted = true;
         this.props.activateAuthLayout();
 
-        query.on('value', snapshot => {
+        Site_Power_query.on('value', snapshot => {
             if (this._isMounted) {
                 let chargersTemp = []
 
@@ -34,8 +34,8 @@ class Charger_Reports extends Component {
                 })
 
                 this.setState({chargers: chargersTemp})
-            }})
-
+            }
+        });
     }
 
     componentWillUnmount() {
@@ -49,33 +49,49 @@ class Charger_Reports extends Component {
         })
     }
 
+    countChargerType = (charger) => {
+        let currentRFID = {
+            total: 0,
+            concurrent: 0,
+            broken : 'false',
+            startCurr: [],
+            endCurr: []
+        }
+
+        let currentCredit = {
+            total: 0,
+            concurrent: 0,
+            broken : 'false',
+            startCurr: [],
+            endCurr: []
+        }
+
+
+            for (let i = 0; i < charger.power.length; i++) { 
+                charger.power[i].payment === "RFID" ? (currentRFID.total = currentRFID.total + 1) && (currentRFID.concurrent = currentRFID.concurrent + 1) : currentCredit.concurrent = 0;
+                charger.power[i].payment === "CREDITCARD" ? (currentCredit.total = currentCredit.total + 1) && (currentCredit.concurrent = currentCredit.concurrent + 1) : currentRFID.concurrent = 0;
+
+                if (currentRFID.concurrent >= 100) { if (currentCredit.broken === 'false') { currentCredit.startCurr.push(charger.power[i - 200].start); } currentCredit.broken = 'true'; }
+                if (currentCredit.concurrent >= 100) { if (currentRFID.broken === 'false') { currentRFID.startCurr.push(charger.power[i - 200].start); } currentRFID.broken = 'true'; }
+            }
+
+        currentRFID.startCurr.push('9/5/17 5:12 PM');
+        currentRFID.startCurr.push('9/10/17 3:45 AM');
+
+        let domRFID = <span>Total RFID sessions : {currentRFID.total}</span>;
+
+        let domCredit = <span>Total Credit Card sessions : {currentCredit.total}</span>;
+
+
+        return <div><div>{domRFID}</div><div>{domCredit}</div></div>;
+    }
+
     render() {
-        setTimeout(this.generateRandomNumber.bind(this, 60, 75), 5000)
+        setTimeout(this.generateRandomNumber.bind(this, 60, 75), 5000);
 
-        // const rows = this.state.chargers.map(charger =>
-        //     <tr>
-        //         <th scope="row">{charger.name}</th>
-        //         <td><span style={charger.status == "Offline" ? {color: '#de4040', backgroundColor: 'rgba(222, 64, 64, 0.2)'} : {color: '#47bd9a'}} className="badge badge-soft-success badge-pill"><i className="mdi mdi-checkbox-blank-circle mr-1"></i>{charger.status}</span></td>
-        //         <td>{charger.island}</td>
-        //         <td><p className="float-right mb-0 ml-3">{charger.status == "Online" ? this.state.chargerUsage : 0}</p>
-        //         <Progress className="mt-2" style={{ height: '5px' }} color="success" value={charger.status == "Online" ? this.state.chargerUsage : 0} /></td>
+        let rows;
 
-        //         <td></td>
-        //         <td>
-        //             <div>
-        //             <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-map h5 m-0"></i></Link>
-        //             </div>
-        //         </td>
-        //         <td></td>
-        //         <td>
-        //             <div>
-        //             <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-warning h5 m-0"></i></Link>
-        //             </div>
-        //         </td>
-        //     </tr>
-        // )
-
-        const rows = this.state.chargers.map(charger =>
+            rows = this.state.chargers.map(charger =>
                 <div>
                     <Bootstrap.Accordion defaultActiveKey="1">
                         <Bootstrap.Card>
@@ -85,13 +101,16 @@ class Charger_Reports extends Component {
                             </Bootstrap.Accordion.Toggle>
                             <Bootstrap.Accordion.Collapse eventKey="0">
                                 <Bootstrap.Card.Body>
-                                    <div>For station : {charger.name} the system has dected voltage output of 0.00 between 9/1/17 8:37 AM and 9/3/17 9:30 AM.</div>
+                                    <span>For station : {charger.name} the system has dected voltage output of 0.00 between 9/1/17 8:37 AM and 9/3/17 9:30 AM.</span>
+                                    <br/>
+                                    {this.countChargerType(charger)}
                                 </Bootstrap.Card.Body>
                             </Bootstrap.Accordion.Collapse>
                         </Bootstrap.Card>
                     </Bootstrap.Accordion>
                 </div>
             );
+        
 
         let onlineChargers = 0;
         
