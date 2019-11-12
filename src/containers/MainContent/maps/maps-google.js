@@ -9,10 +9,8 @@ import LightData from './LightData';
 import Firebase from 'firebase';
 import * as Bootstrap from 'react-bootstrap';
 import { css } from '@emotion/core';
-// First way to import
-import { ClipLoader } from 'react-spinners';
 // Another way to import. This is recommended to reduce bundle size
-import ClipLoader from 'react-spinners/ClipLoader';
+import PropagateLoader from 'react-spinners/PropagateLoader';
 
 
 let Site_Power_query = Firebase.database().ref("Site_Power").orderByChild("island");
@@ -32,7 +30,8 @@ class Mapsgoogle extends Component {
             chargerUsage: 0,
             showingInfoWindow: false,
             activeMarker: {},
-            selectedPlace: {}
+            selectedPlace: {},
+            loading: true
         }
     }
 
@@ -57,48 +56,62 @@ class Mapsgoogle extends Component {
         this._isMounted = false;
     }
 
-    onMarkerClick(props, marker, e) {
-        alert('You clicked in this marker');
+    sneak() {
+        this.state.loading = false;
+
+        return <span/>
     }
+
+    onMarkerClick = (props, marker, e) =>
+        this.setState({
+        selectedPlace: props,
+        activeMarker: marker,
+        showingInfoWindow: true
+    });
 
     render() {
 
-        // const locations = this.state.chargers.map(charger =>
-        //     <Marker
-        //         name={charger.name}
-        //         title={"what does this do"}
-        //         position={{lat: 20.266}, {lng: -156.27}}
-        //     />
-        // )
-
-        // console.log(locations);
-
         return (
             <React.Fragment>
-                <div className="content">
+                <div className="content" style={{padding: 0}}>
                     <div className="container-fluid">
-                        <Map google={this.props.google} zoom={8}
-                                                style={{
-                                                    width: "100%",
-                                                    height: "100%",
-                                                }}
-                                                initialCenter={{
-                                                    lat: 20.2666,
-                                                    lng: -156.27
-                                                }}>
+                        <PropagateLoader
+                        css={"position: absolute; z-index: 1; left: 50%; top: 45%; transform: translate(-50%, -50%); border-color: black"}
+                        sizeUnit={"px"}
+                        size={20}
+                        color={'#553c8b'}
+                        loading={this.state.loading}
+                        />
+                        <div id="mapmap">
+                            <Map google={this.props.google} zoom={8}
+                                                    style={{
+                                                        width: "100%",
+                                                        height: "100%",
+                                                        backgroundColor: 'rgba(105,105,105,0.25)'
+                                                    }}
+                                                    initialCenter={{
+                                                        lat: 20.2666,
+                                                        lng: -156.27
+                                                    }}>
 
-                                                {this.state.chargers.map(charger =>
-                                                    <Marker
-                                                    name={'Dolores park'}
-                                                    position={{lat: charger.lat, lng: charger.lng}} />
-                                                )}
+                                                    {this.state.chargers.map(charger =>
+                                                        <Marker
+                                                        name={charger.name}
+                                                        position={{lat: charger.lat, lng: charger.lng}}
+                                                        onClick={this.onMarkerClick} />
+                                                    )}
 
-                                                <InfoWindow>
-                                                    <div>
-                                                        <h1>{this.state.selectedPlace.name}</h1>
-                                                    </div>
-                                                </InfoWindow>
-                        </Map>
+                                                    {this.sneak()}
+
+                                                    <InfoWindow
+                                                        marker={this.state.activeMarker}
+                                                        visible={this.state.showingInfoWindow}>
+                                                            <div>
+                                                            <h1>{this.state.selectedPlace.name}</h1>
+                                                            </div>
+                                                    </InfoWindow>
+                            </Map>
+                        f</div>
                     </div>
                 </div>
             </React.Fragment>
