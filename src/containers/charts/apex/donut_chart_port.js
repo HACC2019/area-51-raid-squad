@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
-const data = require('./../../../fullworking1.json');
+const data = require('./../../../Data_HACC.json');
 
 class donut_chart_port extends Component {
 
@@ -14,10 +14,17 @@ class donut_chart_port extends Component {
                     height: 320,
                     type: 'donut',
                     foreColor: '#9f9ea4',
-                }, 
+                },
+                plotOptions: {
+                  pie: {
+                    donut: {
+                      size: '40%'
+                    }
+                  }
+                },
                 series: [44, 55, 41, 17, 15],
-                labels: ["Series 1", "Series 2", "Series 3", "Series 4", "Series 5"],
-                colors: ["#a3cae0", "#4090cb","#e74c5e", "#f9d570", "#47bd9a"],
+                labels: ["CHADEMO", "COMBO"],
+                colors: ["#b19cd9", "#77dd77"],
                 legend: {
                     show: true,
                     position: 'bottom',
@@ -54,7 +61,6 @@ class donut_chart_port extends Component {
           comboCount++;
         }
       });
-
 
 
         const apexBarChartData = [chademoCount, comboCount];

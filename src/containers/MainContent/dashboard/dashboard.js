@@ -13,13 +13,14 @@ import Rightsidebar from '../../../components/RightSidebar';
 import Apexarea from '../energy_charts/chart1';
 import Apexarea2 from '../../charts/apex/apexarea';
 
-import donut_chart_port from '../../charts/apex/donut_chart_port';
+import Donutchart from '../../../containers/charts/apex/donut_chart_port';
+import RadialChart from '../../../containers/charts/apex/radial_chart_initiated';
 
 import Firebase from 'firebase';
 
 import DashboardRightSidebar from './rightbar';
 
-const siteAData = require('./../../../siteA.json');
+const siteAData = require('./../../../Data_HACC.json');
 
 // Initialize firebase
 // open API key because this is prototype
@@ -68,7 +69,12 @@ class Dashboard extends Component {
 
     render() {
 
-        let totalRevenue = siteAData
+        let totalRevenue = 0;
+        siteAData.forEach(function(item) {
+          totalRevenue += parseFloat(item.amount.substring(1, item.amount.length));
+          // console.log(item.amount);
+        });
+        totalRevenue = Math.round(totalRevenue * 100) / 100;
 
         return (
             <React.Fragment>
@@ -95,24 +101,16 @@ class Dashboard extends Component {
 
                         <Row>
                             <Col lg="4">
-                                {/*<Card className="mini-stat bg-pattern">*/}
-                                {/*    <CardBody className="mini-stat-img">*/}
-                                {/*        <div className="mini-stat-icon">*/}
-                                {/*            <i className="dripicons-direction bg-soft-primary text-primary float-right h4"></i>*/}
-                                {/*        </div>*/}
-                                {/*        <h6 className="text-uppercase mb-3 mt-0">Amount Made</h6>*/}
-                                {/*        <h5 className="mb-3">$1,687</h5>*/}
-                                {/*        <p className="text-muted mb-0"><span className="text-success mr-2"> 12% <i className="mdi mdi-arrow-up"></i> </span> From previous period</p>*/}
-                                {/*    </CardBody>*/}
-                                {/*</Card>*/}
-                              <Card>
-                                <CardBody>
-                                  <h4 className="mt-0 header-title mb-4">Weekly Sales</h4>
-                                  <div id="donut-chart">
-                                    <donut_chart_port />
-                                  </div>
-                                </CardBody>
-                              </Card>
+                                <Card className="mini-stat bg-pattern">
+                                    <CardBody className="mini-stat-img">
+                                        <div className="mini-stat-icon">
+                                            <i className="dripicons-direction bg-soft-primary text-primary float-right h4"></i>
+                                        </div>
+                                        <h6 className="text-uppercase mb-3 mt-0">Amount Made</h6>
+                                        <h5 className="mb-3">{`$${totalRevenue}`}</h5>
+                                        <p className="text-muted mb-0"><span className="text-success mr-2"> 12% <i className="mdi mdi-arrow-up"></i> </span> From previous period</p>
+                                    </CardBody>
+                                </Card>
                             </Col>
                             <Col lg="4">
                                 <Card className="mini-stat bg-pattern">
@@ -143,14 +141,14 @@ class Dashboard extends Component {
 
                         <Row>
                             <Col xl="4">
-                                <Card>
-                                    <CardBody>
-                                        <h4 className="mt-0 header-title mb-4">Weekly Sales</h4>
-                                        <div id="area-chart">
-                                            <Apexarea2 />
-                                        </div>
-                                    </CardBody>
-                                </Card>
+                              <Card className="radial-chart">
+                                <CardBody>
+                                  <h4 className="header-title mt-0 mb-4">Initialization Method</h4>
+                                  <div id="radial_chart" className="apex-charts" dir="ltr">
+                                    <RadialChart />
+                                  </div>
+                                </CardBody>
+                              </Card>
                             </Col>
 
                           <Col xl="8">
