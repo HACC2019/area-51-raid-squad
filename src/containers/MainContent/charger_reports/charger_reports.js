@@ -7,7 +7,7 @@ import Settingmenu from '../Subpages/Settingmenu';
 import Firebase from 'firebase';
 import * as Bootstrap from 'react-bootstrap';
 
-let query = Firebase.database().ref("Site_Power").orderByChild("island");
+let Site_Power_query = Firebase.database().ref("Site_Power").orderByChild("island");
 
 class Charger_Reports extends Component {
     _isMounted = false;
@@ -25,7 +25,7 @@ class Charger_Reports extends Component {
         this._isMounted = true;
         this.props.activateAuthLayout();
 
-        query.on('value', snapshot => {
+        Site_Power_query.on('value', snapshot => {
             if (this._isMounted) {
                 let chargersTemp = []
 
@@ -34,8 +34,8 @@ class Charger_Reports extends Component {
                 })
 
                 this.setState({chargers: chargersTemp})
-            }})
-
+            }
+        });
     }
 
     componentWillUnmount() {
@@ -49,33 +49,24 @@ class Charger_Reports extends Component {
         })
     }
 
+    countChargerType = (chargerPowerData) => {
+        let chad = 0;
+
+        for (let data in chargerPowerData) {
+            data.port = "CHADEMO" ? chad++ : chad = chad + 0;
+        }
+
+        return chad;
+    }
+
     render() {
-        setTimeout(this.generateRandomNumber.bind(this, 60, 75), 5000)
+        setTimeout(this.generateRandomNumber.bind(this, 60, 75), 5000);
 
-        // const rows = this.state.chargers.map(charger =>
-        //     <tr>
-        //         <th scope="row">{charger.name}</th>
-        //         <td><span style={charger.status == "Offline" ? {color: '#de4040', backgroundColor: 'rgba(222, 64, 64, 0.2)'} : {color: '#47bd9a'}} className="badge badge-soft-success badge-pill"><i className="mdi mdi-checkbox-blank-circle mr-1"></i>{charger.status}</span></td>
-        //         <td>{charger.island}</td>
-        //         <td><p className="float-right mb-0 ml-3">{charger.status == "Online" ? this.state.chargerUsage : 0}</p>
-        //         <Progress className="mt-2" style={{ height: '5px' }} color="success" value={charger.status == "Online" ? this.state.chargerUsage : 0} /></td>
+        console.log(this.state.chargers[8]);
 
-        //         <td></td>
-        //         <td>
-        //             <div>
-        //             <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-map h5 m-0"></i></Link>
-        //             </div>
-        //         </td>
-        //         <td></td>
-        //         <td>
-        //             <div>
-        //             <Link to="#" id="t1" className="text-success mr-4"> <i className="dripicons-warning h5 m-0"></i></Link>
-        //             </div>
-        //         </td>
-        //     </tr>
-        // )
+        let rows;
 
-        const rows = this.state.chargers.map(charger =>
+            rows = this.state.chargers.map(charger =>
                 <div>
                     <Bootstrap.Accordion defaultActiveKey="1">
                         <Bootstrap.Card>
@@ -85,13 +76,16 @@ class Charger_Reports extends Component {
                             </Bootstrap.Accordion.Toggle>
                             <Bootstrap.Accordion.Collapse eventKey="0">
                                 <Bootstrap.Card.Body>
-                                    <div>For station : {charger.name} the system has dected voltage output of 0.00 between 9/1/17 8:37 AM and 9/3/17 9:30 AM.</div>
+                                    <span>For station : {charger.name} the system has dected voltage output of 0.00 between 9/1/17 8:37 AM and 9/3/17 9:30 AM.</span>
+                                    <br/>
+                                    <span>{charger.name === "Hawaiian Electric Ward Office" ? this.countChargerType.bind(charger.power) : 0}</span>
                                 </Bootstrap.Card.Body>
                             </Bootstrap.Accordion.Collapse>
                         </Bootstrap.Card>
                     </Bootstrap.Accordion>
                 </div>
             );
+        
 
         let onlineChargers = 0;
         
