@@ -9,7 +9,6 @@ import LightData from './LightData';
 import Firebase from 'firebase';
 import * as Bootstrap from 'react-bootstrap';
 import { css } from '@emotion/core';
-// Another way to import. This is recommended to reduce bundle size
 import PropagateLoader from 'react-spinners/PropagateLoader';
 
 
@@ -64,9 +63,9 @@ class Mapsgoogle extends Component {
 
     onMarkerClick = (props, marker, e) =>
         this.setState({
-        selectedPlace: props,
-        activeMarker: marker,
-        showingInfoWindow: true
+            selectedPlace: props,
+            activeMarker: marker,
+            showingInfoWindow: true
     });
 
     render() {
@@ -91,7 +90,7 @@ class Mapsgoogle extends Component {
                                                     }}
                                                     initialCenter={{
                                                         lat: 20.2666,
-                                                        lng: -156.27
+                                                        lng: -156.87
                                                     }}>
 
                                                     {this.state.chargers.map(charger =>
