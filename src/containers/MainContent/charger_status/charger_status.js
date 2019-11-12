@@ -201,34 +201,10 @@ class Charger_Status extends Component {
                                 <Card className="bg-pattern-red">
                                     <CardBody>
                                         <div className="float-right">
-                                            <i className="dripicons-hourglass text-primary h4 ml-3"></i>
+                                            <i className="dripicons-wrong text-primary h4 ml-3"></i>
                                         </div>
                                         <h5 className="font-20 mt-0 pt-1">{this.state.chargers.length - onlineChargers}</h5>
                                         <p className="text-muted mb-0">Chargers Offline</p>
-                                    </CardBody>
-                                </Card>
-                            </Col>
-                            <Col xl="3" md="6">
-                                <Card>
-                                    <CardBody>
-                                        <form>
-                                            <div className="form-group mb-0">
-                                              <label>Filter</label>
-                                              <i className="dripicons-experiment text-primary h4 ml-3"></i>
-                                              <Dropdown>
-                                                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                                  Island
-                                                </Dropdown.Toggle>
-
-                                                <Dropdown.Menu>
-                                                  <Dropdown.Item href="#/action-1">Oahu</Dropdown.Item>
-                                                  <Dropdown.Item href="#/action-1">Maui</Dropdown.Item>
-                                                  <Dropdown.Item href="#/action-1">Molokai</Dropdown.Item>
-                                                  <Dropdown.Item href="#/action-1">Hawaii</Dropdown.Item>
-                                                </Dropdown.Menu>
-                                              </Dropdown>
-                                            </div>
-                                        </form>
                                     </CardBody>
                                 </Card>
                             </Col>
@@ -257,23 +233,6 @@ class Charger_Status extends Component {
                                                 </tbody>
                                             </table>
                                         </div>
-
-
-                                        <div className="pt-3">
-                                            <ul className="pagination justify-content-end mb-0">
-                                                <li className="page-item disabled">
-                                                    <Link className="page-link" to="#" tabIndex="-1" aria-disabled="true">Previous</Link>
-                                                </li>
-                                                <li className="page-item"><Link className="page-link" to="#">1</Link></li>
-                                                <li className="page-item active"><Link className="page-link" to="#">2</Link></li>
-                                                <li className="page-item"><Link className="page-link" to="#">3</Link></li>
-                                                <li className="page-item">
-                                                    <Link className="page-link" to="#">Next</Link>
-                                                </li>
-                                            </ul>
-                                        </div>
-
-
                                     </CardBody>
                                 </Card>
                             </Col>
