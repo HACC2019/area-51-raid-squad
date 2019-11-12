@@ -106,9 +106,17 @@ class Charger_Reports extends Component {
                         <CardHeader onClick={this.toggle} data-event={charger.name} data-type='collapseBanner'>{charger.name}</CardHeader>
                         <Collapse isOpen={this.state.collapseBanner === charger.name}>
                             <CardBody>
-                                <span>For station : {charger.name} the system has dected voltage output of 0.00 between 9/1/17 8:37 AM and 9/3/17 9:30 AM.</span>
-                                <br/>
-                                {this.countChargerType(charger)}
+                              <Card className="bg-pattern">
+                                <CardBody>
+                                  <div className="float-right">
+                                    <i className="text-primary h4 ml-3"></i>
+                                  </div>
+                                  <h5 className="font-20 mt-0 pt-1">{charger.name}</h5>
+                                  <p className="text-muted mb-0"><span>For station : {charger.name} the system has dected voltage output of 0.00 between 9/1/17 8:37 AM and 9/3/17 9:30 AM.</span>
+                                    <br/>
+                                    {this.countChargerType(charger)}</p>
+                                </CardBody>
+                              </Card>
                             </CardBody>
                         </Collapse>
                     </Card>
