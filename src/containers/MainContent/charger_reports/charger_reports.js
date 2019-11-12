@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Card, CardBody, Progress, Tooltip } from 'reactstrap';
+import { Row, Col, Card, CardBody } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { activateAuthLayout } from '../../../store/actions';
 import { connect } from 'react-redux';
@@ -87,11 +87,8 @@ class Charger_Reports extends Component {
     }
 
     render() {
-        setTimeout(this.generateRandomNumber.bind(this, 60, 75), 5000);
 
-        let rows;
-
-            rows = this.state.chargers.map(charger =>
+        const rows = this.state.chargers.map(charger =>
                 <div>
                     <Bootstrap.Accordion defaultActiveKey="1">
                         <Bootstrap.Card>
@@ -115,7 +112,7 @@ class Charger_Reports extends Component {
         let onlineChargers = 0;
         
         this.state.chargers.forEach(charger => 
-            charger.status == "Online" ? onlineChargers++ : onlineChargers = onlineChargers)
+            charger.status === "Online" ? onlineChargers++ : onlineChargers = onlineChargers)
 
         return (
             <React.Fragment>
