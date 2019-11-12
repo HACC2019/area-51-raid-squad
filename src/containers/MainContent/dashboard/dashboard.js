@@ -12,6 +12,13 @@ import Rightsidebar from '../../../components/RightSidebar';
 //Charts
 import Apexarea from '../energy_charts/chart1';
 import Apexarea2 from '../energy_charts/chart2';
+import Apexarea3 from '../energy_charts/chart3';
+import Apexarea4 from '../energy_charts/chart4';
+import Apexarea5 from '../energy_charts/chart5';
+import Apexarea6 from '../energy_charts/chart6';
+import Apexarea7 from '../energy_charts/chart7';
+import Apexarea8 from '../energy_charts/chart8';
+import Apexarea9 from '../energy_charts/chart9';
 
 import Firebase from 'firebase';
 
@@ -90,7 +97,7 @@ class Dashboard extends Component {
                             <Col xl="10">
                                 <Card>
                                     <CardBody>
-                                        <h4 className="mt-0 header-title mb-4">fullworkingweek - 9/1</h4>
+                                        <h4 className="mt-0 header-title mb-4">fullworkingweek1 - 9/1</h4>
                                         <div id="area-chart">
                                             <Apexarea />
                                         </div>
@@ -101,13 +108,90 @@ class Dashboard extends Component {
                         <Col xl="10">
                           <Card>
                             <CardBody>
-                              <h4 className="mt-0 header-title mb-4">fullworkingweek - 9/2</h4>
+                              <h4 className="mt-0 header-title mb-4">fullworkingweek1 - 9/2</h4>
                               <div id="area-chart">
                                 <Apexarea2 />
                               </div>
                             </CardBody>
                           </Card>
                         </Col>
+
+                      <Col xl="10">
+                        <Card>
+                          <CardBody>
+                            <h4 className="mt-0 header-title mb-4">fullworkingweek1 - 9/3</h4>
+                            <div id="area-chart">
+                              <Apexarea3 />
+                            </div>
+                          </CardBody>
+                        </Card>
+                      </Col>
+
+                      <Col xl="10">
+                        <Card>
+                          <CardBody>
+                            <h4 className="mt-0 header-title mb-4">fullworkingweek1 - 9/4</h4>
+                            <div id="area-chart">
+                              <Apexarea4 />
+                            </div>
+                          </CardBody>
+                        </Card>
+                      </Col>
+
+                      <Col xl="10">
+                        <Card>
+                          <CardBody>
+                            <h4 className="mt-0 header-title mb-4">fullworkingweek1 - 9/5</h4>
+                            <div id="area-chart">
+                              <Apexarea5 />
+                            </div>
+                          </CardBody>
+                        </Card>
+                      </Col>
+
+                      <Col xl="10">
+                        <Card>
+                          <CardBody>
+                            <h4 className="mt-0 header-title mb-4">fullworkingweek1 - 9/6</h4>
+                            <div id="area-chart">
+                              <Apexarea6 />
+                            </div>
+                          </CardBody>
+                        </Card>
+                      </Col>
+
+                      <Col xl="10">
+                        <Card>
+                          <CardBody>
+                            <h4 className="mt-0 header-title mb-4">fullworkingweek1 - 9/7</h4>
+                            <div id="area-chart">
+                              <Apexarea7 />
+                            </div>
+                          </CardBody>
+                        </Card>
+                      </Col>
+
+                      <Col xl="10">
+                        <Card>
+                          <CardBody>
+                            <h4 className="mt-0 header-title mb-4">fullworkingweek1 - whole week</h4>
+                            <div id="area-chart">
+                              <Apexarea8 />
+                            </div>
+                          </CardBody>
+                        </Card>
+                      </Col>
+
+                      <Col xl="10">
+                        <Card>
+                          <CardBody>
+                            <h4 className="mt-0 header-title mb-4">fullworkingweek1 - whole month</h4>
+                            <div id="area-chart">
+                              <Apexarea9 />
+                            </div>
+                          </CardBody>
+                        </Card>
+                      </Col>
 
                     </div>
                 </div>
