@@ -6,158 +6,113 @@ import { activateAuthLayout } from '../../../store/actions';
 import { connect } from 'react-redux';
 import Settingmenu from '../Subpages/Settingmenu';
 import LightData from './LightData';
+import Firebase from 'firebase';
+import * as Bootstrap from 'react-bootstrap';
+import { css } from '@emotion/core';
+// Another way to import. This is recommended to reduce bundle size
+import PropagateLoader from 'react-spinners/PropagateLoader';
+
+
+let Site_Power_query = Firebase.database().ref("Site_Power").orderByChild("island");
 
 const LoadingContainer = (props) => (
     <div>Loading...</div>
 )
 
 class Mapsgoogle extends Component {
+    _isMounted = false;
 
     constructor(props) {
         super(props);
-        this.onMarkerClick = this.onMarkerClick.bind(this);
+
         this.state = {
+            chargers: [],
+            chargerUsage: 0,
             showingInfoWindow: false,
             activeMarker: {},
-            selectedPlace: {}
-        };
+            selectedPlace: {},
+            loading: true
+        }
     }
 
     componentDidMount() {
+        this._isMounted = true;
         this.props.activateAuthLayout();
+
+        Site_Power_query.on('value', snapshot => {
+            if (this._isMounted) {
+                let chargersTemp = []
+
+                snapshot.forEach(function(childSnapshot) {
+                    chargersTemp.push(childSnapshot.val());
+                })
+
+                this.setState({chargers: chargersTemp})
+            }
+        });
     }
 
-    onMarkerClick(props, marker, e) {
-        alert('You clicked in this marker');
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
-    
+    sneak() {
+        this.state.loading = false;
+
+        return <span/>
+    }
+
+    onMarkerClick = (props, marker, e) =>
+        this.setState({
+        selectedPlace: props,
+        activeMarker: marker,
+        showingInfoWindow: true
+    });
 
     render() {
 
         return (
             <React.Fragment>
-
-                <div className="content">
+                <div className="content" style={{padding: 0}}>
                     <div className="container-fluid">
-                        <div className="page-title-box">
-                            <Row className="align-items-center">
-                                <Col sm="6">
-                                    <h4 className="page-title">Google Map</h4>
-                                    <ol className="breadcrumb">
-                                        <li className="breadcrumb-item"><Link to="#"><i className="mdi mdi-home-outline"></i></Link></li>
-                                        <li className="breadcrumb-item"><Link to="#">Maps</Link></li>
-                                        <li className="breadcrumb-item active">Google Map</li>
-                                    </ol>
-                                </Col>
-                                <Col sm="6">
-                                    <div className="float-right d-none d-md-block">
-                                        <Settingmenu />
-                                    </div>
-                                </Col>
-                            </Row>
-                        </div>
-                        <Row>
-                            <Col lg="6">
-                                <Card>
-                                    <CardBody>
-                                        <h4 className="mt-0 header-title">Basic</h4>
-                                        <p className="text-muted mb-4">Example of google maps.</p>
-                                        <div id="gmaps-markers" className="gmaps">
-                                            <Map google={this.props.google} zoom={14}
-                                                style={{
-                                                    minWwidth: "50%",
-                                                    height: 300,
-                                                    width: 750
-                                                }}
-                                            >
-                                                <InfoWindow>
-                                                    <div>
-                                                        <h1>{this.state.selectedPlace.name}</h1>
-                                                    </div>
-                                                </InfoWindow>
-                                            </Map>
-                                        </div>
-                                    </CardBody>
-                                </Card>
-                            </Col>
+                        <PropagateLoader
+                        css={"position: absolute; z-index: 1; left: 50%; top: 45%; transform: translate(-50%, -50%); border-color: black"}
+                        sizeUnit={"px"}
+                        size={20}
+                        color={'#553c8b'}
+                        loading={this.state.loading}
+                        />
+                        <div id="mapmap">
+                            <Map google={this.props.google} zoom={8}
+                                                    style={{
+                                                        width: "100%",
+                                                        height: "100%",
+                                                        backgroundColor: 'rgba(105,105,105,0.25)'
+                                                    }}
+                                                    initialCenter={{
+                                                        lat: 20.2666,
+                                                        lng: -156.27
+                                                    }}>
 
-                            <Col lg="6">
-                                <Card>
-                                    <CardBody>
-                                        <h4 className="mt-0 header-title">Markers</h4>
-                                        <p className="text-muted mb-4">Example of google maps.</p>
-                                        <div id="gmaps-overlay" className="gmaps">
-                                            <Map google={this.props.google}
-                                                style={{ height: 300, width: 750, position: 'relative' }}
-                                                zoom={14}>
+                                                    {this.state.chargers.map(charger =>
+                                                        <Marker
+                                                        name={charger.name}
+                                                        position={{lat: charger.lat, lng: charger.lng}}
+                                                        onClick={this.onMarkerClick} />
+                                                    )}
 
-                                                <Marker
-                                                    title={'The marker`s title will appear as a tooltip.'}
-                                                    name={'SOMA'}
-                                                    position={{ lat: 37.778519, lng: -122.405640 }} />
-                                                <Marker name={'Dolores park'} />
-                                                <InfoWindow>
-                                                    <div>
-                                                        <h1>{this.state.selectedPlace.name}</h1>
-                                                    </div>
-                                                </InfoWindow>
-                                            </Map>
-                                        </div>
-                                    </CardBody>
-                                </Card>
-                            </Col>
-                        </Row>
+                                                    {this.sneak()}
 
-                        <Row>
-                            <Col lg="6">
-                                <Card>
-                                    <CardBody>
-                                        <h4 className="mt-0 header-title">Overlays</h4>
-                                        <p className="text-muted mb-4">Example of google maps.</p>
-                                        <div id="panorama" className="gmaps-panaroma">
-                                            <Map google={this.props.google} zoom={14}
-                                                style={{
-                                                    minWwidth: "50%",
-                                                    height: 300,
-                                                    width: 750
-                                                }}
-                                                initialCenter={{
-                                                    lat: 40.854885,
-                                                    lng: -88.081807
-                                                }}>
-
-                                                <Marker onClick={this.onMarkerClick} />
-                                                <InfoWindow>
-                                                    <div>
-                                                        <h1>{this.state.selectedPlace.name}</h1>
-                                                    </div>
-                                                </InfoWindow>
-                                            </Map>
-                                        </div>
-                                    </CardBody>
-                                </Card>
-                            </Col>
-
-                            <Col lg="6">
-                                <Card>
-                                    <CardBody>
-                                        <h4 className="mt-0 header-title">Ultra Light</h4>
-                                        <p className="text-muted mb-4">Example of google maps.</p>
-                                        <div className="gmaps">
-                                                <Map google={this.props.google} zoom={14} styles={LightData.Data} style={{ height: 300, width: 730 }}>
-                                                <Marker onClick={this.onMarkerClick} />
-                                                <InfoWindow>
-                                                    <div>
-                                                    <h1>{this.state.selectedPlace.name}</h1>
-                                                    </div>
-                                                </InfoWindow>
-                                                </Map>
-                                             </div>
-                                    </CardBody>
-                                </Card>
-                            </Col>
-                        </Row>
+                                                    <InfoWindow
+                                                        marker={this.state.activeMarker}
+                                                        visible={this.state.showingInfoWindow}>
+                                                            <div>
+                                                                <div>{this.state.selectedPlace.name}</div>
+                                                                
+                                                            </div>
+                                                    </InfoWindow>
+                            </Map>
+                        f</div>
                     </div>
                 </div>
             </React.Fragment>
@@ -166,7 +121,7 @@ class Mapsgoogle extends Component {
 }
 
 export default connect(null, { activateAuthLayout })(GoogleApiWrapper({
-    apiKey: "AIzaSyAbvyBxmMbFhrzP9Z8moyYr6dCr-pzjhBE",
+    apiKey: "AIzaSyDAyU96p2SuAik_SvA8nd1C1D1-M4EtiCM",
     LoadingContainer: LoadingContainer,
     v: "3"
 })(Mapsgoogle));
