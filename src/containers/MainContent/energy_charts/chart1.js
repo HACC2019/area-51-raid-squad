@@ -126,7 +126,7 @@ class Apexarea extends Component {
               series={apexChartData}
               type="area"
               width="100%"
-              height="350" />
+              height="355" />
         </React.Fragment>
     );
   }
