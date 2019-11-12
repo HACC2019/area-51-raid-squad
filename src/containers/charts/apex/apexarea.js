@@ -22,33 +22,44 @@ class Apexarea extends Component {
                     curve: 'smooth',
                     width: 2
                 },
-                colors: ['#4090cb', '#e74c5e'],
+                colors: ['#b19cd9', '#77dd77'],
                 xaxis: {
-                    categories: ['1', '2', '3', '4', '5'],
+                    categories: ['Sun', 'Mon', 'Tues', 'Thurs', 'Fri', 'Sat'],
                 },
                 grid: {
                     yaxis: {
                         lines: {
-                            show: false,
+                            show: true,
                         }
                     }
                 },
+              yaxis: {
+                show: true,
+                title: {
+                  text: "Money (Dollars)",
+                }
+              },
+              xaxis: {
+                show: true,
+                title: {
+                  text: "Time (Days)",
+                }
+              }
             },
-                series : [{
-                    name: 'Series 1',
-                    data: [22, 54, 42, 84, 48]
+                series: [{
+                    name: 'siteA Revenue',
+                    data: [22, 54, 42, 84, 48, 56, 78]
                 }, {
-                    name: 'Series 2',
-                    data: [11, 32, 60, 32, 34]
+                    name: 'siteB Revenue',
+                    data: [11, 32, 60, 32, 34, 34, 54]
                 }]
-            
             }
         }
 
     render() {
         return (
             <React.Fragment>
-                <ReactApexChart options={this.state.options} series={this.state.series} type="area" width="100%" height="299" />
+                <ReactApexChart options={this.state.options} series={this.state.series} type="area" width="100%" height="300" />
             </React.Fragment>
         );
     }

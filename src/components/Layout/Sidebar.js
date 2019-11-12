@@ -27,6 +27,10 @@ const SideNav = () => { return <div id="sidebar-menu">
                             <li>
                                 <Link to="maps" className="waves-effect"><i className="ion ion-md-pin"></i><span> Map </span></Link>
                             </li>
+                  {/*<li>*/}
+                  {/*  <Link to="energycharts" className="waves-effect"><i className="ion ion-md-clipboard"></i><span> Brendt Click Here </span></Link>*/}
+                  {/*</li>*/}
+
                 </ul>
     </div>
 }
