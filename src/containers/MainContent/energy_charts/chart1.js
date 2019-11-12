@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import ReactApexChart from 'react-apexcharts';
-import ButtonDD from '../Subpages/ButtonDD_Stations';
-import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
 
 const data =  require('./../../../fullworking1.json');
 const data2 =  require('./../../../fullworking2.json');
