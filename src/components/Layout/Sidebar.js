@@ -24,9 +24,9 @@ const SideNav = () => { return <div id="sidebar-menu">
                                 <Link to="charger_reports" className="waves-effect"><i className="ion ion-md-clipboard"></i><span> Reports </span></Link>
                             </li>
 
-                  <li>
-                    <Link to="energycharts" className="waves-effect"><i className="ion ion-md-clipboard"></i><span> Brendt Click Here </span></Link>
-                  </li>
+                  {/*<li>*/}
+                  {/*  <Link to="energycharts" className="waves-effect"><i className="ion ion-md-clipboard"></i><span> Brendt Click Here </span></Link>*/}
+                  {/*</li>*/}
 
 
                   <li>

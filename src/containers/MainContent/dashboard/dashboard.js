@@ -10,8 +10,8 @@ import ButtonDD from '../Subpages/ButtonDD_Stations';
 
 import Rightsidebar from '../../../components/RightSidebar';
 //Charts
-import Apexarea from '../../../containers/charts/apex/apexarea';
-import Apexbar from '../../../containers/charts/apex/apexbar';
+import Apexarea from '../energy_charts/chart1';
+import Apexarea2 from '../../charts/apex/apexarea';
 
 import Firebase from 'firebase';
 
@@ -133,22 +133,23 @@ class Dashboard extends Component {
                                     <CardBody>
                                         <h4 className="mt-0 header-title mb-4">Weekly Sales</h4>
                                         <div id="area-chart">
-                                            <Apexarea />
+                                            <Apexarea2 />
                                         </div>
                                     </CardBody>
                                 </Card>
                             </Col>
 
-                            <Col xl="8">
-                                <Card>
-                                    <CardBody>
-                                        <h4 className="mt-0 header-title mb-4">Jake's Test Area</h4>
-                                        <div id="column-chart" dir="ltr">
-                                            <Apexbar />
-                                        </div>
-                                    </CardBody>
-                                </Card>
-                            </Col>
+                          <Col xl="8">
+                            <Card>
+                              <CardBody>
+                                <h4 className="mt-0 header-title mb-4">Average Weekly Energy Charged</h4>
+                                <div id="area-chart">
+                                  <Apexarea />
+                                </div>
+                              </CardBody>
+                            </Card>
+                          </Col>
+
                         </Row>
                     </div>
                 </div>
