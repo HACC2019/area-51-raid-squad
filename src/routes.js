@@ -21,6 +21,7 @@ import Ecommerceproductedit from './containers/MainContent/ecommerce/ecommerce-p
 
 import Charger_Status from './containers/MainContent/charger_status/charger_status';
 import Charger_Reports from './containers/MainContent/charger_reports/charger_reports';
+import Energy_charts from './containers/MainContent/energy_charts/energycharts';
 
 import Pageslogin2 from './containers/MainContent/pages/pages-login-2';
 import Pagesregister2 from './containers/MainContent/pages/pages-register-2';
@@ -112,6 +113,7 @@ const routes = [
     { path: '/ecommerce-product-edit', component: Ecommerceproductedit },
     { path: '/charger_status', component: Charger_Status },
     { path: '/charger_reports', component: Charger_Reports },
+    { path: '/energycharts', component: Energy_charts },
 
     { path: '/pages-login-2', component: Pageslogin2 },
     { path: '/pages-register-2', component: Pagesregister2 },
